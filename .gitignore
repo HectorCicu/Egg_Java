@@ -1,4 +1,31 @@
 /Egg.POO/Guia7_Ejercicio1/build/
 /Egg.POO/Guia7_Ejercicio2/nbproject/private/
 /Egg.POO/build/
+<<<<<<< HEAD
 /Egg.POO/Ejercicio2.POO/nbproject/private/
+=======
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+>>>>>>> 4d6e6ae8b80ebc3dda1074d623474ccd620ffa1a
