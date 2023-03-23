@@ -18,7 +18,7 @@ import java.util.Scanner;
  * siguiente link: https://quantdare.com/numeros-de-fibonacci/
  *
  *
- * @author hhc
+ * @author hhc . 
  */
 public class Ejercicio_07_Extras {
 
