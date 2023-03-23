@@ -64,7 +64,7 @@ public class Libro {
         this.cantPaginas = cantPaginas;
     }
 
-    void altaLibro(){
+    void altaLibro() {
         System.out.print("\nNro. ISBN: ");
         isbn = read.nextInt();
         System.out.print("Título: ");
@@ -74,11 +74,11 @@ public class Libro {
         System.out.print("Cant. Páginas: ");
         cantPaginas = read.nextInt();
     }
-    
-     void imprime(){
-        System.out.println("\nNro ISBN.....: "+ isbn);
-        System.out.println("Título.....: "+ titulo);
-        System.out.println("Autor......: "+ autor);
+
+    void imprime() {
+        System.out.println("\nNro ISBN.....: " + isbn);
+        System.out.println("Título.....: " + titulo);
+        System.out.println("Autor......: " + autor);
         System.out.println("Cant.páginas: " + cantPaginas);
     }
 }
