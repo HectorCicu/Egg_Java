@@ -1,7 +1,7 @@
 package Guia7.Mat.Lectura;
 
 /**
- *
+ * 
  * @author hhc
  */
 public class PersonaMain {

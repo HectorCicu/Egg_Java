@@ -1,4 +1,4 @@
-package Libro;
+package Guia7.Ejercicio1;
 
 import java.util.Scanner;
 
@@ -6,22 +6,30 @@ import java.util.Scanner;
  *
  * @author Temporal
  */
-public class Libro_Clase {
+public class Libro {
 
     Scanner read = new Scanner(System.in).useDelimiter("\n");
     private int isbn;
     private String titulo;
     private String autor;
-    private int nroPaginas;
+    private int cantPaginas;
 
-    public Libro_Clase() {
+    public Libro() {
     }
 
-    public Libro_Clase(int isbn, String titulo, String autor, int nroPaginas) {
+    public Libro(int isbn, String titulo, String autor, int cantPaginas) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
-        this.nroPaginas = nroPaginas;
+        this.cantPaginas = cantPaginas;
+    }
+
+    public Scanner getRead() {
+        return read;
+    }
+
+    public void setRead(Scanner read) {
+        this.read = read;
     }
 
     public int getIsbn() {
@@ -48,31 +56,29 @@ public class Libro_Clase {
         this.autor = autor;
     }
 
-    public int getNroPaginas() {
-        return nroPaginas;
+    public int getCantPaginas() {
+        return cantPaginas;
     }
 
-    public void setNroPaginas(int nroPaginas) {
-        this.nroPaginas = nroPaginas;
+    public void setCantPaginas(int cantPaginas) {
+        this.cantPaginas = cantPaginas;
     }
 
-    public void cargarDatos() {
-
-        System.out.print("\nIngrese ISBN: ");
+    void altaLibro(){
+        System.out.print("\nNro. ISBN: ");
         isbn = read.nextInt();
         System.out.print("Título: ");
         titulo = read.next();
         System.out.print("Autor: ");
         autor = read.next();
-        System.out.print("Cant. páginas: ");
-        nroPaginas = read.nextInt();
-
+        System.out.print("Cant. Páginas: ");
+        cantPaginas = read.nextInt();
     }
     
-    public void mostrarDatos(){
-        System.out.println("\nISBN.........:" + isbn);
-        System.out.println("Título.......: "+ titulo);
-        System.out.println("Autor........: " + autor);
-        System.out.println("Cant. Páginas: " + nroPaginas);
+     void imprime(){
+        System.out.println("\nNro ISBN.....: "+ isbn);
+        System.out.println("Título.....: "+ titulo);
+        System.out.println("Autor......: "+ autor);
+        System.out.println("Cant.páginas: " + cantPaginas);
     }
 }
