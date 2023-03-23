@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Egg.Guia3.Java_Estructuras_de_Control"},{"l":"Egg.Guia4.Java_Subprogramas"},{"l":"Egg.Guia5.Java_Arreglos"},{"l":"OtrasPruebas"}];updateSearchResults();
