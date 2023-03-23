@@ -3,6 +3,11 @@ package Guia7.Ejercicio1;
 import java.util.Scanner;
 
 /**
+ * Crear una clase llamada Libro que contenga los siguientes atributos: ISBN,
+ * Título, Autor, Número de páginas, y un constructor con todos los atributos
+ * pasados por parámetro y un constructor vacío. Crear un método para cargar un
+ * libro pidiendo los datos al usuario y luego informar mediante otro método el
+ * número de ISBN, el título, el autor del libro y el número de páginas.
  *
  * @author Temporal
  */
@@ -65,7 +70,7 @@ public class Libro {
     }
 
     void altaLibro() {
-        System.out.print("\nNro. ISBN: ");
+        System.out.print("\nIngrese ISBN: ");
         isbn = read.nextInt();
         System.out.print("Título: ");
         titulo = read.next();
