@@ -29,8 +29,8 @@ public class Circulo {
 
     public void  crearCirculo() {
         System.out.print("Ingrese radio en cm.: ");
-        double rad = read.nextDouble();
-      setRadio(rad);
+       // double rad = read.nextDouble();
+      setRadio(read.nextDouble());
     }
 
     public double areaCirculo(double radio) {
