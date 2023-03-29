@@ -52,6 +52,7 @@ public class MetodosJugar {
             j1.setCantJugadas(cantjug);
             jugador1();
             cantIntentos();
+             contador = 0;
             do {
                 contador++;
                 System.out.print("Ingrese número a adivinar (intento " + contador + " de " + j1.getIntentos() + ")");
@@ -64,7 +65,7 @@ public class MetodosJugar {
                 } else {
                     System.out.println("El número ingresado es Mayor al que tiene que adivinar");
                 }
-            } while (acerto || contador == j1.getIntentos());
+            } while (!acerto && contador < j1.getIntentos());
 
             if (acerto) {
                 System.out.println("\nFELICITACIONES!! Acertó el número (" + j1.getNumeroAdivinar() + ")");
@@ -77,12 +78,12 @@ public class MetodosJugar {
             do {
                 System.out.print("Desea jugar de nuevo S/N? ");
                 sigue = read.next();
-            } while (!sigue.equalsIgnoreCase("S") || !sigue.equalsIgnoreCase("N"));
+            } while (!sigue.equalsIgnoreCase("S") && !sigue.equalsIgnoreCase("N"));
             if (sigue.equalsIgnoreCase("N")) {
                 seguir = false;
             }
             j1.setTotalIntentos(j1.getTotalIntentos() + contador);
-        } while (!seguir);
+        } while (seguir);
     }
 
     public void resultados() {
@@ -91,7 +92,7 @@ public class MetodosJugar {
                            RESULTADOS FINALES
                            ------------------
         """);
-        System.out.println("Cantidad de partidas jugadas...................: " + j1.getIntentos() );
+        System.out.println("Cantidad de partidas jugadas...................: " + j1.getCantJugadas() );
         System.out.println("Cantidad de jugadas realizadas.................: " + j1.getTotalIntentos());
         System.out.println("Juegos ganados por el Jugador 1 (genera número): " + j1.getGanaEl_1());
         System.out.println("Juegos ganados por el Jugador 2 (quien adivina): " + j1.getGanaEl_2());
