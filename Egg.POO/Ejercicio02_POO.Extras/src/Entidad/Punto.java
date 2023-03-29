@@ -45,7 +45,7 @@ public class Punto {
 
     public double calculaDistancia(double x, double y, double x1, double y1) {
         double dist;
-        dist = (double) Math.sqrt((double) Math.pow((x1 - x), 2) + (double) Math.pow((y1 - y), 2));
+        dist =  Math.sqrt( Math.pow((x1 - x), 2) +  Math.pow((y1 - y), 2));
 
         return dist;
     }
