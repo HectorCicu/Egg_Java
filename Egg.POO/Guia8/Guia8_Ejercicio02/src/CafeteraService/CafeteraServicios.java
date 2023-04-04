@@ -40,7 +40,7 @@ public class CafeteraServicios {
         } else {
 
             do {
-                System.out.print("\nTamaño de la taza  (c = chica - g = grande)");
+                System.out.print("\nTamaño de la taza  (c = chica - g = grande)  ");
                 tipot = read.next();
             } while (!tipot.equalsIgnoreCase("g") && !tipot.equalsIgnoreCase("c"));
 
