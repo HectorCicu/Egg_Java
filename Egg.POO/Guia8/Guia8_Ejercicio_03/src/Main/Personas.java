@@ -60,7 +60,7 @@ public class Personas {
         System.out.println("el porcentaje de personas con  IMC medio es " + (double) (imcnormal * 100 / imcs.length) + "%");
         System.out.println("el porcentaje de personas con  IMC alto es " + (double) (imcalto * 100 / imcs.length) + "%");
         System.out.println("el porcentaje de personas mayores de edad es " + (double) (mayorEdad * 100 / edades.length) + "%");
-        System.out.println("el porcentaje de personas menores de edad es " + (double) (1-(mayorEdad * 100 / edades.length)) + "%");
+        System.out.println("el porcentaje de personas menores de edad es " + (double) (100-(mayorEdad * 100 / edades.length)) + "%");
     }
     
 
