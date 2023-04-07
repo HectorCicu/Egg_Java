@@ -74,9 +74,11 @@ public class RaicesMetodos {
     public void calcular(Raices r) {
         if (tieneRaices(r)) {
             obtenerRaices(r);
-        }
-        if (tieneRaiz(r)) {
+        } else if (tieneRaiz(r)) {
             obtenerRaiz(r);
+            
+        }else {
+            System.out.println("La ecuación no tiene solución");
         }
 
     }
