@@ -25,11 +25,11 @@ public class FraccionMain {
         Fraccion fsuma = fs.sumarFraccion(f1, f2);
         fs.muestraFraccion(fsuma, "Suma");
         Fraccion fresta = fs.restarFraccion(f1, f2);
-        fs.muestraFraccion(fresta, "Suma");
+        fs.muestraFraccion(fresta, "Resta");
         Fraccion fmulti = fs.multiplicarFraccion(f1, f2);
-        fs.muestraFraccion(fmulti, "Suma");
+        fs.muestraFraccion(fmulti, "Multiplicación");
         Fraccion fdivi = fs.dividirFraccion(f1, f2);
-        fs.muestraFraccion(fdivi, "Suma");
+        fs.muestraFraccion(fdivi, "División");
 
     }
 }
