@@ -45,7 +45,7 @@ public class CadenaServicios {
 
         System.out.println("la frase original es  " + frase.getCade());
         System.out.println("la frase invertida es " + String.valueOf(chinv));
-
+        System.out.println("la frase invertida es " + String.join(chinv));
     }
 //        Método vecesRepetido
 //        (String letra), recibirá un carácter ingresado 
