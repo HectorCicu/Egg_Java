@@ -36,17 +36,16 @@ public class CadenaServicios {
     public void invertirFrase(Cadena frase) {
         char[] ch = new char[frase.getLongitud()];
         char[] chinv = new char[frase.getLongitud()];
-        String fr = frase.getCade();
-        ch = fr.toCharArray();
+        ch = frase.getCade().toCharArray();
+
         for (int i = frase.getLongitud() - 1; i >= 0; i--) {
 
             chinv[i] = ch[(frase.getLongitud() - 1) - i];
-
         }
-        
+
         System.out.println("la frase original es  " + frase.getCade());
-        System.out.println("la frase invertida es " + Arrays.toString(chinv));
- 
+        System.out.println("la frase invertida es " + String.valueOf(chinv));
+
     }
 //        Método vecesRepetido
 //        (String letra), recibirá un carácter ingresado 
@@ -118,7 +117,7 @@ public class CadenaServicios {
     public void contiene(Cadena frase) {
         System.out.print("Ingrese el caracter a buscar: ");
         String c = read.next();
-        boolean tiene  = frase.getCade().contains(c);
+        boolean tiene = frase.getCade().contains(c);
         if (tiene) {
             System.out.println("La frase contiene el caracter " + c);
         } else {
@@ -127,4 +126,3 @@ public class CadenaServicios {
     }
 
 }
-
