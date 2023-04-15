@@ -16,7 +16,7 @@ public class RaizEcuacion {
     public static void main(String[] args) {
       RaicesMetodos rm = new RaicesMetodos();
       
-      Raices rr = new Raices(3,5,1);
+      Raices rr = new Raices(-4,-5,-1);
       
      rm.discriminante(rr);
         System.out.println("Discriminante =  " + rr.getDiscriminante());

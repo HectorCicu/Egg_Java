@@ -46,8 +46,7 @@ public class RaicesMetodos {
             System.out.println("(-b+√((b^2)-(4*a*c)))/(2*a) = " + g);
             double g1 = ((-r.getB()) - Math.sqrt(Math.pow(r.getB(), 2) - (4 * r.getA() * r.getC()))) / (2 * r.getA());
             System.out.println("(-b-√((b^2)-(4*a*c)))/(2*a) = " + g1);
-System.out.println("La primera raíz es: " + (-r.getB() + Math.sqrt(r.getDiscriminante())) / 2 * r.getA());
-System.out.println("La primera raíz es: " + (-r.getB() - Math.sqrt(r.getDiscriminante())) / 2 * r.getA());
+
         }
     }
 //    Método obtenerRaiz(): llama a tieneRaiz() y si devolvió́true imprime
@@ -77,8 +76,8 @@ System.out.println("La primera raíz es: " + (-r.getB() - Math.sqrt(r.getDiscrim
             obtenerRaices(r);
         } else if (tieneRaiz(r)) {
             obtenerRaiz(r);
-            
-        }else {
+
+        } else {
             System.out.println("La ecuación no tiene solución");
         }
 

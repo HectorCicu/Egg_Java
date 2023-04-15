@@ -1,5 +1,3 @@
-
-
 package ParDeNumerosService;
 
 import ParDeNumeros.ParDeNumeros;
@@ -10,19 +8,18 @@ import ParDeNumeros.ParDeNumeros;
  */
 public class ParDeNumerosServices {
 
-    public static void mostrarNumeros(double a, double b){
-        
-        System.out.println("El primer número es "  + a);
+    public static void mostrarNumeros(double a, double b) {
+
+        System.out.println("El primer número es " + a);
         System.out.println("El segundo número es " + b);
-        
+
     }
-    
+
 //    Método devolverMayor para retornar cuál de los dos atributos tiene
 //el mayor valor
-    
     public static double devolverMayor(double a, double b) {
-        return Math.max(a,b);
-        
+        return Math.max(a, b);
+
     }
 //    
 //    Método calcularPotencia para calcular la potencia del mayor valor de
@@ -30,7 +27,17 @@ public class ParDeNumerosServices {
 //ambos valores. 
 
     public double calcularPotencia(ParDeNumeros p) {
-        
-        return Math.pow((int)devolverMayor(p.getNum1(), p.getNum2()),Math.min(p.getNum1(), p.getNum2()));
+
+        return Math.pow((int) devolverMayor(p.getNum1(), p.getNum2()),
+                 Math.min(p.getNum1(), p.getNum2()));
+    }
+//    Método calculaRaiz, para calcular la raíz cuadrada del menor de los
+//dos valores. Antes de calcular la raíz cuadrada se debe obtener el
+//valor absoluto del número.
+
+    public double calcularRaiz(ParDeNumeros p) {
+
+        return Math.sqrt( 
+                 Math.min(p.getNum1(), p.getNum2()));
     }
 }

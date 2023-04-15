@@ -21,6 +21,8 @@ public class ParDeNumerosMain {
         pn.mostrarNumeros(par.getNum1(),par.getNum2());
         System.out.println("La potencia entre el mayor elevado al menor es: "+ pn.calcularPotencia(par));
         System.out.println("El número mayor es: " + pn.devolverMayor(par.getNum1(),par.getNum2()));
+        System.out.println("La raíz cuadrada del menor número es: " + pn.calcularRaiz(par));
+      
         
 
     }
