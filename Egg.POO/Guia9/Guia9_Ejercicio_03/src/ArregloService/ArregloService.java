@@ -58,5 +58,23 @@ public class ArregloService {
 
         mostrar(arregloc);
     }
-
+/*
+    public static void ordenarArreglo(double[] arreglo) {
+    
+        double aux;
+        
+        Arrays.sort(arreglo);
+        
+        for (int i = 0; i <= (int)((arreglo.length-1) / 2); i++) { //ordena de mayor a menor
+            
+            aux = arreglo[i];
+            
+            arreglo[i] = arreglo[(arreglo.length-1)-i];
+            
+            arreglo[(arreglo.length-1)-i] = aux;
+            
+        }
+        
+    }
+    */
 }

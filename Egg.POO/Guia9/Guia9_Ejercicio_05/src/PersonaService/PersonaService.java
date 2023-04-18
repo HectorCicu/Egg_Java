@@ -73,8 +73,8 @@ public class PersonaService {
      * @param edad
      * @return true si es igual o mayor de 18, false si es menor
      */
-    public boolean esMayor(Persona p, int edad) {
-        return (edad >= 18);
+    public boolean esMenor(Persona p, int edad) {
+        return (edadPersona(p) <edad);
     }
 
     /**
@@ -94,11 +94,11 @@ public class PersonaService {
      * en este if llamo al método esMayor, para que devuelva el booleano, 
      * determinando si es o no mayor de edad (true o false)
      */
-        if (esMayor(p, edad)) {
-            System.out.println("La persona es Mayor de Edad\n");
-
-        } else {
-            System.out.println("La persona es menor de edad\n");
-        }
+//        if (esMayor(p, edad)) {
+//            System.out.println("La persona es Mayor de Edad\n");
+//
+//        } else {
+//            System.out.println("La persona es menor de edad\n");
+//        }
     }
 }
