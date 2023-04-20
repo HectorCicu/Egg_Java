@@ -1,15 +1,17 @@
 package Ahorcado;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Hector Cicutti
  */
 public class LetraEncontradaTotal {
 
-    char[] letrasEncontradasTotal;
+    char[] letrasEncontradasTotal = new char[26];
 
     public LetraEncontradaTotal() {
-        letrasEncontradasTotal = new char[26];
+        Arrays.fill(letrasEncontradasTotal, '1');
     }
 
     public char[] getLetraEncontradasTotal() {

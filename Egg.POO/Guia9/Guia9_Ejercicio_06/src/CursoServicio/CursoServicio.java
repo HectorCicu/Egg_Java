@@ -68,6 +68,7 @@ public class CursoServicio {
         }
         System.out.print("Valor por hora $ ");
         cu.setPrecioPorHora(read.nextDouble());
+        cargarAlumnos(cu);
     }
 
     public void cargarAlumnos(Curso c) {

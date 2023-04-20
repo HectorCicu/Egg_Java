@@ -26,6 +26,10 @@ new Date(anio, mes, dia);
         System.out.print("Año de Nacimiento: ");
         int anio = read.nextInt();
 
+   ////  VERRRRR !!!!!     
+//        System.out.print("Fecha de nacimiento (dd/mm/YYYY): ");
+//        String[] fecha=read.next().split("/");
+        //return new  Date(Integer.parseInt(fecha[2])-1900,Integer.parseInt(fecha[1])-1,Integer.parseInt(fecha[0]));
         return new Date(anio - 1900, mes - 1, dia);
     }
 

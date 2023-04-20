@@ -16,7 +16,7 @@ public class CursoMain {
         CursoServicio cs = new CursoServicio();
         Curso cu = new Curso();
         cs.crearCurso(cu);
-        cs.cargarAlumnos(cu);
+//        cs.cargarAlumnos(cu);
         cs.muestraClase(cu);
     }
     
