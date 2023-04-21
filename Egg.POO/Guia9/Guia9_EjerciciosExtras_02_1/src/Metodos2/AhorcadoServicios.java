@@ -1,7 +1,7 @@
-package Metodos;
+package Metodos2;
 
-import Ahorcado.Ahorcado;
-import Ahorcado.LetraEncontradaTotal;
+import Ahorcado2.Ahorcado;
+import Ahorcado2.LetraEncontradaTotal;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class AhorcadoServicios {
 
-    private final Scanner read = new Scanner(System.in).useDelimiter("\n");
+    private static final Scanner read = new Scanner(System.in).useDelimiter("\n");
 
     /*
      *Metodo crearJuego(): le pide la palabra al usuario y cantidad de
@@ -30,7 +30,7 @@ vector, letra por letra, quedando cada letra de la palabra en un índice
 del vector. Y también, guarda la cantidad de jugadas máximas y el
 valor que ingresó el usuario.
      */
-    public void crearJuego(Ahorcado a) {
+    public static void crearJuego(Ahorcado a) {
 
         System.out.print("Ingrese la palabra a adivinar: ");
         String palab = read.next();
@@ -42,14 +42,14 @@ valor que ingresó el usuario.
     }
 
 // * ● Método longitud(): muestra la longitud de la palabra que se debe encontrar.
-    public void longitud(Ahorcado a) {
+    public static void longitud(Ahorcado a) {
         System.out.println("La longitud de la palabra es: " + a.getPalabra().length + " letras\n"); // con el get extraigo la palabra como vector y con el lenght muestro el largo
 
     }
 
     //método para determinar si la letra ingresada ya existe entre las cargadas
     // si no existe la graba en el array de letrasEncontradasTotal.
-    public boolean letraYaCargada(LetraEncontradaTotal le, char letra) {
+    public static boolean letraYaCargada(LetraEncontradaTotal le, char letra) {
         boolean existe = false;
         for (int i = 0; i < le.getLetraEncontradasTotal().length; i++) {
             if (le.getLetraEncontradasTotal(i) == letra) {
@@ -70,7 +70,7 @@ valor que ingresó el usuario.
  * parte de la palabra o no. También informará si la letra estaba o no.
      */
     // previamente a este método, ejecutar otro para ver si ya la letra la cargó anteriromente
-    public boolean buscar(Ahorcado a, char letra, char[] ubicacion) {
+    public static boolean buscar(Ahorcado a, char letra, char[] ubicacion) {
         boolean esta = false;
         //    int faltantes = a.getPalabra().length - a.getLetrasEncontradas();
         int existen = 0;
@@ -82,21 +82,20 @@ valor que ingresó el usuario.
             }
         }
         a.setLetrasEncontradas(a.getLetrasEncontradas() + existen);
-        //int val1 = String.valueOf(a1.getCaracteres()).replaceAll("(?i)[^" + val + "]", "").length(); - ojo para contar coincidentes
 
         return esta;
     }
 /// investigar el tema de convertir a string regex para reemplazar caracteres por vacío y determinar el largo luego "(?i)[^" + val + "]"
 //       Método encontradas(letra): que reciba una letra ingresada por el usuario y
 // * muestre cuantas letras han sido encontradas y cuántas le faltan.
-    public void encontradas(Ahorcado a) {
+    public static void encontradas(Ahorcado a) {
 
         int faltantes = a.getPalabra().length - a.getLetrasEncontradas();
     }
 
     //    ● Método intentos(): para mostrar cuántas oportunidades le
     //  queda al jugador.
-    public int intentos(Ahorcado a, int jugadas) {
+    public static int intentos(Ahorcado a, int jugadas) {
         return a.getJugadasMaximas() - jugadas;
     }
 
@@ -104,8 +103,11 @@ valor que ingresó el usuario.
     // * todos los métodos previamente mencionados e informará cuando el usuario
     // * descubra toda la palabra o se quede sin intentos. Este método se llamará en
     // * el main
-    public void juego(LetraEncontradaTotal le, Ahorcado a) {
-        
+    public static void juego() {
+
+        LetraEncontradaTotal le = new LetraEncontradaTotal();
+
+        Ahorcado a = new Ahorcado();
         char letraIntento;
         boolean encontro = false;
         int jugadas = 0;
@@ -158,4 +160,13 @@ valor que ingresó el usuario.
     }
 }
 
+/*
+"  +---+\n"
+		+ "  |   |\n"
+		+ "  O   |\n"
+		+ "      |\n"
+		+ " /|\\  |\n"
+		+ " / \\  |\n"
+		+ "========="
+*/
 

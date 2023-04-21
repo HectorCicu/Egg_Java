@@ -1,11 +1,13 @@
-package Metodos;
+package Metodos2LL;
 
-import Ahorcado.Ahorcado;
-import Ahorcado.LetraEncontradaTotal;
+import Ahorcado2LL.AhorcadoLL;
+
+import java.util.ArrayList;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
-
+import java.util.Set;
 
 /**
  *
@@ -18,9 +20,9 @@ import java.util.Scanner;
  *
  * @author Hector Cicutti
  */
-public class AhorcadoServicios {
-
-    private final Scanner read = new Scanner(System.in).useDelimiter("\n");
+public class AhorcadoServiciosLL {
+    
+    private static final Scanner read = new Scanner(System.in).useDelimiter("\n");
 
     /*
      *Metodo crearJuego(): le pide la palabra al usuario y cantidad de
@@ -30,38 +32,38 @@ vector, letra por letra, quedando cada letra de la palabra en un índice
 del vector. Y también, guarda la cantidad de jugadas máximas y el
 valor que ingresó el usuario.
      */
-    public void crearJuego(Ahorcado a) {
-
+    public static void crearJuego(AhorcadoLL a) {
+        ArrayList<Character> listaDeCaracteres = new ArrayList<Character>();
         System.out.print("Ingrese la palabra a adivinar: ");
-        String palab = read.next();
+        String palabr = read.next();
         System.out.print("Ingrese cuántos intentos erróneos permitirá: ");
         a.setJugadasMaximas(read.nextInt());
-
-        a.setPalabra(palab.toLowerCase().toCharArray()); // con el toCharArray convierto la palabra 
+        for (int i = 0; i < palabr.length(); i++) {
+            char ch = palabr.charAt(i);
+            listaDeCaracteres.add(ch);
+        }
+        a.setPalab(listaDeCaracteres);
+        
+        a.setPalabra(palabr.toLowerCase().toCharArray()); // con el toCharArray convierto la palabra 
         //en un vector de caracteres y lo grabo en el array palabra
     }
 
 // * ● Método longitud(): muestra la longitud de la palabra que se debe encontrar.
-    public void longitud(Ahorcado a) {
+    public static void longitud(AhorcadoLL a) {
         System.out.println("La longitud de la palabra es: " + a.getPalabra().length + " letras\n"); // con el get extraigo la palabra como vector y con el lenght muestro el largo
 
     }
 
     //método para determinar si la letra ingresada ya existe entre las cargadas
     // si no existe la graba en el array de letrasEncontradasTotal.
-    public boolean letraYaCargada(LetraEncontradaTotal le, char letra) {
+    public static boolean letraYaCargada(ArrayList<Character> le, char letra) {
         boolean existe = false;
-        for (int i = 0; i < le.getLetraEncontradasTotal().length; i++) {
-            if (le.getLetraEncontradasTotal(i) == letra) {
-                existe = true;
-                break;
-            } else {
-                if (le.getLetraEncontradasTotal(i) == '1') {
-                    le.setLetraEncontradasTotal(letra, i);
-                    break;
-                }
-            }
+        if (le.contains(letra)) {
+            existe = true;
+        } else {
+            le.add(letra);
         }
+        
         return existe;
     }
 
@@ -69,8 +71,8 @@ valor que ingresó el usuario.
  * método recibe una letra dada por el usuario y busca si la letra ingresada es
  * parte de la palabra o no. También informará si la letra estaba o no.
      */
-    // previamente a este método, ejecutar otro para ver si ya la letra la cargó anteriromente
-    public boolean buscar(Ahorcado a, char letra, char[] ubicacion) {
+// previamente a este método, ejecutar otro para ver si ya la letra la cargó anteriromente
+    public static boolean buscar(AhorcadoLL a, char letra, char[] ubicacion) {
         boolean esta = false;
         //    int faltantes = a.getPalabra().length - a.getLetrasEncontradas();
         int existen = 0;
@@ -82,21 +84,21 @@ valor que ingresó el usuario.
             }
         }
         a.setLetrasEncontradas(a.getLetrasEncontradas() + existen);
-        //int val1 = String.valueOf(a1.getCaracteres()).replaceAll("(?i)[^" + val + "]", "").length(); - ojo para contar coincidentes
-
+        
         return esta;
     }
 /// investigar el tema de convertir a string regex para reemplazar caracteres por vacío y determinar el largo luego "(?i)[^" + val + "]"
 //       Método encontradas(letra): que reciba una letra ingresada por el usuario y
 // * muestre cuantas letras han sido encontradas y cuántas le faltan.
-    public void encontradas(Ahorcado a) {
 
-        int faltantes = a.getPalabra().length - a.getLetrasEncontradas();
+    public static void encontradas(AhorcadoLL a) {
+
+        // int faltantes = a.getPalabra().length - a.getLetrasEncontradas();
     }
 
     //    ● Método intentos(): para mostrar cuántas oportunidades le
     //  queda al jugador.
-    public int intentos(Ahorcado a, int jugadas) {
+    public static int intentos(AhorcadoLL a, int jugadas) {
         return a.getJugadasMaximas() - jugadas;
     }
 
@@ -104,12 +106,15 @@ valor que ingresó el usuario.
     // * todos los métodos previamente mencionados e informará cuando el usuario
     // * descubra toda la palabra o se quede sin intentos. Este método se llamará en
     // * el main
-    public void juego(LetraEncontradaTotal le, Ahorcado a) {
+    public static void juego() {
         
+        ArrayList<Character> letrasIngresadas = new ArrayList<Character>();
+        
+        AhorcadoLL a = new AhorcadoLL();
         char letraIntento;
         boolean encontro = false;
         int jugadas = 0;
-
+        
         crearJuego(a);
         int letrasRestantes = a.getPalabra().length;
         char[] ubicacion = new char[a.getPalabra().length];
@@ -119,14 +124,13 @@ valor que ingresó el usuario.
             System.out.print("\nIngrese una letra (tiene " + intentos(a, jugadas) + " intentos para acertar): ");
             letraIntento = read.next().charAt(0);
             letraIntento = Character.toLowerCase(letraIntento);
-            if (letraYaCargada(le, letraIntento)) {
+            if (letraYaCargada(letrasIngresadas, letraIntento)) {
                 System.out.println("Esa letra ya la ingresó. intente con otra");
-
+                
             } else {
-
+                
                 if (buscar(a, letraIntento, ubicacion)) {
-
-                    // a.setLetrasEncontradas(a.getLetrasEncontradas() + 1);
+                    
                     if ((letrasRestantes - a.getLetrasEncontradas()) > 0) {
                         System.out.println("SI, esa letra existe en la palabra!");
                         System.out.println("Restan encontrar " + (letrasRestantes - a.getLetrasEncontradas()));
@@ -138,24 +142,23 @@ valor que ingresó el usuario.
                     System.out.println("Esa letra No está en la palabra");
                     jugadas++;
                     System.out.println("le quedan " + intentos(a, jugadas) + " Intentos");
-
+                    
                 }
-
+                
             }
         } while (jugadas < a.getJugadasMaximas() && !encontro);
-
+        
         if (encontro) {
-            System.out.println("-------------------------------------------------------------" );
+            System.out.println("-------------------------------------------------------------");
             System.out.println("FELICITACIONES!! ENCONTRO LA PALABRA ----> " + String.valueOf(a.getPalabra()));
-            System.out.println("-------------------------------------------------------------" );
+            System.out.println("-------------------------------------------------------------");
         } else {
             System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-            System.out.println("xxx  HA PERDIDO, QUE PENA...          :(               xxx");
+            System.out.println("xxx  HA PERDIDO, QUE PENA...          :(               ");
+            System.out.println("xxx  LA PALABRA ERA " + String.valueOf(a.getPalabra()));
             System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             
         }
-            
+        
     }
 }
-
-
