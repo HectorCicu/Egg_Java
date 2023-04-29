@@ -105,19 +105,28 @@ public class Perro {
     public static Comparator<Perro> comparaRaza = new Comparator<Perro>() {
         @Override
         public int compare(Perro o1, Perro o2) {
-            return o2.getRaza().compareTo(o1.getRaza());
+            return o1.getRaza().compareTo(o2.getRaza());
         }
     };
+    
     public static Comparator<Perro> comparaEdad = new Comparator<Perro>() {
         @Override
         public int compare(Perro o1, Perro o2) {
-            return o2.getEdad().compareTo(o1.getEdad());
+            return o1.getEdad().compareTo(o2.getEdad());
         }
     };
+    
     public static Comparator<Perro> comparaSexo = new Comparator<Perro>() {
         @Override
         public int compare(Perro o1, Perro o2) {
-            return o2.getSexo().compareTo(o1.getSexo());
+            return o1.getSexo().compareTo(o2.getSexo());
+        }
+    };
+    
+    public static Comparator<Perro> comparaNombre = new Comparator<Perro>() {
+        @Override
+        public int compare(Perro o1, Perro o2) {
+            return o1.getNombre().compareTo(o2.getNombre());
         }
     };
 

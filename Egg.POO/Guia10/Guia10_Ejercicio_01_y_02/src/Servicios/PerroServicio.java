@@ -2,6 +2,7 @@ package Servicios;
 
 import Entidad.Perro;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -98,8 +99,8 @@ public class PerroServicio {
                     colo = "Indefinido, soy daltonico";
                     break;
             }
-            razas = rand.nextInt(1, 8);
-            switch (colores) {
+            razas = rand.nextInt(1, 10);
+            switch (razas) {
                 case 1:
                     raz = "rottweiler";
                     break;
@@ -121,6 +122,12 @@ public class PerroServicio {
                 case 7:
                     raz = "mastin napolitano";
                     break;
+                case 8:
+                    raz = "bulldog";
+                    break;
+                case 9:
+                    raz = "boxer";
+                    break;
                 default:
                     raz = "Perro, perro";
                     break;
@@ -135,7 +142,61 @@ public class PerroServicio {
             this.raza.add(raz);
 
             p1.add(new Perro(nomb, raz, eda, colo, Character.toUpperCase(sex)));
-            mostrarPerro();
         }
+        mostrarPerro();
+        System.out.println("");
     }
+
+    public void eliminarPerro() {
+        boolean existe = false;
+        int opcion;
+        Iterator<Perro> it = p1.iterator();
+        System.out.print("\nNombre del perro a eliminar: ");
+        String nomPerro = read.next();
+
+        while (it.hasNext()) {
+            Perro p = it.next();
+            if (p.getNombre().equalsIgnoreCase(nomPerro)) {
+                it.remove();
+                existe = true;
+            }
+        }
+        if (existe) {
+            System.out.println("\nEl perro fue eliminado de la lista");
+        } else {
+            System.out.println("\nEl perro NO existe en la lista");
+        }
+        do {
+            System.out.print("""
+                           Ordena la lista por: 
+                           1) Nombre
+                           2) Raza
+                           3) Edad
+                           4) Sexo
+                           -->   """);
+            opcion = read.nextInt();
+        } while (opcion < 1 && opcion > 4);
+        switch (opcion) {
+            case 1:
+                p1.sort(Perro.comparaNombre);
+                System.out.println("\n Se va a mostrar la lista ordenada por nombre \n");
+                break;
+            case 2:
+                p1.sort(Perro.comparaRaza);
+                System.out.println("\n Se va a mostrar la lista ordenada por raza \n");
+                break;
+            case 3:
+                p1.sort(Perro.comparaEdad);
+                System.out.println("\n Se va a mostrar la lista ordenada por edad \n");
+                break;
+            case 4:
+                p1.sort(Perro.comparaSexo);
+                System.out.println("\n Se va a mostrar la lista ordenada por sexo \n");
+                break;
+        }
+
+        mostrarPerro();
+        System.out.println("");
+    }
+
 }
