@@ -33,7 +33,7 @@ public class PerroServicio {
                 System.out.print("Sexo (M)acho - (H)embra: ");
                 sexo = read.next().charAt(0);
 
-            } while (sexo != 'M' && sexo != 'm' && sexo != 'H' && sexo != 'h');
+            } while (Character.toUpperCase(sexo) != 'M' && Character.toUpperCase(sexo) != 'H');
 
             this.raza.add(raza);
 
