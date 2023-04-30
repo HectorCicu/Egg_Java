@@ -33,6 +33,7 @@ public class AlumnoService {
 
     private static Scanner read = new Scanner(System.in).useDelimiter("\n");
     private static TreeSet<Alumno> al = new TreeSet<>(ordenarLegajo);
+    private static Random rand = new Random();
 
     public static void menuPrincipal() {
         int opcion;
@@ -45,12 +46,13 @@ public class AlumnoService {
                          2) Cargar Notas
                          3) Visualizar Alumnos
                          4) Promedio de un alumno
-                         5) Carga Masiva de alumno
-                         6) Salir
+                         5) Carga Masiva de alumnos (20)
+                         6) Carga Masiva de Notas
+                         7) Salir
                          Opcion: """);
             do {
                 opcion = read.nextInt();
-            } while (opcion < 1 || opcion > 6);
+            } while (opcion < 1 || opcion > 7);
 
             switch (opcion) {
                 case 1 -> {
@@ -64,11 +66,15 @@ public class AlumnoService {
                     mostrarAlumnos();
                 }
                 case 4 -> {
+                    promedioNotas();
                 }
                 case 5 -> {
                     cargarVariosAlumnos(20);
                 }
-                case 6 ->
+                case 6 -> {
+                    cargaNotasMasiva();
+                }
+                case 7 ->
                     continua = false;
             }
         } while (continua);
@@ -106,7 +112,7 @@ public class AlumnoService {
         Iterator<Alumno> it = al.iterator();
         ArrayList<Integer> notas = new ArrayList<>();
         boolean esta = false;
-        Integer existe;  // si encuentro número de legajo, lo reemplazo en este valor de retorno
+        // Integer existe;  // si encuentro número de legajo, lo reemplazo en este valor de retorno
         System.out.print("Ingrese el legajo del alumno: ");
         legaj = read.nextInt();
         while (it.hasNext()) {
@@ -137,9 +143,49 @@ public class AlumnoService {
     }
 
     public static void cargarVariosAlumnos(int cant) {
-        Random rand = new Random();
+
         for (int i = 1; i <= cant; ++i) {
             al.add(new Alumno(rand.nextInt(1, 9000), "Carlos Chiquito" + rand.nextInt(1, 50), rand.nextInt(10000000, 50000000)));
+        }
+    }
+
+    public static void promedioNotas() {
+        Integer legaj, acumulada = 0;
+        double not;
+        Iterator<Alumno> it = al.iterator();
+        ArrayList<Integer> notas = new ArrayList<>();
+        Integer[] notAcum = new Integer[3];
+        boolean esta = false;
+        System.out.print("Ingrese el legajo del alumno: ");
+        legaj = read.nextInt();
+        while (it.hasNext()) {
+            Alumno aa = it.next();
+            if (Objects.equals(aa.getLegajo(), legaj)) {  //investigar sobre esta funcion
+                esta = true;
+                notas = aa.getNota();
+
+                for (int i = 0; i < 3; i++) {
+                    acumulada += notas.get(i);
+                }
+
+            }
+        }
+        if (!esta) {
+            System.out.println("\nEl legajo no existe en la base de datos del colegio\n");
+        } else {
+            System.out.println("La nota promedio del alumno es. " + (double) ( acumulada.doubleValue() / 3));
+        }
+    }
+
+    public static void cargaNotasMasiva() {
+
+        for (Alumno alumno : al) {
+            ArrayList<Integer> not = new ArrayList<>();
+            for (int i = 1; i < 4; i++) {
+                not.add(rand.nextInt(0, 11));
+            }
+            alumno.setNota(not);
+
         }
     }
 }

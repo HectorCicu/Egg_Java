@@ -65,8 +65,8 @@ public class Alumno {
      */
     public static Comparator<Alumno> ordenaLegajo = new Comparator<Alumno>() {
         @Override
-        public int compare(Alumno a1, Alumno a2) {
-            return a1.getLegajo().compareTo(a2.getLegajo());
+        public int compare(Alumno a1, Alumno a2) {  
+            return a1.getLegajo().compareTo(a2.getLegajo()); //a1 - a2 ordena ascendente -- a2 -a1 ordena descendente
 
         }
 
