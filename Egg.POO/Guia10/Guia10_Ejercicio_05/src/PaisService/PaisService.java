@@ -19,7 +19,7 @@ public class PaisService {
         }
 
     };
-    private static Scanner read = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner read = new Scanner(System.in,"ISO-8859-1").useDelimiter("\n");
     private static TreeSet<Pais> pai = new TreeSet(ordenarPaises);
 
     public static void menuPrincipal() {
