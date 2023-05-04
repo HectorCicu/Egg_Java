@@ -71,12 +71,6 @@ public class Alumno_Map {
         }
 
     };
-    public static Comparator<Alumno_Map> ordenaNombre = new Comparator<Alumno_Map>() {
-        @Override
-        public int compare(Alumno_Map a1, Alumno_Map a2) {
-            return a1.getNombreAlumno().compareTo(a2.getNombreAlumno());
-
-        }
-
-    };
+    // LAMBDA 
+    public static Comparator<Alumno_Map> ordenaNombre = (Alumno_Map a1, Alumno_Map a2) -> a1.getNombreAlumno().compareTo(a2.getNombreAlumno());
 }
