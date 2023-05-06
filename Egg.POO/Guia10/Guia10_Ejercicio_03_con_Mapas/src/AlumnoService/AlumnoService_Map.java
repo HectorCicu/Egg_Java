@@ -3,7 +3,6 @@ package AlumnoService;
 import Alumno.Alumno_Map;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
 
 import java.util.Map;
 import java.util.Objects;
@@ -155,7 +154,7 @@ public class AlumnoService_Map {
         Integer lega;
         for (int i = 1; i <= cant; ++i) {
             lega = rand.nextInt(1, 9000);
-            al.put(lega, new Alumno_Map(lega, "Carlos Chiquito" + rand.nextInt(1, 50), rand.nextInt(10000000, 50000000)));
+            al.put(lega, new Alumno_Map(lega, "Fer Chiquito" + rand.nextInt(1, 50), rand.nextInt(10000000, 50000000)));
         }
     }
 

@@ -126,3 +126,10 @@ public class Servicios {
         
     }
 }
+
+/*
+for(Map.Entry<String, Double> entry: productos.entrySet() ){
+            System.out.println(entry);
+            System.out.println("Solo key: "+ entry.getKey());
+            System.out.println("->Solo valor: "+ entry.getValue() );
+        }*/

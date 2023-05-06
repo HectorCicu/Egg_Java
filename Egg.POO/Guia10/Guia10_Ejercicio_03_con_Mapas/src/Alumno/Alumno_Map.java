@@ -57,7 +57,7 @@ public class Alumno_Map {
 
     @Override
     public String toString() {
-        return "Legajo= " + legajo + ",   Nombre = " + nombreAlumno + ",   DNI= " + nroDni + ", nota=" + nota + '}';
+        return  "   Nombre = " + nombreAlumno + ",   DNI= " + nroDni + ", nota=" + nota + '}';
     }
 
     /**
