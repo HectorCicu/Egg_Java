@@ -41,7 +41,8 @@ public class CantanteService {
                 case 3:
                     break;
                 case 4:
-                    listoAlgo(singer);
+                    //listoAlgo(singer);
+                    listarDiscografia(singer);
                     break;
                 case 5:
                     break;
@@ -104,14 +105,18 @@ public class CantanteService {
 
     }
 
-    /*
     public static void listarDiscografia(HashMap<Integer, Cantante> singer) {
         for (Map.Entry<Integer, Cantante> cantante : singer.entrySet()) {
             cantor = cantante.getValue();
-            album = cantor.getDiscos();
-for(Map.Entry<String, Integer> albumes : album.getValue()) {
+
+            HashMap<String, Integer> cantaAlbums = new HashMap<>();
+            cantaAlbums = cantor.getDiscos();
+            for (Map.Entry<String, Integer> albumes : cantaAlbums.entrySet()) {
+                System.out.println(cantor.getNombre() + " " + cantor.getNacionalidad() + " " + albumes.getKey() + " " + albumes.getValue());
+            }
         }
-    } */
+    }
+
     public static void listoAlgo(HashMap<Integer, Cantante> singer) {
         for (Map.Entry<Integer, Cantante> cantante : singer.entrySet()) {
             System.out.println(cantante);
@@ -136,15 +141,28 @@ for(Map.Entry<String, Integer> albumes : album.getValue()) {
 
     }
 
+    public static void eliminaCantante(HashMap<Integer, Cantante> singer) {
+        Integer codCantante;
+        char opcion;
+        album.clear();
+        System.out.print("Código del Cantante:  ");
+        codCantante = read.nextInt();
+        if (!singer.containsKey(codCantante)) {
+            System.out.println("El código No existe, intente con otro");
+        } else {
+            singer.remove(codCantante);
+            System.out.println("\nEl Cantante fue eliminado - Pulse una tecla");
+            read.next();
+        }
+    }
+
     public static void cargoAlbumes(HashMap<Integer, Cantante> singer) {
 
-
-        
         album.clear();
-Cantante canta = singer.get(9999);
-HashMap<String, Integer> cantaAlbums = new HashMap<>();
-cantaAlbums.put("Led Zeppelin", 1969);
-       cantaAlbums.put("Led Zeppelin II", 1969);
+        Cantante canta = singer.get(9999);
+        HashMap<String, Integer> cantaAlbums = new HashMap<>();
+        cantaAlbums.put("Led Zeppelin", 1969);
+        cantaAlbums.put("Led Zeppelin II", 1969);
         cantaAlbums.put("Led Zeppelin III", 1970);
         cantaAlbums.put("Led Zeppelin IV", 1971);
         cantaAlbums.put("Houses of the Holy", 1973);
@@ -153,12 +171,12 @@ cantaAlbums.put("Led Zeppelin", 1969);
         cantaAlbums.put("In Through the Out Door", 1979);
         cantaAlbums.put("Coda", 1982);
 
-canta.setDiscos(cantaAlbums);
-singer.put(9999, canta);
+        canta.setDiscos(cantaAlbums);
+        singer.put(9999, canta);
 
-Cantante queen = singer.get(9998);
-HashMap<String, Integer> queenAlbums = new HashMap<>();
-         queenAlbums.put("Queen ", 1973);
+        Cantante queen = singer.get(9998);
+        HashMap<String, Integer> queenAlbums = new HashMap<>();
+        queenAlbums.put("Queen ", 1973);
         queenAlbums.put("Queen II ", 1974);
         queenAlbums.put("Sheer Heart Attack ", 1974);
         queenAlbums.put("A Night at the Opera ", 1975);
@@ -173,9 +191,9 @@ HashMap<String, Integer> queenAlbums = new HashMap<>();
         queenAlbums.put("The Miracle ", 1989);
         queenAlbums.put("Innuendo ", 1991);
         queenAlbums.put("Made in Heaven ", 1995);
-        
+
         queen.setDiscos(queenAlbums);
         singer.put(9998, queen);
-      }
+    }
 
 }
