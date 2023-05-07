@@ -36,9 +36,11 @@ public class CantanteService {
                     cargaCantante(singer);
                     break;
                 case 2:
-                    cargarDiscos(singer);
+                    //cargarDiscos(singer);
+                    cargarDiscos2(singer);
                     break;
                 case 3:
+                    eliminaCantante(singer);
                     break;
                 case 4:
                     //listoAlgo(singer);
@@ -90,6 +92,7 @@ public class CantanteService {
         } else {
             cantor = singer.get(codCantante);
             do {
+                System.out.println("Cantante: " + cantor.getNombre());
                 System.out.print("Ingrese disco: ");
                 disco = read.next();
                 System.out.print("Año de Lanzamiento: ");
@@ -196,4 +199,85 @@ public class CantanteService {
         singer.put(9998, queen);
     }
 
+    public static void cargarDiscos2(HashMap<Integer, Cantante> singer) {
+
+        char opc;
+        album.clear();
+        do {
+            System.out.println("\nCARGAR DISCOS");
+            System.out.println("a. Por Código de Cantante");
+            System.out.println("b. Por Nombre de Cantante");
+            System.out.print("Opción: ");
+            opc = read.next().charAt(0);
+        } while (Character.toLowerCase(opc) != 'a' && Character.toLowerCase(opc) != 'b');
+        switch (Character.toLowerCase(opc)) {
+            case 'a':
+                cargaPorCodigo(singer);
+                break;
+            case 'b':
+                cargaPorNombre(singer);
+                break;
+            default:
+                System.out.println("Houston, tenemos un problema...");
+
+        }
+    }
+
+    public static void cargaPorCodigo(HashMap<Integer, Cantante> singer) {
+        Integer codCantante, anio;
+        char opcion;
+
+        String disco;
+        System.out.print("Código del Cantante:  ");
+        codCantante = read.nextInt();
+        if (!singer.containsKey(codCantante)) {
+            System.out.println("El código No existe, intente con otro");
+        } else {
+            cantor = singer.get(codCantante);
+            do {
+                System.out.print("Ingrese disco: ");
+                disco = read.next();
+                System.out.print("Año de Lanzamiento: ");
+                anio = read.nextInt();
+                album.put(disco, anio);
+
+                System.out.print("Termina carga s/n: ");
+                opcion = read.next().charAt(0);
+            } while (opcion != 's' && opcion != 'S');
+            cantor.setDiscos(album);
+            singer.put(codCantante, cantor);
+        }
+
+    }
+
+    public static void cargaPorNombre(HashMap<Integer, Cantante> singer) {
+        Integer codCantante, anio;
+        boolean existe = false;
+        char opcion;
+        String disco, nombreCantante;
+        System.out.print("Nombre del Cantante:  ");
+        nombreCantante = read.next();
+        for (Map.Entry<Integer, Cantante> cantante : singer.entrySet()) {
+            cantor = cantante.getValue();
+            codCantante = cantante.getKey();
+            if (cantor.getNombre().toLowerCase().contains(nombreCantante)) {
+                System.out.println("Cantante: " + cantor.getNombre());
+                do {
+                    System.out.print("Ingrese disco: ");
+                    disco = read.next();
+                    System.out.print("Año de Lanzamiento: ");
+                    anio = read.nextInt();
+                    album.put(disco, anio);
+
+                    System.out.print("Termina carga s/n: ");
+                    opcion = read.next().charAt(0);
+                } while (Character.toLowerCase(opcion) != 's');
+                cantor.setDiscos(album);
+                singer.put(codCantante, cantor);
+                existe = true;
+            }
+
+        }
+
+    }
 }
