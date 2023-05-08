@@ -145,7 +145,7 @@ public class AlumnoService {
     public static void cargarVariosAlumnos(int cant) {
 
         for (int i = 1; i <= cant; ++i) {
-            al.add(new Alumno(rand.nextInt(1, 9000), "Fer Chiquito" + rand.nextInt(1, 50), rand.nextInt(10000000, 50000000)));
+            al.add(new Alumno(rand.nextInt(1000, 9999), "Fer Chiquito" + rand.nextInt(1, 50), rand.nextInt(10000000, 50000000)));
         }
     }
 
