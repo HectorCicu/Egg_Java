@@ -19,7 +19,7 @@ public class BiblioServices {
 
         int opc;
         do {
-            System.out.println("""
+            System.out.print("""
                               MENU PRINCIPAL
                               -----------------------
                               1) Alta Libros
@@ -40,7 +40,7 @@ public class BiblioServices {
                     //     eliminaCantante(singer);
                     break;
                 case 4:
-                    listaLibro(bibl);
+                    listaLibros(bibl);
                     break;
                 case 5:
                     break;
@@ -62,7 +62,7 @@ public class BiblioServices {
             nomLibro = read.next();
             System.out.print("Autor: ");
             autorLibro = read.next();
-            System.out.print("Cantidad de Ejemplares");
+            System.out.print("Cantidad de Ejemplares: ");
             totalEjemplares = read.nextInt();
             book1.add(new Libro(nomLibro, autorLibro, totalEjemplares));
             do {
