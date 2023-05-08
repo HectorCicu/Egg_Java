@@ -153,7 +153,7 @@ public class AlumnoService_Map {
     public static void cargarVariosAlumnos(int cant) {
         Integer lega;
         for (int i = 1; i <= cant; ++i) {
-            lega = rand.nextInt(1, 9000);
+            lega = rand.nextInt(1000, 9999);
             al.put(lega, new Alumno_Map(lega, "Fer Chiquito" + rand.nextInt(1, 50), rand.nextInt(10000000, 50000000)));
         }
     }
