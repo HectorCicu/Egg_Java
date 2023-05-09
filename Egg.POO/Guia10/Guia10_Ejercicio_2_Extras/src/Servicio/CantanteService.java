@@ -278,6 +278,8 @@ public class CantanteService {
             }
 
         }
-
+        if (!existe) {
+            System.out.println("El cantante no existe ");
+        }
     }
 }

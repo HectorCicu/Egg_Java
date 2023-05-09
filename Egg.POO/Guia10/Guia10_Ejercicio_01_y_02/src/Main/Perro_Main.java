@@ -14,7 +14,7 @@ public class Perro_Main {
     public static void main(String[] args) {
 
         PerroServicio ps = new PerroServicio();
-//ps.crearPerro();
+       ps.crearPerro();
         ps.cargarMuchosPerros(20);
         ps.eliminarPerro();
         

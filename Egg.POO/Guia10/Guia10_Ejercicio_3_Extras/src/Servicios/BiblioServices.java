@@ -37,7 +37,7 @@ public class BiblioServices {
                     prestamos(bibl);
                     break;
                 case 3:
-                    //     eliminaCantante(singer);
+                    devolucion(bibl);
                     break;
                 case 4:
                     listaLibros(bibl);
@@ -70,6 +70,7 @@ public class BiblioServices {
                 System.out.print("Carga otro libro? S/N  ");
                 opc = read.next().charAt(0);
             } while (Character.toLowerCase(opc) != 's' && Character.toLowerCase(opc) != 'n');
+
         } while (Character.toLowerCase(opc) == 's');
     }
 
@@ -81,7 +82,7 @@ public class BiblioServices {
         System.out.print("Libro a Prestar: ");
         libroAPrestar = read.next();
         for (Libro libro : book1) {
-            if (libro.getNombreLibro().contains(libroAPrestar)) {
+            if (libro.getNombreLibro().toLowerCase().contains(libroAPrestar.toLowerCase())) {
                 System.out.println("Libro: " + libro.getNombreLibro());
                 System.out.println("Autor: " + libro.getAutorLibro());
                 System.out.println("Ejemplares restantes " + (libro.getNroEjemplares() - libro.getEjemplaresPrestados()));
@@ -93,12 +94,42 @@ public class BiblioServices {
                         System.out.println("La cantidad ingresada es mayor a los ejemplares disponibles disponibles: ");
                     }
                 } while (prestamo > (libro.getNroEjemplares() - libro.getEjemplaresPrestados()));
+
                 libro.setEjemplaresPrestados(libro.getEjemplaresPrestados() + prestamo);
                 System.out.println("Quedan en stock " + (libro.getNroEjemplares() - libro.getEjemplaresPrestados()) + "\n");
             }
 
         }
 
+    }
+
+    public static void devolucion(HashSet<Libro> book1) {
+        Integer devolucion;
+        String libroADevolver;
+        char opc;
+        System.out.println("DEVOLUCIÓN");
+        System.out.print("Libro a Devolver: ");
+        libroADevolver = read.next();
+        for (Libro libro : book1) {
+            if (libro.getNombreLibro().toLowerCase().contains(libroADevolver.toLowerCase())) {
+                System.out.println("Libro: " + libro.getNombreLibro());
+                System.out.println("Autor: " + libro.getAutorLibro());
+                System.out.println("Stock " + (libro.getNroEjemplares() - libro.getEjemplaresPrestados()));
+                System.out.println("Cantidad de Ejemplares: " + libro.getNroEjemplares());
+                System.out.println("Cantidad de libros prestados: " + libro.getEjemplaresPrestados());
+                do {
+                    System.out.print("Ingrese cantidad a devolver ");
+
+                    devolucion = read.nextInt();
+                    if (devolucion > libro.getEjemplaresPrestados()) {
+                        System.out.println("La cantidad ingresada es mayor a los ejemplares prestados ");
+                    }
+                } while (devolucion > libro.getEjemplaresPrestados());
+
+                libro.setEjemplaresPrestados(libro.getEjemplaresPrestados() - devolucion);
+
+            }
+        }
     }
 
     public static void listaLibros(HashSet<Libro> book1) {
