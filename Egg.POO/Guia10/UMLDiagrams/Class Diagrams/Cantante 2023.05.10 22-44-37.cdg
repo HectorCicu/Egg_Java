@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Cantante">
+  <ClassDiagramComponents>
+    <Class name="Cantante" package="Entidad" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="Nombre" type="String" visibility="private"/>
+        <Field name="Nacionalidad" type="String" visibility="private"/>
+        <Field name="discos" type="HashMap&lt;String, Integer&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="Nombre"/>
+          <Argument type="String" name="Nacionalidad"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="Nombre"/>
+        </Method>
+        <Method name="getNacionalidad" returnType="String" visibility="public"/>
+        <Method name="setNacionalidad" returnType="void" visibility="public">
+          <Argument type="String" name="Nacionalidad"/>
+        </Method>
+        <Method name="getDiscos" returnType="HashMap&lt;String, Integer&gt;" visibility="public"/>
+        <Method name="setDiscos" returnType="void" visibility="public">
+          <Argument type="HashMap&lt;String, Integer&gt;" name="discos"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

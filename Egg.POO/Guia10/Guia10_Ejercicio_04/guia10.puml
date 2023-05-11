@@ -1,0 +1,7 @@
+@startuml
+annotation java.lang.Override
+class Peliculas.Pelicula
+class java.util.Comparator
+Peliculas.Pelicula ..> java.lang.Override
+Peliculas.Pelicula ..> java.util.Comparator
+@enduml

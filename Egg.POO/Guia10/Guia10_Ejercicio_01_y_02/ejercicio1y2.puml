@@ -1,0 +1,5 @@
+@startuml
+class Main.Perro_Main
+class Servicios.PerroServicio
+Main.Perro_Main ..> Servicios.PerroServicio
+@enduml

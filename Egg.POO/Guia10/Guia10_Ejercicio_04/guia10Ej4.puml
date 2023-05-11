@@ -1,0 +1,11 @@
+@startuml
+class Peliculas.Pelicula
+class PeliculasService.PeliculaServicio
+class java.util.ArrayList
+class java.util.Random
+class java.util.Scanner
+PeliculasService.PeliculaServicio ..> Peliculas.Pelicula
+PeliculasService.PeliculaServicio ..> java.util.ArrayList
+PeliculasService.PeliculaServicio ..> java.util.Random
+PeliculasService.PeliculaServicio ..> java.util.Scanner
+@enduml

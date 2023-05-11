@@ -73,32 +73,16 @@ public class PerroServicio {
         for (int i = 0; i < o; i++) {
             nomb = "Perro " + (i + rand.nextInt(1, 300));
             colores = rand.nextInt(1, 8);
-            switch (colores) {
-                case 1:
-                    colo = "Blanco";
-                    break;
-                case 2:
-                    colo = "Negro";
-                    break;
-                case 3:
-                    colo = "Marron";
-                    break;
-                case 4:
-                    colo = "Blanco y marron";
-                    break;
-                case 5:
-                    colo = "Blanco y negro";
-                    break;
-                case 6:
-                    colo = "Marron claro";
-                    break;
-                case 7:
-                    colo = "Tricolor";
-                    break;
-                default:
-                    colo = "Indefinido, soy daltonico";
-                    break;
-            }
+            colo = switch (colores) {
+                case 1 -> "Blanco";
+                case 2 -> "Negro";
+                case 3 -> "Marron";
+                case 4 -> "Blanco y marron";
+                case 5 -> "Blanco y negro";
+                case 6 -> "Marron claro";
+                case 7 -> "Tricolor";
+                default -> "Indefinido, soy daltonico";
+            };
             razas = rand.nextInt(1, 10);
             switch (razas) {
                 case 1:

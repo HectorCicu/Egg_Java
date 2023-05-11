@@ -11,9 +11,10 @@ import java.util.Comparator;
  * @author Hector Cicutti
  */
 public class Pelicula {
-private String titulo;
-private String Director;
-private Double duracion;
+
+    private String titulo;
+    private String Director;
+    private Double duracion;
 
     public Pelicula() {
     }
@@ -50,38 +51,20 @@ private Double duracion;
 
     @Override
     public String toString() {
-       // return "Titulo= " + titulo + " -    Director= " + Director + " -    duracion=" + String.format("%.2f", String.format("%.2f", duracion)) ;
-        return "Titulo= " + titulo + " -    Director= " + Director + " -    duracion= " + duracion ;
+        // return "Titulo= " + titulo + " -    Director= " + Director + " -    duracion=" + String.format("%.2f", String.format("%.2f", duracion)) ;
+        return "Titulo= " + titulo + " -    Director= " + Director + " -    duracion= " + duracion;
     }
 
-    public static Comparator<Pelicula> ordenarMenorDuracion = new Comparator<Pelicula>(){
-    @Override
-    public int compare(Pelicula p1, Pelicula p2){
-        return p1.getDuracion().compareTo(p2.getDuracion());
-    }
-        
+    public static Comparator<Pelicula> ordenarMenorDuracion = new Comparator<Pelicula>() {
+        @Override
+        public int compare(Pelicula p1, Pelicula p2) {
+            return p1.getDuracion().compareTo(p2.getDuracion());
+        }
     };
-            
-    public static Comparator<Pelicula> ordenarMayorDuracion = new Comparator<Pelicula>(){
-    @Override
-    public int compare(Pelicula p1, Pelicula p2){
-        return p2.getDuracion().compareTo(p1.getDuracion());
-    }
-        
-    };
-    public static Comparator<Pelicula> ordenarTitulo = new Comparator<Pelicula>(){
-    @Override
-    public int compare(Pelicula p1, Pelicula p2){
-        return p1.getTitulo().compareTo(p2.getTitulo());
-    }
-        
-    };
-    public static Comparator<Pelicula> ordenarDirector = new Comparator<Pelicula>(){
-    @Override
-    public int compare(Pelicula p1, Pelicula p2){
-        return p1.getDirector().compareTo(p2.getDirector());
-    }
-        
-    };
-            
+
+    public static Comparator<Pelicula> ordenarMayorDuracion = (Pelicula p1, Pelicula p2) -> p2.getDuracion().compareTo(p1.getDuracion());
+
+    public static Comparator<Pelicula> ordenarTitulo = (Pelicula p1, Pelicula p2) -> p1.getTitulo().compareTo(p2.getTitulo());
+
+    public static Comparator<Pelicula> ordenarDirector = (Pelicula p1, Pelicula p2) -> p1.getDirector().compareTo(p2.getDirector());
 }

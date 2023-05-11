@@ -1,0 +1,9 @@
+@startuml
+class Entidad.Cantante
+class Main.CantantesMain
+class Servicio.CantanteService
+class java.util.HashMap
+Main.CantantesMain ..> Entidad.Cantante
+Main.CantantesMain ..> Servicio.CantanteService
+Main.CantantesMain ..> java.util.HashMap
+@enduml
