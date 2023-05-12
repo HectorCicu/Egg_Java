@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Enum">
+  <ClassDiagramComponents>
+    <Enum name="PerroTamanio" package="Enum" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Literals>
+        <Literal name="CHICO"/>
+        <Literal name="MEDIANO"/>
+        <Literal name="GRANDE"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
