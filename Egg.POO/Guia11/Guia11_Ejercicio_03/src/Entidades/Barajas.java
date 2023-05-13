@@ -1,6 +1,5 @@
 package Entidades;
 
-
 /**
  * Realizar una baraja de cartas españolas orientada a objetos. Una carta tiene
  * un número entre 1 y 12 (el 8 y el 9 no los incluimos) y un palo (espadas,
@@ -16,11 +15,13 @@ public class Barajas {
     public String palo;
 
     public Barajas() {
+
     }
 
     public Barajas(Integer numero, String palo) {
         this.numero = numero;
         this.palo = palo;
+
     }
 
     public Integer getNumero() {
@@ -42,16 +43,11 @@ public class Barajas {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Carta:");
+        //sb.append("Carta:");
         sb.append(" ").append(numero);
         sb.append(" de ").append(palo);
-        sb.append(" // ");
+        sb.append(" -  ");
         return sb.toString();
     }
 
-    
-
-    
-
-    
 }

@@ -1,6 +1,5 @@
 package Main;
 
-
 import Servicios.JuegoServicios;
 
 /**
@@ -15,7 +14,6 @@ public class JuegoCartas {
     public static void main(String[] args) {
         JuegoServicios jb = new JuegoServicios();
 
-        //jb.generarCartas();
         jb.jugando();
 
     }
