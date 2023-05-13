@@ -4,18 +4,18 @@ package Entidades;
  *
  * @author Hector Cicutti
  */
-public class Jugador {
+public class Jugador_1 {
 
     private Integer id;
     private String nombre;
     private Boolean mojado;
 
 
-    public Jugador() {
+    public Jugador_1() {
         this.mojado = false; //inicializo mojado como falso "seco"
     }
 
-    public Jugador(Integer id, String nombre) {
+    public Jugador_1(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
         this.mojado = false; //inicializo mojado como falso "seco"
@@ -45,6 +45,8 @@ public class Jugador {
         this.mojado = mojado;
     }
 
+   
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -52,11 +54,10 @@ public class Jugador {
         sb.append("id=").append(id);
         sb.append(", nombre=").append(nombre);
         sb.append(", mojado=").append(mojado);
+ 
         sb.append('}');
         return sb.toString();
     }
-
-   
 
     
 

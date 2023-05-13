@@ -1,23 +1,23 @@
 package JuegoServicios;
 
-import Entidades.Jugador;
-import Entidades.Revolver;
+import Entidades.Juego_1;
+import Entidades.Jugador_1;
+import Entidades.Revolver_1;
 import java.util.ArrayList;
-
+import java.util.Iterator;
 
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-
 /**
  *
  * @author Hector Cicutti
  */
-public class RuletaServicios {
+public class RuletaServicios_1 {
 
     private static final Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
-    public static Revolver rev = new Revolver();
+    public static Revolver_1 rev = new Revolver_1();
 
     public static Random rand = new Random();
 
@@ -27,16 +27,16 @@ public class RuletaServicios {
 
     }
 
-    public static Boolean mojar(Revolver rev) {
+    public static Boolean mojar(Revolver_1 rev) {
         return (Objects.equals(rev.getPosicionAgua(), rev.getPosicionTambor()));
     }
 
-    public static void siguienteChorro(Revolver revo, Integer max) {
+    public static void siguienteChorro(Revolver_1 revo, Integer max) {
         revo.setPosicionTambor(rand.nextInt(1, max));
 
     }
 
-    public static void llenarJugadores(ArrayList<Jugador> juga) {
+    public static void llenarJugadores(ArrayList<Jugador_1> juga) {
         System.out.println("BIENVENIDOS A LA RULETA RUSA DE AGUA");
         System.out.println("---------------------------------------------------------\n");
         Integer tambor, jugadores = 0;
@@ -54,9 +54,8 @@ public class RuletaServicios {
             tambor = read.nextInt();
 
         } while (tambor < 6 || tambor > 8);
-        
         for (Integer i = 1; i <= jugadores; i++) {
-            juga.add(new Jugador(i, "Jugador " + i));
+            juga.add(new Jugador_1(i, "Jugador " + i));
         }
 
         System.out.println("Jugadores cargados - Pulse ENTER para cargar el revólver de agua");
@@ -68,11 +67,11 @@ public class RuletaServicios {
         ronda(juga, rev, (tambor + 1));
     }
 
-    public static void ronda(ArrayList<Jugador> jug, Revolver rev, Integer tambor) {
+    public static void ronda(ArrayList<Jugador_1> jug, Revolver_1 rev, Integer tambor) {
         Integer posic = 1;
         Boolean mojado = false;
         while (!mojado) {
-            for (Jugador jugador : jug) {
+            for (Jugador_1 jugador : jug) {
                 mojado = mojar(rev);
                 jugador.setMojado(mojado);
                 System.out.println("Intento Jugador: " + jugador.getId() + " - " + jugador.getNombre());
@@ -89,15 +88,24 @@ public class RuletaServicios {
                 }
             }
         }
+        Juego_1 jn = new Juego_1(jug, rev);
         System.out.println("\nFinalizó el juego, pulse ENTER para ver los resultados");
         read.next();
         muestraResultados(jug, rev);
+        System.out.println("---------------------------------- otro tostring ----------------------------------");
+        muestraResultados2(jn);
     }
 
-    public static void muestraResultados(ArrayList<Jugador> jug, Revolver rev) {
-        for (Jugador jugador : jug) {
+    public static void muestraResultados(ArrayList<Jugador_1> jug, Revolver_1 rev) {
+        for (Jugador_1 jugador : jug) {
             System.out.println(jugador.toString());
 
         }
     }
+
+    public static void muestraResultados2(Juego_1 jug) {
+        System.out.println(jug);
+
+    }
+
 }
