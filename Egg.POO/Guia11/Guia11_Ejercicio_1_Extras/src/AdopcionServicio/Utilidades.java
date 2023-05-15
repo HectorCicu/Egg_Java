@@ -1,26 +1,25 @@
-package PersonaServicio;
+
+
+package AdopcionServicio;
 
 import Entidades.Perro;
 import Entidades.Persona;
 import Enum.PerroTamanio;
-import static PersonaServicio.Utilidades.documento;
-import static PersonaServicio.Utilidades.ident;
+import java.util.Comparator;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.TreeMap;
 
 /**
  *
  * @author Hector Cicutti
  */
-public class PersonaService {
+public class Utilidades {
+    
+public static Comparator<Persona> documento = (Persona p1, Persona p2) -> p1.getDni().compareTo(p2.getDni());
 
-    private static Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
-    private static TreeMap<Integer, Persona> adoptantes = new TreeMap(documento);
-    private static TreeMap<Integer, Perro> jauria = new TreeMap(ident);
-    private static Random rand = new Random();
-
-    public static void cargaPersonasyPerros() {
+public static Comparator<Perro> ident =(Perro can1, Perro can2) -> can1.getId().compareTo(can2.getId());
+private static Random rand = new Random();
+  public static void cargaPersonasyPerros(TreeMap<Integer, Persona> adoptantes, TreeMap<Integer, Perro> jauria) {
 // creo los objetos personas
         String nombre = "", apellido = "", nombrePerro = "", raza = "";
         PerroTamanio tamanio = PerroTamanio.CHICO;
@@ -113,5 +112,5 @@ public class PersonaService {
         }
     }
 
-}
 
+}

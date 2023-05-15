@@ -25,7 +25,7 @@ private ArrayList<Perro> perro;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.perro = null;
+   //3     this.perro = null;
        
     }
     
@@ -66,7 +66,7 @@ private ArrayList<Perro> perro;
 
     @Override
     public String toString() {
-        return  "nombre= " + nombre + " -  apellido= " + apellido + " \n     Perro " + perro ;
+        return  "nombre= " + nombre + " -  apellido= " + apellido  +"\n"  ;
     }
 
     
