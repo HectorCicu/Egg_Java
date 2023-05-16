@@ -117,7 +117,7 @@ public class JuegoServicios {
     public static void pedirCartas(ArrayList<Barajas> cart, YaBarajo barajo) {
         if (barajo.getBarajo()) {
             Integer cant = 0;
-            Boolean alcanza = true;
+            Boolean alcanza = false;
             do {
                 System.out.print("Cantidad pedida: ");
                 cant = read.nextInt();

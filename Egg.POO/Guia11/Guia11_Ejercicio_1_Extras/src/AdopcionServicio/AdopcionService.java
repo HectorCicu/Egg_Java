@@ -3,11 +3,11 @@ package AdopcionServicio;
 import Entidades.Perro;
 import Entidades.Persona;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
+
 import java.util.TreeMap;
 
 /**
@@ -23,6 +23,7 @@ public class AdopcionService {
     private static Random rand = new Random();
     private static Utilidades ut = new Utilidades();
     private static Persona persona = new Persona();
+    private static Perro cane = new Perro();
 
     public static void menu() {
         ut.cargaPersonasyPerros(adoptantes, jauria);
@@ -74,30 +75,32 @@ public class AdopcionService {
     }
 
     public static void adoptarPerro(TreeMap<Integer, Persona> adoptante, TreeMap<Integer, Perro> jauria, TreeMap<Integer, Persona> adoptado) {
-        System.out.println(adoptante);
+        //System.out.println(adoptante);
 
         Integer dniAdoptante, idPerro;
-        Perro can;
+
         System.out.println("\nADOPTAR PERRO");
         System.out.println("------------------------\n");
         do {
             System.out.print("Ingrese DNI del adoptante (0 para salir): ");
             dniAdoptante = read.nextInt();
-            System.out.println(adoptante);
+          //  System.out.println(adoptante);
+
             if (adoptante.containsKey(dniAdoptante)) {
-                Map.Entry<Integer, Persona> person = (Map.Entry<Integer, Persona>) adoptante.entrySet();
-                 persona = person.getValue();
-                ArrayList<Perro> perrosAdoptados = null; //para traer la cantidad de perros que tiene adoptado el dueño
+
+                persona = adoptante.get(dniAdoptante);
+
+                //ArrayList<Perro> perrosAdoptados = null; //para traer la cantidad de perros que tiene adoptado el dueño
                 System.out.println("Apellido y Nombre:" + persona.getApellido() + " " + persona.getNombre());
                 System.out.print("Id del perro a adoptar:");
                 idPerro = read.nextInt();
                 if (jauria.containsKey(idPerro)) {
-                    Map.Entry<Integer, Perro> perro1 = null;
-                    can = perro1.getValue();
-                    System.out.print("Felicitaciones, usted ha adoptado a " + can.getNombre() + ". raza " + can.getRaza() + "pulse ENTER para continuar");
-                    perrosAdoptados = persona.getPerro();
-                    perrosAdoptados.add(can);
-                    persona.setPerro(perrosAdoptados);
+                    cane = jauria.get(idPerro);
+                    System.out.print("Felicitaciones, usted ha adoptado a " + cane.getNombre() + ". raza " + cane.getRaza() + "  pulse ENTER para continuar");
+                    read.next();  
+                    // perrosAdoptados = persona.getPerro();
+//                    perrosAdoptados.add(cane);
+//                    persona.setPerro(perrosAdoptados);
                     adoptado.put(dniAdoptante, persona);
                     jauria.remove(idPerro);
 
