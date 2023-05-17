@@ -25,7 +25,7 @@ private static Random rand = new Random();
         PerroTamanio tamanio = PerroTamanio.CHICO;
         Integer dni = 0, idPerro = 0, edad = 0;
         int var, var2, var3, var4, var5;
-        for (int i = 1; i < 40; ++i) {
+        for (int i = 1; i < 21; ++i) {
             dni = rand.nextInt(12000000, 40000000);
             var = rand.nextInt(1, 7);
             var2 = rand.nextInt(1, 7);

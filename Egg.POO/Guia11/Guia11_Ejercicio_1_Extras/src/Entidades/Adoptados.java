@@ -28,7 +28,7 @@ private TreeMap<Integer, Integer>  adoptado;
 
     @Override
     public String toString() {
-        return "Adoptados{" + "adoptado=" + adoptado + '}';
+        return "Adoptados:"  + adoptado + "\n";
     }
     
 

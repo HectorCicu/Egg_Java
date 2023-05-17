@@ -15,7 +15,7 @@ private String apellido;
 private Integer dni;
 
     
-private ArrayList<Perro> perro;
+private ArrayList<Perro> perro = null;
 
     public Persona() {
         this.perro = null;
@@ -66,7 +66,7 @@ private ArrayList<Perro> perro;
 
     @Override
     public String toString() {
-        return  "nombre= " + nombre + " -  apellido= " + apellido  +"\n"  ;
+        return  "nombre= " + nombre + " -  apellido= " + apellido  +"\n" + "Perro " + perro + "\n" ;
     }
 
     

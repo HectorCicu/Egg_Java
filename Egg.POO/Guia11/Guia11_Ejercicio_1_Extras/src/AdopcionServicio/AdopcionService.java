@@ -22,8 +22,6 @@ public class AdopcionService {
     private static TreeMap<Integer, Perro> jauria = new TreeMap();
     private static Random rand = new Random();
     private static Utilidades ut = new Utilidades();
-    private static Persona persona = new Persona();
-    private static Perro cane = new Perro();
 
     public static void menu() {
         ut.cargaPersonasyPerros(adoptantes, jauria);
@@ -50,6 +48,8 @@ public class AdopcionService {
                     listaPerrosDisponibles(jauria);
                 case 3 ->
                     adoptarPerro(adoptantes, jauria, adoptados);
+                case 4 ->
+                    listaAdoptados(adoptados);
             }
 
         } while (opc < 5);
@@ -75,16 +75,25 @@ public class AdopcionService {
     }
 
     public static void adoptarPerro(TreeMap<Integer, Persona> adoptante, TreeMap<Integer, Perro> jauria, TreeMap<Integer, Persona> adoptado) {
-        //System.out.println(adoptante);
-
+//        Persona persona = new Persona();
+//        Perro cane = new Perro();
+//        ArrayList<Perro> perro1 = new ArrayList<>();
+//        ArrayList<Perro> perro2 = new ArrayList<>();
         Integer dniAdoptante, idPerro;
 
         System.out.println("\nADOPTAR PERRO");
         System.out.println("------------------------\n");
         do {
+
+            Persona persona = new Persona();
+            Perro cane = new Perro();
+            ArrayList<Perro> perro1 = new ArrayList<>();
+            ArrayList<Perro> perro2 = new ArrayList<>();
+            perro1.clear();
+
             System.out.print("Ingrese DNI del adoptante (0 para salir): ");
             dniAdoptante = read.nextInt();
-          //  System.out.println(adoptante);
+            //  System.out.println(adoptante);
 
             if (adoptante.containsKey(dniAdoptante)) {
 
@@ -92,17 +101,28 @@ public class AdopcionService {
 
                 //ArrayList<Perro> perrosAdoptados = null; //para traer la cantidad de perros que tiene adoptado el dueño
                 System.out.println("Apellido y Nombre:" + persona.getApellido() + " " + persona.getNombre());
-                System.out.print("Id del perro a adoptar:");
+                System.out.print("Id del perro a adoptar: ");
                 idPerro = read.nextInt();
                 if (jauria.containsKey(idPerro)) {
+
                     cane = jauria.get(idPerro);
                     System.out.print("Felicitaciones, usted ha adoptado a " + cane.getNombre() + ". raza " + cane.getRaza() + "  pulse ENTER para continuar");
-                    read.next();  
-                    // perrosAdoptados = persona.getPerro();
-//                    perrosAdoptados.add(cane);
-//                    persona.setPerro(perrosAdoptados);
+                    read.next();
+
+                    //Persona persona1 = new Persona(persona.getNombre(), persona.getApellido(), persona.getDni());
+                    if (persona.getPerro() != null) {
+                        perro1.addAll(persona.getPerro());
+                    }
+                    perro2.clear();
+                    perro2.addAll(perro1);
+                    perro2.add(cane);
+                    persona.setPerro(perro2);
+                    adoptante.put(dniAdoptante, persona);
+
                     adoptado.put(dniAdoptante, persona);
+
                     jauria.remove(idPerro);
+                    //System.out.println("persona" + persona.toString());
 
                 } else {
                     System.out.print("Ese perro no existe en la base de datos, o fue adoptado. Pulse ENTER para continuar");
@@ -116,6 +136,10 @@ public class AdopcionService {
                 }
             }
         } while (dniAdoptante != 0);
+
     }
 
+    public static void listaAdoptados(TreeMap<Integer, Persona> adoptado) {
+        System.out.println("LISTADO DE ADOPCIONES \n" + adoptado);
+    }
 }
