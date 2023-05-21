@@ -130,11 +130,16 @@ public class Servicios {
         if (salasTodas.isEmpty()) {
             System.out.println("NO HAY PELICULAS  EN CARTELERA");
         } else {
+            System.out.println(" ***** CARTELERA *****");
+            mostrarPeliculas(salasTodas);
             do {
 
                 CineUbicaciones cuAux = new CineUbicaciones();
-                System.out.print("Película: ");
+                System.out.print("Película (con la palabra ' cero '  sale): ");
                 String titulo = read.next();
+                if (titulo.equalsIgnoreCase("cero")) {
+                    return;
+                }
                 if (salasTodas.containsKey(titulo)) {
 
                     System.out.print("Nombre: ");
