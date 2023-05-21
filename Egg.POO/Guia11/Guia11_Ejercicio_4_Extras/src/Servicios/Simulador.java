@@ -28,6 +28,55 @@ public class Simulador {
     public static ArrayList<Votado> votosTotales = new ArrayList<>(); // para acumular dni y votos
     public static ArrayList<Integer> dniVotados = new ArrayList<>(); // guardo todos los DNI de las votaciones, para usar luego el comando Frequiency
 
+    public static void menu() {
+        int opc;
+        boolean salir = false;
+        do {
+            System.out.println(""" 
+                           \nMENU DE OPCIONES
+                           ---------------------------
+                           1) - Generar nombres estudiantes y DNI
+                           2) - Relacionar estudiantes con DNI
+                           3) - Imprimir Estudiantes
+                           4) - Votación
+                           5) - Resultados Votación
+                           6) - Mostrar Mentores 
+                           7) - Salir""");
+            System.out.print("Ingrese Opción: ");
+            opc = read.nextInt();
+            switch (opc) {
+                case 1 ->
+                    cargaEstudiantes();
+                case 2 ->
+                    alumnos(alu, docu);
+                case 3 ->
+                    imprimirAlumnos(alum);
+                case 4 ->
+                    votacion(alum);
+                case 5 ->
+                    muestraRecuento();
+                case 6 ->
+                    muestraMentores();
+                case 7 ->
+                    salir = true;
+                default ->
+                    System.out.println("Opción Errónea");
+
+            }
+        } while (!salir);
+    }
+
+    public static void cargaEstudiantes() {
+        int opc;
+
+        System.out.print("Cantidad de estudiantes a generar: ");
+        opc = read.nextInt();
+        crearDniAlumnos(opc);
+        crearNombreAlumnos(opc);
+        System.out.println("\nAlumnos y DNI generados - Pulse ENTER para continuar");
+        read.next();
+    }
+
     /*
 *La clase Simulador debe tener un método que genere un listado de alumnos
  * manera aleatoria y lo retorne. Las combinaciones de nombre y apellido deben
@@ -40,16 +89,11 @@ public class Simulador {
         int aux;
         String[] nombres = {"Javier Musto              ", "Jorge José González  ", "Luca Martinez Dupuy ", "Marco Ruben            ", "Angel Di María           ",
             "Aldo Pedro Poy         ", "Mario Alberto Kempes", "Omar Arnaldo Palma ", "Ángel Tulio Zoff         ", "Carlos Biasutto          "};
-        for (int i = 0; i < cant; i++) {
 
+        for (int i = 0; i < cant; i++) {
             aux = rand.nextInt(0, 10);
             alu.add(nombres[aux] + i);
         }
-        alumnos(alu, docu);
-        imprimirAlumnos(alum);
-        votacion(alum);
-        recuento();
-        muestraRecuento();
     }
 
     /*
@@ -57,12 +101,11 @@ Ahora hacer un generador de combinaciones de DNI posibles, deben estar dentro de
 rango real de números de documentos. Y agregar a los alumnos su DNI. Este método
 debe retornar la lista de dnis.
      */
-    public static ArrayList<Integer> crearDniAlumnos(int cant) {
+    public static void crearDniAlumnos(int cant) {
 
         for (int i = 0; i < cant; ++i) {
             docu.add(rand.nextInt(17000000, 44000000));
         }
-        return docu;
     }
 
     /*
@@ -71,13 +114,14 @@ objetos Alumno, elegidos por el usuario, y le asigne los nombres y los dnis de l
 listas a cada objeto Alumno. No puede haber dos alumnos con el mismo dni, pero si con el
 mismo nombre
      */
-    public static TreeMap<Integer, Alumnos> alumnos(ArrayList<String> nombres, ArrayList<Integer> dni) {
+    public static void alumnos(ArrayList<String> nombres, ArrayList<Integer> dni) {
 
         for (int i = 0; i < nombres.size(); i++) {
 
             alum.put(dni.get(i), new Alumnos(nombres.get(i), dni.get(i)));
         }
-        return alum;
+        System.out.println("\nAlumnos creados y relacionados - Pulse ENTER para continuar");
+        read.next();
     }
 
     public static void imprimirAlumnos(TreeMap<Integer, Alumnos> alu) {
@@ -90,7 +134,6 @@ mismo nombre
         for (Map.Entry<Integer, Alumnos> alumn : alu.entrySet()) {
 
             System.out.println("Documento: " + alumn.getValue().getDni() + " - Nombre: " + alumn.getValue().getNombreAlumno());
-
         }
     }
 
@@ -141,8 +184,8 @@ comienza a hacer el recuento de votos.
         }
 
         for (Voto voto1 : votos) {
-          //  System.out.println("voto alumno " + voto1.getAlumno().getDni());
-           // System.out.println("frecuencia  " + Collections.frequency(dniVotados, voto1.getAlumno().getDni()));
+            //  System.out.println("voto alumno " + voto1.getAlumno().getDni());
+            // System.out.println("frecuencia  " + Collections.frequency(dniVotados, voto1.getAlumno().getDni()));
 
             votosTotales.add(new Votado(voto1.getAlumno().getDni(),
                     Collections.frequency(dniVotados, voto1.getAlumno().getDni())));
@@ -150,18 +193,39 @@ comienza a hacer el recuento de votos.
     }
 
     public static void muestraRecuento() {
+        recuento();
         Collections.sort(votosTotales, ordenarVotos);
-       // System.out.println("votado " + votosTotales.toString());
+        // System.out.println("votado " + votosTotales.toString());
 
         System.out.println("\n\nORDEN DE VOTACIÓN\n");
 
-        for (Votado votosTot : votosTotales) {
+        for (Votado votosTot1 : votosTotales) {
 
-            System.out.print("Nombre :" + alum.get(votosTot.getDniVotado()).getNombreAlumno());
-            System.out.print(" - DNI :" + alum.get(votosTot.getDniVotado()).getDni());
-            System.out.println(" - Cantidad de Votos: " + votosTot.getCantVotos());
-
+            muestraDatosAlumnos(votosTot1);
         }
+    }
 
+    public static void muestraMentores() {
+
+        Collections.sort(votosTotales, ordenarVotos);
+        // System.out.println("votado " + votosTotales.toString());
+        int info = 0;
+        System.out.println("\n\nORDEN DE MERITO\n");
+        System.out.println("Mentores Titulares");
+        for (Votado votosTot : votosTotales) {
+            muestraDatosAlumnos(votosTot);
+            info++;
+            if (info == 5) {
+                System.out.println("\nMentores suplentes");
+            } else if (info == 10) {
+                return;
+            }
+        }
+    }
+
+    public static void muestraDatosAlumnos(Votado votosTot) {
+        System.out.print("Nombre :" + alum.get(votosTot.getDniVotado()).getNombreAlumno());
+        System.out.print(" - DNI :" + alum.get(votosTot.getDniVotado()).getDni());
+        System.out.println(" - Cantidad de Votos: " + votosTot.getCantVotos());
     }
 }
