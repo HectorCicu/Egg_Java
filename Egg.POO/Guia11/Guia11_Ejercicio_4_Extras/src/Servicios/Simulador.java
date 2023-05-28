@@ -83,6 +83,12 @@ public class Simulador {
  * ser generadas de manera aleatoria. Nota: usar listas de tipo String para
  * generar los nombres y los apellidos.
      */
+    /**
+     * creo nombres de alumnos en base a 10 diferentes, agregando el número de
+     * iteración
+     *
+     * @param cant = cantidad de personas a crear
+     */
     public static void crearNombreAlumnos(int cant) {
 
         String nomb;
@@ -128,9 +134,7 @@ mismo nombre
         System.out.println("""
                            LISTADO DE ALUMNOS
                            ------------------------------""");
-//        for (Alumnos alumnos : alu) {
-//            System.out.println("Documento: " + alumnos.getDni() + " - Nombre: " + alumnos.getNombreAlumno());
-//        }
+
         for (Map.Entry<Integer, Alumnos> alumn : alu.entrySet()) {
 
             System.out.println("Documento: " + alumn.getValue().getDni() + " - Nombre: " + alumn.getValue().getNombreAlumno());
@@ -145,6 +149,7 @@ votos a cada alumno que reciba un voto, que es un atributo de la clase Alumno.
 Tener en cuenta que un alumno no puede votarse a sí mismo o votar más de una vez al
 mismo alumno. Utilizar un hashset para resolver esto
      */
+    
     public static void votacion(TreeMap<Integer, Alumnos> alumnos) {
 
         ArrayList<Integer> dnis = new ArrayList<>(alumnos.keySet());  //para incluir todos los dni en un arraylist. Puedo hacer shuffle para los votos
@@ -228,4 +233,5 @@ comienza a hacer el recuento de votos.
         System.out.print(" - DNI :" + alum.get(votosTot.getDniVotado()).getDni());
         System.out.println(" - Cantidad de Votos: " + votosTot.getCantVotos());
     }
+
 }
