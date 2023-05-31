@@ -8,10 +8,10 @@ import Entities.ConsumoEnergetico;
  */
 public class Electrodomestico {
 
-    private Double precio;
-    private Colores color;
-    private ConsumoEnergetico consumo;
-    private Integer peso;
+    protected Double precio;
+    protected Colores color;
+    protected ConsumoEnergetico consumo;
+    protected Integer peso;
 
     public Electrodomestico() {
         this.consumo = ConsumoEnergetico.F;
