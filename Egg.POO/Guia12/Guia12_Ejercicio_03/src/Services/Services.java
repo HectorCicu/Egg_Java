@@ -1,9 +1,7 @@
-
-
 package Services;
 
 import Entities.Electrodomestico;
-
+import java.text.DecimalFormat;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,7 +11,9 @@ import java.util.Scanner;
  * @author Hector Cicutti
  */
 public class Services {
-Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
+
+    private static final DecimalFormat df = new DecimalFormat("#.00");
+    Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
     private static ArrayList<Electrodomestico> electro = new ArrayList<>();
 //    private static ArrayList<Lavadora> lava = new ArrayList<>();
 //    private static ArrayList<Televisor> tele = new ArrayList<>();
@@ -52,7 +52,7 @@ Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
     }
 
     public static void listarArticulos(ArrayList<Electrodomestico> elec) {
-        Double total=0.;
+        Double total = 0.;
         System.out.println("""
                            LISTADO DE ELECTRODOMESTICOS
                            ----------------------------------------------""");
@@ -60,6 +60,6 @@ Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
             System.out.println("" + electrodomestico.toString());
             total += electrodomestico.getPrecio();
         }
-        System.out.println("\nValor Total de los Electrodomésticos $" + total);
+        System.out.println("\nValor Total de los Electrodomésticos $" + df.format(total));
     }
 }

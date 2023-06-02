@@ -1,11 +1,14 @@
 package Entities;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author Hector Cicutti
  */
 public class Televisor extends Electrodomestico {
 
+    private static final DecimalFormat df = new DecimalFormat("###,###,###,###.00");
     private Integer pulgadas;
     private Boolean sintoTDT;
 
@@ -42,7 +45,7 @@ public class Televisor extends Electrodomestico {
     @Override
     public String toString() {
         return "Televisor pulgadas=" + pulgadas + ", sintoTDT=" + sintoTDT +"  - Color: " +super.getColor() +"  - Consumo "+ super.getConsumo() 
-                +"  - Peso: " +super.getPeso()+" kg.   - Precio $" + super.getPrecio() + "\n";
+                +"  - Peso: " +super.getPeso()+" kg.   - Precio $" + df.format(super.getPrecio()) + "\n";
     }
 
 }

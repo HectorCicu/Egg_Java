@@ -1,5 +1,7 @@
 package Entities;
 
+import java.text.DecimalFormat;
+
 
 
 /**
@@ -8,6 +10,7 @@ package Entities;
  */
 public class Lavadora extends Electrodomestico {
 
+    private static final DecimalFormat df = new DecimalFormat("#.00");
     private Integer carga;
 
     
@@ -32,7 +35,7 @@ public class Lavadora extends Electrodomestico {
     @Override
     public String toString() {
         return "Lavadora carga= " + carga + "  - Color: " +super.getColor() +"  - Consumo "+ super.getConsumo() 
-                +"  - Peso: " +super.getPeso()+" kg.   - Precio $" + super.getPrecio()+ "\n";
+                +"  - Peso: " +super.getPeso()+" kg.   - Precio $" + df.format(super.getPrecio())+ "\n";
     }
 
 }

@@ -1,6 +1,7 @@
 package Entities;
 
 import Entities.ConsumoEnergetico;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -8,6 +9,7 @@ import Entities.ConsumoEnergetico;
  */
 public class Electrodomestico {
 
+    DecimalFormat df = new DecimalFormat("#.00");
     protected Double precio;
     protected Colores color;
     protected ConsumoEnergetico consumo;
@@ -62,5 +64,4 @@ public class Electrodomestico {
         return "Electrodomestico ";
     }
 
-    
 }
