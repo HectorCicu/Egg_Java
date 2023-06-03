@@ -1,6 +1,6 @@
 package Entities;
 
-public abstract class Alojamiento {
+public  class Alojamiento {
 
     protected String nombre;
 

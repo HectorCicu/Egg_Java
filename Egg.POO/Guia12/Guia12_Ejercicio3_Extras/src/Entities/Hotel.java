@@ -57,5 +57,5 @@ public abstract class Hotel extends Alojamiento {
     public String toString() {
         return "Hotel{" + "habitaciones=" + habitaciones + ", cantCamas=" + cantCamas + ", cantPisos=" + cantPisos + ", precioHabit=" + precioHabit + '}';
     }
-    
+
 }
