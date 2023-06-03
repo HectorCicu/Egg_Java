@@ -22,7 +22,7 @@ public class ServiceGral {
     boolean salir = false;
 
     public void menu() {
-        
+
         do {
             System.out.println("""
                            \nOPCIONES
@@ -50,7 +50,7 @@ public class ServiceGral {
             }
 
         } while (!salir);
-        
+
     }
 
     public ArrayList<Edificio> crearEdificiosOficina() {
@@ -72,31 +72,26 @@ public class ServiceGral {
     }
 
     public void listarEdificios() {
-        int totalPersonas, poliTechado;
+        int totalPersonas = 0, poliTechado = 0, poliNoTechado = 0;
         for (Edificio edificio : ed) {
             System.out.println(edificio.toString());
-        }
-        totalPersonas();
-        poliTechado();
-    }
-
-    public void totalPersonas() {
-        int totalPers = 0;
-        for (int i = 0; i < edo.size(); i++) {
-            EdificioDeOficinas ed = (EdificioDeOficinas) edo.get(i);
-            totalPers += ed.personasPorEdificio();
-        }
-        System.out.println("Total de personas en los edificios: " + totalPers);
-    }
-
-    public void poliTechado() {
-        int poliTec = 0;
-        for (int i = 0; i < poli.size(); i++) {
-            Polideportivo pd = (Polideportivo) poli.get(i);
-            if (pd.isTechado()) {
-                poliTec++;
+            if (edificio instanceof Polideportivo) {
+                if (((Polideportivo) edificio).isTechado()) {
+                    poliTechado++;
+                } else {
+                    poliNoTechado++;
+                }
+            }
+            if(edificio instanceof EdificioDeOficinas) {
+          
+                totalPersonas += ((EdificioDeOficinas) edificio).personasPorEdificio();
             }
         }
-        System.out.println("Cantidad de Polideportivos Techados:  " + poliTec);
+        
+        System.out.println("\nLa cantidad de Polideportivos Techados es: " + poliTechado);
+        System.out.println("La cantidad de Polideportivos no Techados es: " + poliNoTechado);
+        System.out.println("La cantidad de Personas de todos los edificios es:  " + totalPersonas);
     }
+
+    
 }
