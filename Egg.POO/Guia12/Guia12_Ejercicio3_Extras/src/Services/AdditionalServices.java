@@ -11,27 +11,27 @@ public class AdditionalServices {
     private static final Random rand = new Random();
 
     public  int cantLimusinas() {
-        return rand.nextInt(1, 13);
+        return rand.nextInt(3, 13);
     }
 
     public  int cantSalonesConf() {
-        return rand.nextInt(1, 11);
+        return rand.nextInt(3, 11);
     }
 
     public  int cantSuites() {
-        return rand.nextInt(1, 11);
+        return rand.nextInt(4, 11);
     }
 
     public  int cantPisos() {
-        return rand.nextInt(1, 23);
+        return rand.nextInt(10, 40);
     }
 
     public  int cantHabitaciones() {
-        return rand.nextInt(1, 9);
+        return rand.nextInt(10, 45);
     }
 
     public  int cantCamas() {
-        return rand.nextInt(1, 5);
+        return rand.nextInt(2, 5);
     }
 
     public  boolean tieneBoolean() {

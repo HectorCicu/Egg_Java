@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Comparator;
+
 public abstract class Hotel extends Alojamiento {
 
     protected int habitaciones;
@@ -8,12 +10,12 @@ public abstract class Hotel extends Alojamiento {
 
     protected int cantPisos;
 
-    protected double precioHabit;
+    protected Double precioHabit;
 
     public Hotel() {
     }
 
-    public Hotel(int habitaciones, int cantCamas, int cantPisos, double precioHabit, String nombre, String direccion, String nombreGerente, String localidad) {
+    public Hotel(int habitaciones, int cantCamas, int cantPisos, Double precioHabit, String nombre, String direccion, String nombreGerente, String localidad) {
         super(nombre, direccion, nombreGerente, localidad);
         this.habitaciones = habitaciones;
         this.cantCamas = cantCamas;
@@ -49,7 +51,7 @@ public abstract class Hotel extends Alojamiento {
         return precioHabit;
     }
 
-    public void setPrecioHabit(double precioHabit) {
+    public void setPrecioHabit(Double precioHabit) {
         this.precioHabit = precioHabit;
     }
 
@@ -57,5 +59,12 @@ public abstract class Hotel extends Alojamiento {
     public String toString() {
         return "Hotel{" + "habitaciones=" + habitaciones + ", cantCamas=" + cantCamas + ", cantPisos=" + cantPisos + ", precioHabit=" + precioHabit + '}';
     }
+    
+//public class comparadorPrecio implements Comparator<Hotel> {
+//    @Override
+//    public int compare (Hotel precio1, Hotel precio2) {
+//        return precio1.precioHabit.compareTo(precio2.precioHabit);
+//    };
+//}
 
 }

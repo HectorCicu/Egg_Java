@@ -14,8 +14,8 @@ public class AlojamientoMain {
      */
     public static void main(String[] args) {
         AlojamientoServices as = new AlojamientoServices();
-        as.crearHotelFive();
-        as.imprimirHotelFive();
+        
+        as.menu();
 
     }
 
