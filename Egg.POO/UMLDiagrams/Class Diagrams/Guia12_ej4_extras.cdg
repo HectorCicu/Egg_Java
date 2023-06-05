@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Guia12_ej4_extras">
+  <ClassDiagramComponents>
+    <Class name="PersonasFacultad" package="" visibility="public" xPosition="133.0" yPosition="32.0">
+      <Fields>
+        <Field name="id" type="Integer" visibility="protected"/>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="apellido" type="String" visibility="protected"/>
+        <Field name="estadoCivil" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="EmpleadosFacultad" package="" visibility="public" xPosition="368.0" yPosition="193.0">
+      <Fields>
+        <Field name="anioIngreso" type="Integer" visibility="private"/>
+        <Field name="nroDespacho" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Estudiante" package="" visibility="public" xPosition="198.0" yPosition="283.0">
+      <Fields>
+        <Field name="cursoAsignado" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Profesor" package="" visibility="public" xPosition="375.0" yPosition="459.0">
+      <Fields>
+        <Field name="catedra" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="PersonalDeServicio" package="" visibility="public" xPosition="635.0" yPosition="124.0">
+      <Fields>
+        <Field name="seccion" type="Enum" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="EmpleadosFacultad" target="PersonasFacultad"/>
+    <IsRelation name="is" source="Profesor" target="PersonasFacultad"/>
+    <IsRelation name="is" source="PersonalDeServicio" target="PersonasFacultad"/>
+    <IsRelation name="is" source="Estudiante" target="PersonasFacultad"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
