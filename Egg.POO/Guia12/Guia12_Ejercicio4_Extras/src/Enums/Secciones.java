@@ -4,6 +4,8 @@
  */
 package Enums;
 
+import java.util.Objects;
+
 /**
  *
  * @author HectorCicutti
@@ -30,7 +32,7 @@ public enum Secciones {
     Oficina_de_alumni_y_desarrollo("Oficina de alumni y desarrollo", 19),
     Unidad_de_proyectos_especiales("Unidad de proyectos especiales", 20);
 
-private String seccion;
+    private String seccion;
     private int clave;
 
     private Secciones() {
@@ -57,4 +59,17 @@ private String seccion;
         this.seccion = seccion;
     }
 
+    @Override
+    public String toString() {
+        return "Secciones{" + "seccion=" + seccion + ", clave=" + clave + '}';
+    }
+
+    public static Secciones obtenerSecciones(int c) {
+        for (Secciones sec : Secciones.values()) {
+            if (Objects.equals(sec.getClave(), c)) {
+                return sec;
+            }
+        }
+        return null;
+    }
 }
