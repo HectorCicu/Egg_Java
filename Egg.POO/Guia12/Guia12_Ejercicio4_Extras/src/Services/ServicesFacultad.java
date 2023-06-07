@@ -1,6 +1,8 @@
 package Services;
 
+import Entities.EmpleadoFacultad;
 import Entities.Estudiante;
+import Entities.PersonalDeServicio;
 import Entities.PersonasFacultad;
 import Entities.Profesor;
 
@@ -36,35 +38,36 @@ public class ServicesFacultad {
             System.out.print("Opcion: ");
             int opc = read.nextInt();
             switch (opc) {
-                case 1: {
+                case 1 ->  {
                     System.out.print("Cantidad de personas a crear: ");
                     int cant = read.nextInt();
                     personalFacu.addAll(AdditionalServices.crearEmpleado(cant / 3));
                     personalFacu.addAll(AdditionalServices.crearProfesor(cant / 3));
                     personalFacu.addAll(AdditionalServices.crearEstudiante(cant / 4));
                     personalFacu.addAll(AdditionalServices.crearPersonalDeServicio(cant * 2));
-                    break;
                 }
-                case 2: {
+                case 2 ->  {
                     listarEstudiantes();
-                    break;
                 }
-                case 3: {
+                case 3 ->  {
                     listarProfesores();
-                    break;
                 }
-                case 4: {
-                    break;
+                case 4 ->  {
+                    listarEmpleados();
                 }
-                case 5: {
-                    break;
+                case 5 ->  {
+                    listarPersonalDeServicio();
                 }
-                case 6: {
+                case 6 ->  {
                     salir = true;
-                    break;
                 }
-                default:
-                    System.out.println("Opción incorrecta");
+                case 7 ->  {
+                    salir = true;
+                }
+                case 8 ->  {
+                    salir = true;
+                }
+                default -> System.out.println("Opción incorrecta");
             }
 
         } while (!salir);
@@ -74,7 +77,7 @@ public class ServicesFacultad {
     public static void listarEstudiantes() {
         for (PersonasFacultad personal : personalFacu) {
             if (personal instanceof Estudiante) {
-                System.out.println("Estudiante: " + ((Estudiante) personal).getApellido() + " " + ((Estudiante) personal).getNombre() + " - DNI: " + ((Estudiante) personal).getId() + " - Materias: " + ((Estudiante) personal).getCursoAsignado());
+                System.out.println("Estudiante: " + ((Estudiante) personal).getApellido() + " " + ((Estudiante) personal).getNombre() + " - DNI: " + ((Estudiante) personal).getId() + " - Materias: " + ((Estudiante) personal).getCursoAsignado() +" Estado Civil: " + ((Estudiante)personal).getEstadoCivil());
             }
         }
     }
@@ -82,10 +85,27 @@ public class ServicesFacultad {
     public static void listarProfesores() {
         for (PersonasFacultad personal : personalFacu) {
             if (personal instanceof Profesor) {
-                System.out.println("Profesor: " + ((Profesor) personal).getApellido() + " " + ((Profesor) personal).getNombre() + " - DNI: " + ((Profesor) personal).getId() + " - Cátedra: " + ((Profesor) personal).getCatedra().getNombre());
+                System.out.println("Profesor: " + ((Profesor) personal).getApellido() + " " + ((Profesor) personal).getNombre() + " - DNI: " + ((Profesor) personal).getId() + " - Cátedra: " + ((Profesor) personal).getCatedra().getNombre()+" Estado Civil: " + ((Profesor)personal).getEstadoCivil());
 
             }
 
         }
     }
+    public static void listarEmpleados() {
+    for (PersonasFacultad personal : personalFacu) {
+            if (personal instanceof EmpleadoFacultad) {
+                System.out.println("Empleado: " + ((EmpleadoFacultad) personal).getApellido() + " " + ((EmpleadoFacultad) personal).getNombre() + " - DNI: " + ((EmpleadoFacultad) personal).getId() + " - Año de ingreso: " + ((EmpleadoFacultad) personal).getAnioIngreso()+" Estado Civil: " + ((EmpleadoFacultad)personal).getEstadoCivil());
+            }
+
+        }
+    }
+public static void listarPersonalDeServicio() {
+    for (PersonasFacultad personal : personalFacu) {
+            if (personal instanceof PersonalDeServicio) {
+                System.out.println("Personal de Servicio: " + ((PersonalDeServicio) personal).getApellido() + " " + ((PersonalDeServicio) personal).getNombre() + " - DNI: " + ((PersonalDeServicio) personal).getId() + " - Sección Asignada: " + ((PersonalDeServicio) personal).getSeccion()+" Estado Civil: " + ((PersonalDeServicio)personal).getEstadoCivil());
+            }
+
+        }
+    }
 }
+

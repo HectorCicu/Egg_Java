@@ -1,15 +1,15 @@
 package Entities;
 
-public class EmpleadosFacultad extends PersonasFacultad {
+public class EmpleadoFacultad extends PersonasFacultad {
 
     private Integer anioIngreso;
 
     private Integer nroDespacho;
 
-    public EmpleadosFacultad() {
+    public EmpleadoFacultad() {
     }
 
-    public EmpleadosFacultad(Integer anioIngreso, Integer nroDespacho, Integer id, String nombre, String apellido, String estadoCivil) {
+    public EmpleadoFacultad(Integer anioIngreso, Integer nroDespacho, Integer id, String nombre, String apellido, String estadoCivil) {
         super(id, nombre, apellido, estadoCivil);
         this.anioIngreso = anioIngreso;
         this.nroDespacho = nroDespacho;

@@ -1,6 +1,6 @@
 package Services;
 
-import Entities.EmpleadosFacultad;
+import Entities.EmpleadoFacultad;
 import Entities.Estudiante;
 import Entities.PersonalDeServicio;
 import Entities.Profesor;
@@ -33,11 +33,11 @@ public class AdditionalServices {
         return est;
     }
 
-    public static  ArrayList<EmpleadosFacultad> crearEmpleado(int cant) {
-        ArrayList<EmpleadosFacultad> emp = new ArrayList<>();
+    public static  ArrayList<EmpleadoFacultad> crearEmpleado(int cant) {
+        ArrayList<EmpleadoFacultad> emp = new ArrayList<>();
 
         for (int i = 0; i < cant; i++) {
-            emp.add(new EmpleadosFacultad(rand.nextInt(1990, 2023), rand.nextInt(1, 33), rand.nextInt(39000000, 42000000), Nombres.obtenerNombre(rand.nextInt(1, 61)), Apellidos.obtenerApellido(rand.nextInt(1, 61)), EstadosCivil.obtenerEstadoCivil(rand.nextInt(1, 5))));
+            emp.add(new EmpleadoFacultad(rand.nextInt(1990, 2023), rand.nextInt(1, 33), rand.nextInt(39000000, 42000000), Nombres.obtenerNombre(rand.nextInt(1, 61)), Apellidos.obtenerApellido(rand.nextInt(1, 61)), EstadosCivil.obtenerEstadoCivil(rand.nextInt(1, 5))));
         }
         return emp;
     }
