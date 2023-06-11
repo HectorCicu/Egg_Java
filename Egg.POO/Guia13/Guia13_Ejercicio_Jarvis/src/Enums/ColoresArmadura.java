@@ -1,4 +1,4 @@
-package Enum;
+package Enums;
 
 import java.util.Objects;
 

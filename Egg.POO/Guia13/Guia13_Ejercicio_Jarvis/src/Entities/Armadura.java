@@ -1,6 +1,6 @@
 package Entities;
 
-import Enum.ColoresArmadura;
+import Enums.ColoresArmadura;
 
 /**
  * Las armaduras de Stark se encuentran definidas por un color primario y un
@@ -27,29 +27,32 @@ public class Armadura {
 
     private ColoresArmadura colorPrimario;
     private ColoresArmadura colorSecundario;
-    private Integer pulsoredGuanteDerecho;
-    private Integer pulsoredGuanteIzquierdo;
-    private Integer pulsoredBotaDerecha;
-    private Integer pulsoredBotaIzquierda;
-    private Integer resistenciaArmadura;
-    private Integer saludArmadura;
-    private Integer consolaArmadura;
-    private Integer sintetizadorArmadura;
+    private Float repulsorGuanteDerecho;
+    private Float repulsorGuanteIzquierdo;
+    private Float pulsoredBotaDerecha;
+    private Float pulsoredBotaIzquierda;
+    private Float resistenciaArmadura;
+    private Float saludArmadura;
+    private Float consolaArmadura;
+    private Float sintetizadorArmadura;
+    private final Float reactor = Float.MAX_VALUE;
+    private Float bateria;
 
     public Armadura() {
-    }
+        }
 
-    public Armadura(ColoresArmadura colorPrimario, ColoresArmadura colorSecundario, Integer pulsoredGuanteDerecho, Integer pulsoredGuanteIzquierdo, Integer pulsoredBotaDerecha, Integer pulsoredBotaIzquierda, Integer resistenciaArmadura, Integer saludArmadura, Integer consolaArmadura, Integer sintetizadorArmadura) {
+    public Armadura(ColoresArmadura colorPrimario, ColoresArmadura colorSecundario, Float repulsorGuanteDerecho, Float repulsorGuanteIzquierdo, Float pulsoredBotaDerecha, Float pulsoredBotaIzquierda, Float resistenciaArmadura, Float saludArmadura, Float consolaArmadura, Float sintetizadorArmadura, Float bateria) {
         this.colorPrimario = colorPrimario;
         this.colorSecundario = colorSecundario;
-        this.pulsoredGuanteDerecho = pulsoredGuanteDerecho;
-        this.pulsoredGuanteIzquierdo = pulsoredGuanteIzquierdo;
+        this.repulsorGuanteDerecho = repulsorGuanteDerecho;
+        this.repulsorGuanteIzquierdo = repulsorGuanteIzquierdo;
         this.pulsoredBotaDerecha = pulsoredBotaDerecha;
         this.pulsoredBotaIzquierda = pulsoredBotaIzquierda;
         this.resistenciaArmadura = resistenciaArmadura;
         this.saludArmadura = saludArmadura;
         this.consolaArmadura = consolaArmadura;
         this.sintetizadorArmadura = sintetizadorArmadura;
+        this.bateria = bateria;
     }
 
     public ColoresArmadura getColorPrimario() {
@@ -68,74 +71,85 @@ public class Armadura {
         this.colorSecundario = colorSecundario;
     }
 
-    public Integer getPulsoredGuanteDerecho() {
-        return pulsoredGuanteDerecho;
+    public Float getRepulsorGuanteDerecho() {
+        return repulsorGuanteDerecho;
     }
 
-    public void setPulsoredGuanteDerecho(Integer pulsoredGuanteDerecho) {
-        this.pulsoredGuanteDerecho = pulsoredGuanteDerecho;
+    public void setRepulsorGuanteDerecho(Float repulsorGuanteDerecho) {
+        this.repulsorGuanteDerecho = repulsorGuanteDerecho;
     }
 
-    public Integer getPulsoredGuanteIzquierdo() {
-        return pulsoredGuanteIzquierdo;
+    public Float getRepulsorGuanteIzquierdo() {
+        return repulsorGuanteIzquierdo;
     }
 
-    public void setPulsoredGuanteIzquierdo(Integer pulsoredGuanteIzquierdo) {
-        this.pulsoredGuanteIzquierdo = pulsoredGuanteIzquierdo;
+    public void setRepulsorGuanteIzquierdo(Float repulsorGuanteIzquierdo) {
+        this.repulsorGuanteIzquierdo = repulsorGuanteIzquierdo;
     }
 
-    public Integer getPulsoredBotaDerecha() {
+    public Float getPulsoredBotaDerecha() {
         return pulsoredBotaDerecha;
     }
 
-    public void setPulsoredBotaDerecha(Integer pulsoredBotaDerecha) {
-        if (pulsoredBotaDerecha < 0) {
-            throw new RuntimeException("No puede tener pulsored negativo: ");
-        }
+    public void setPulsoredBotaDerecha(Float pulsoredBotaDerecha) {
         this.pulsoredBotaDerecha = pulsoredBotaDerecha;
     }
 
-    public Integer getPulsoredBotaIzquierda() {
+    public Float getPulsoredBotaIzquierda() {
         return pulsoredBotaIzquierda;
     }
 
-    public void setPulsoredBotaIzquierda(Integer pulsoredBotaIzquierda) {
-        if (pulsoredBotaIzquierda < 0) {
-            throw new RuntimeException("No puede tener pulsored negativo: ");
-        }
+    public void setPulsoredBotaIzquierda(Float pulsoredBotaIzquierda) {
         this.pulsoredBotaIzquierda = pulsoredBotaIzquierda;
     }
 
-    public Integer getResistenciaArmadura() {
+    public Float getResistenciaArmadura() {
         return resistenciaArmadura;
     }
 
-    public void setResistenciaArmadura(Integer resistenciaArmadura) {
+    public void setResistenciaArmadura(Float resistenciaArmadura) {
         this.resistenciaArmadura = resistenciaArmadura;
     }
 
-    public Integer getSaludArmadura() {
+    public Float getSaludArmadura() {
         return saludArmadura;
     }
 
-    public void setSaludArmadura(Integer saludArmadura) {
+    public void setSaludArmadura(Float saludArmadura) {
         this.saludArmadura = saludArmadura;
     }
 
-    public Integer getConsolaArmadura() {
+    public Float getConsolaArmadura() {
         return consolaArmadura;
     }
 
-    public void setConsolaArmadura(Integer consolaArmadura) {
+    public void setConsolaArmadura(Float consolaArmadura) {
         this.consolaArmadura = consolaArmadura;
     }
 
-    public Integer getSintetizadorArmadura() {
+    public Float getSintetizadorArmadura() {
         return sintetizadorArmadura;
     }
 
-    public void setSintetizadorArmadura(Integer sintetizadorArmadura) {
+    public void setSintetizadorArmadura(Float sintetizadorArmadura) {
         this.sintetizadorArmadura = sintetizadorArmadura;
     }
+
+    public Float getBateria() {
+        return bateria;
+    }
+
+    public void setBateria(Float bateria) {
+        this.bateria = bateria;
+    }
+
+    /**
+     *
+     * @return valor máximo del reactor (Float)
+     */
+    public Float getReactor() {
+        return reactor;
+    }
+    
 
 }
