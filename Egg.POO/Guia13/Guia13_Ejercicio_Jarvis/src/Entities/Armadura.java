@@ -36,12 +36,12 @@ public class Armadura {
     private Float consolaArmadura;
     private Float sintetizadorArmadura;
     private final Float reactor = Float.MAX_VALUE;
-    private Float bateria;
+    private Float bateria = Float.MAX_VALUE;
 
     public Armadura() {
         }
 
-    public Armadura(ColoresArmadura colorPrimario, ColoresArmadura colorSecundario, Float repulsorGuanteDerecho, Float repulsorGuanteIzquierdo, Float pulsoredBotaDerecha, Float pulsoredBotaIzquierda, Float resistenciaArmadura, Float saludArmadura, Float consolaArmadura, Float sintetizadorArmadura, Float bateria) {
+    public Armadura(ColoresArmadura colorPrimario, ColoresArmadura colorSecundario, Float repulsorGuanteDerecho, Float repulsorGuanteIzquierdo, Float pulsoredBotaDerecha, Float pulsoredBotaIzquierda, Float resistenciaArmadura, Float saludArmadura, Float consolaArmadura, Float sintetizadorArmadura) {
         this.colorPrimario = colorPrimario;
         this.colorSecundario = colorSecundario;
         this.repulsorGuanteDerecho = repulsorGuanteDerecho;
@@ -52,7 +52,7 @@ public class Armadura {
         this.saludArmadura = saludArmadura;
         this.consolaArmadura = consolaArmadura;
         this.sintetizadorArmadura = sintetizadorArmadura;
-        this.bateria = bateria;
+        
     }
 
     public ColoresArmadura getColorPrimario() {

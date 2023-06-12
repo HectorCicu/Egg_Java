@@ -3,8 +3,10 @@ package Services;
 import Entities.Armadura;
 import Enums.ColoresArmadura;
 import java.text.DecimalFormat;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +19,12 @@ public class Operaciones {
     public static final Float simple = 1F;
     public static final Float doble = 2f * simple;
     public static final Float triple = 3f * simple;
-    public static final Float consumoBota = 1000F;
+    public static final Float consumoBota = 100000000000000000000000000000000F;
     public static final Float consumoGuante = 1.2F * consumoBota;
     public static final Float consumoSintetizador = 0.6F * consumoBota;
     public static final Float consumoConsola = 0.5F * consumoBota;
     private static Armadura jarv;
     public static Random rand = new Random();
-    
 
     //private static Armadura jarvis = new Armadura();
     /**
@@ -57,7 +58,6 @@ public class Operaciones {
      *
      * @throws java.lang.Exception
      */
-  
     public static void operaciones() throws Exception {
         boolean salir = false;
         int opc = 0;
@@ -76,8 +76,9 @@ public class Operaciones {
                            Opcion: .""");
             try {
                 opc = read.nextInt();
-            } catch (NumberFormatException nfe) {
-                System.out.println("Está tratando de ingrear un caracter no válido");
+            } catch (NumberFormatException | InputMismatchException nfe) {
+                JOptionPane.showMessageDialog(null, "Está tratando de ingresar un caracter no válido");
+                System.out.println("Está tratando de ingresar un caracter no válido");
                 read.next();
             }
             switch (opc) {
@@ -89,9 +90,11 @@ public class Operaciones {
                     try {
                         minutos = read.nextFloat();
                         usarBotas(jarv, minutos, simple);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Está tratando de ingrear un caracter no válido");
-                        read.next();
+                        
+                    } catch (NumberFormatException | InputMismatchException nfe) {
+                        JOptionPane.showMessageDialog(null, "Está tratando de ingresar un caracter no válido");
+                        //System.out.println("Está tratando de ingrear un caracter no válido");
+                        //   read.next();
                     }
                 }
                 case 3 -> {
@@ -99,9 +102,10 @@ public class Operaciones {
                     try {
                         minutos = read.nextFloat();
                         usarBotas(jarv, minutos, doble);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Está tratando de ingrear un caracter no válido");
-                        read.next();
+                    } catch (NumberFormatException | InputMismatchException nfe) {
+                        JOptionPane.showMessageDialog(null, "Está tratando de ingresar un caracter no válido");
+                        //System.out.println("Está tratando de ingrear un caracter no válido");
+                        //      read.next();
                     }
                 }
 
@@ -110,9 +114,10 @@ public class Operaciones {
                     try {
                         minutos = read.nextFloat();
                         usarBotas(jarv, minutos, triple);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Está tratando de ingrear un caracter no válido");
-                        read.next();
+                    } catch (NumberFormatException | InputMismatchException nfe) {
+                        JOptionPane.showMessageDialog(null, "Está tratando de ingresar un caracter no válido");
+                        //System.out.println("Está tratando de ingrear un caracter no válido");
+                        //      read.next();
                     }
                 }
                 case 5 -> {
@@ -121,9 +126,10 @@ public class Operaciones {
                         minutos = read.nextFloat();
                         usarBotas(jarv, minutos, triple);
                         usarGuantes(jarv, minutos, doble);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Está tratando de ingrear un caracter no válido");
-                        read.next();
+                    } catch (NumberFormatException | InputMismatchException nfe) {
+                        JOptionPane.showMessageDialog(null, "Está tratando de ingresar un caracter no válido");
+                        //System.out.println("Está tratando de ingrear un caracter no válido");
+                        //  read.next();
                     }
                 }
                 case 6 -> {
@@ -143,39 +149,8 @@ public class Operaciones {
 
     public static void crearJarvis() {
 
-        jarv = new Armadura(ColoresArmadura.obtenerColor(rand.nextInt(1,12)),ColoresArmadura.obtenerColor(rand.nextInt(1,12)), 50000F, 50000F, 50000F,50000F, 50000F,50000F,50000F,50000F, 1000000F );
+        jarv = new Armadura(ColoresArmadura.obtenerColor(rand.nextInt(1, 12)), ColoresArmadura.obtenerColor(rand.nextInt(1, 12)), 0F, 0F, 0F, 0F, 0F, 0F, 0F, 0F);
     }
-    //    public static void propulsar(Armadura jarv, Float minutos) throws Exception {
-    //
-    //        jarv.setPulsoredBotaDerecha(jarv.getPulsoredBotaDerecha() - (consumo * 3 * minutos));
-    //
-    //        jarv.setPulsoredBotaIzquierda(jarv.getPulsoredBotaIzquierda() - (consumo * 3 * minutos));
-    //    }
-    //
-    //    public static void volar(Armadura jarv, Float minutos, Float consumo) throws Exception {
-    //
-    //        jarv.setPulsoredBotaDerecha(jarv.getPulsoredBotaDerecha() - (consumo * 3 * minutos));
-    //
-    //        jarv.setPulsoredBotaIzquierda(jarv.getPulsoredBotaIzquierda() - (consumo * 3 * minutos));
-    //
-    //        jarv.setPulsoredGuanteIzquierdo(jarv.getPulsoredGuanteIzquierdo() - (consumo * 2 * minutos));
-    //    }
-    //
-    //    public static void guantesComoArmas(Armadura jarv, Float minutos, Float consumo) throws Exception {
-    //
-    //    }
-    //
-    //    public static Float escribirConsola(Armadura jarv, Float consumo) throws Exception {
-    //
-    //        jarv.setConsolaArmadura(jarv.getConsolaArmadura() - consumo);
-    //        return consumo;
-    //    }
-    //
-    //    public static Float hablarSFloatetizador(Armadura jarv, Float consumo) throws Exception {
-    //
-    //        jarv.setSintetizadorArmadura(jarv.getSintetizadorArmadura() - consumo);
-    //        return consumo;
-    //    }
 
     public static void consumoBateria(Armadura jarv, Float cons) {
         jarv.setBateria(jarv.getBateria() - cons);
@@ -203,7 +178,9 @@ public class Operaciones {
 
     public static void estadoBateria(Armadura jarv) {
         Float estadobat = jarv.getBateria() / jarv.getReactor() * 100;
-        System.out.println("El estado de la batería es " + df.format(estadobat) + "%");
+        System.out.println("Bateria " + jarv.getBateria());
+        System.out.println("Reactor " + jarv.getReactor());
+        System.out.println("El estado de la batería es " + estadobat + "%");
 
     }
 }

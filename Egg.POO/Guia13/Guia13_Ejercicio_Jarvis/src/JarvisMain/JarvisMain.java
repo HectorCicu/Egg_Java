@@ -1,10 +1,7 @@
-
 package JarvisMain;
 
-import Entities.Armadura;
-import static Enums.ColoresArmadura.AMARILLO;
-import static Enums.ColoresArmadura.AZUL;
 import Services.Operaciones;
+import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,11 +15,16 @@ public class JarvisMain {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-      Operaciones op = new Operaciones();
-      
-op.operaciones();    
+        
+        try {
+            Operaciones.operaciones();
+        } catch (NumberFormatException | InputMismatchException nfe) {
+            JOptionPane.showMessageDialog(null, "Está tratando de ingrear un caracter no válido");
+            //System.out.println("Está tratando de ingrear un caracter no válido");
+            //   read.next();
+
+        } finally {
+            System.out.println("Bye - Bye");
+        }
     }
-
-    }
-
-
+}
