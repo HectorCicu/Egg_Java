@@ -1,7 +1,8 @@
 
-package com.ejercicioFabricante.connection.main;
+package com.ejercicioFabricante.main;
 
 import com.ejercicioFabricante.connection.Conexion;
+import com.ejercicioFabricante.services.InsertarRegistros;
 import java.sql.SQLException;
 
 /**
@@ -15,8 +16,10 @@ public class EjercicioFabricante {
      */
     public static void main(String[] args) throws SQLException {
       
-Conexion cn =  new Conexion();
-cn.miConexion();
+//Conexion cn =  new Conexion();
+//cn.miConexion();
+InsertarRegistros ir = new InsertarRegistros();
+ir.cargarProductos();
     }
 
 }
