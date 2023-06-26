@@ -21,13 +21,13 @@ public abstract class DAO {
     private final String PUERTO = "3306";
     private final String CADENA = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + DATABASE;
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    //private final String DRIVER = "com.mysql.jdbc.Driver";
 
     protected void conectarDB() throws Exception {
         try {
             Class.forName(DRIVER);
             conexion = DriverManager.getConnection(CADENA, USER, PASS);
-
-        } catch (ClassNotFoundException | SQLException e) {
+                   } catch (ClassNotFoundException | SQLException e) {
             throw e;
 
         }
@@ -57,7 +57,7 @@ public abstract class DAO {
         } catch (Exception e) {
             throw e;
         } finally {
-            desconectarDB();
+            //desconectarDB();
         }
     }
 
@@ -69,7 +69,7 @@ public abstract class DAO {
         } catch (Exception e) {
             throw e;
         } finally {
-            desconectarDB();
+            //desconectarDB();
         }
 
     }
