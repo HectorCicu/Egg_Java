@@ -21,7 +21,7 @@ public class DAOProducto extends DAO {
                 throw new Exception("El producto está vacío!");
             }
             String sql = "INSERT INTO producto (codigo, nombre, precio ,codigo_fabricante) VALUES "
-                    + "(  " + p.getCodigoProducto() + " , ' " + p.getNombreProducto() + " ' , " + p.getPrecioProducto() + " ' , " + p.getCodigoFabricante() + " )";
+                    + "(  " + p.getCodigoProducto() + " , ' " + p.getNombreProducto() + " ' , " + p.getPrecioProducto() + " , " + p.getCodigoFabricante() + " )";
             abmDB(sql);
         } catch (Exception e) {
             throw e;
@@ -48,7 +48,8 @@ public class DAOProducto extends DAO {
                 throw new Exception("El producto está vacío!");
             }
             String sql = "UPDATE producto set codigo  = " + p.getCodigoProducto() + ", nombre = ' "
-                    + p.getNombreProducto() + "' , precio = " + p.getPrecioProducto() + " ,codigo_fabricante = " + p.getCodigoFabricante();
+                    + p.getNombreProducto() + "' , precio = " + p.getPrecioProducto() + " ,codigo_fabricante = " + p.getCodigoFabricante()
+                    + " WHERE codigo = " + p.getCodigoProducto();
             abmDB(sql);
         } catch (Exception e) {
             throw e;

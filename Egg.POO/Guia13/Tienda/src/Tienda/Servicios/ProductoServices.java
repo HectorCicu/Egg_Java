@@ -16,6 +16,7 @@ public class ProductoServices {
     private static final Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
     private static ArrayList<Producto> pdt = new ArrayList<>();
     private static Producto produ = null;
+    private static Producto p2 = null;
 
     public void modificarProducto() {
 
@@ -62,11 +63,10 @@ public class ProductoServices {
         }
     }
 
-    public void altaProducto() {
+    public void altaProducto() throws Exception {
         boolean salir;
         char s;
         do {
-
             salir = false;
             try {
                 int codprod;
@@ -79,12 +79,13 @@ public class ProductoServices {
                 codprod = read.nextInt();
 
                 produ = dp.buscarProductoPorCodigo(codprod);
-                if (produ.getCodigoProducto() > 0) {
-                    JOptionPane.showMessageDialog(null, "YA EXISTE EL PRODUCTO INGRESADO", "ATENCION!", codfabri);
+                if (produ != null) {
+                    JOptionPane.showMessageDialog(null, "YA EXISTE EL PRODUCTO INGRESADO", "ATENCION!", JOptionPane.INFORMATION_MESSAGE);
 
                     altaProducto();
                 } else {
-                    System.out.println("Product: " + produ.getNombreProducto());
+                    p2 = new Producto();
+                    // System.out.println("Product: " + produ.getNombreProducto());
                     System.out.print("Ingrese nombre: ");
                     nomprod = read.next();
                     System.out.print("Ingrese precio: ");
@@ -103,64 +104,67 @@ public class ProductoServices {
                     }
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en el ingreso de producto" + e.getMessage());
+                throw e;      //"Error en el ingreso de producto" + e.getMessage();
             }
         } while (!salir);
     }
 
     public void listaProductos() throws Exception {
-            System.out.println("\nLISTA NOMBRE PRODUCTOS");    pdt = new ArrayList<>();
+        System.out.println("\nLISTA NOMBRE PRODUCTOS");
+        pdt = new ArrayList<>();
         pdt.addAll(dp.listarProductoNombre());
         for (Producto producto : pdt) {
-            System.out.println("Cód. Prod " +producto.getCodigoProducto() +" -  Nombre: "+ producto.getNombreProducto() );
-       }
+            System.out.println("Cód. Prod " + producto.getCodigoProducto() + " -  Nombre: " + producto.getNombreProducto());
+        }
         System.out.println("\nPulse ENTER para continuar");
         read.next();
     }
+
     public void listaNombrePrecioProducto() throws Exception {
-         System.out.println("\nLISTA PRODUCTOS");       pdt = new ArrayList<>();
+        System.out.println("\nLISTA PRODUCTOS");
+        pdt = new ArrayList<>();
         pdt.addAll(dp.listarProductoNombre());
         for (Producto producto : pdt) {
-            System.out.println("Cód. Prod " +producto.getCodigoProducto() +" -  Nombre: "+ producto.getNombreProducto() 
-                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante()  );
+            System.out.println("Cód. Prod " + producto.getCodigoProducto() + " -  Nombre: " + producto.getNombreProducto()
+                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante());
         }
         System.out.println("\nPulse ENTER para salir");
         read.next();
     }
-    
+
     public void listaProductosSelectos() throws Exception {
         System.out.println("\nLISTA PRODUCTOS ENTRE $120 y $202");
         pdt = new ArrayList<>();
         pdt.addAll(dp.listarProductoporPrecio());
         for (Producto producto : pdt) {
-            System.out.println("Cód. Prod " +producto.getCodigoProducto() +" -  Nombre: "+ producto.getNombreProducto() 
-                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante()  );
+            System.out.println("Cód. Prod " + producto.getCodigoProducto() + " -  Nombre: " + producto.getNombreProducto()
+                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante());
         }
         System.out.println("\nPulse ENTER para continuar");
         read.next();
     }
-    
+
     public void listaPortatiles() throws Exception {
         System.out.println("\nLISTA PRODUCTOS TIPO PORTÁTIL");
         pdt = new ArrayList<>();
         pdt.addAll(dp.listarProductoporPortatil());
         for (Producto producto : pdt) {
-            System.out.println("Cód. Prod " +producto.getCodigoProducto() +" -  Nombre: "+ producto.getNombreProducto() 
-                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante()  );
+            System.out.println("Cód. Prod " + producto.getCodigoProducto() + " -  Nombre: " + producto.getNombreProducto()
+                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante());
         }
         System.out.println("\nPulse ENTER para continuar");
         read.next();
     }
-    
+
     public void listaMasBarato() throws Exception {
         System.out.println("\nLISTA PRODUCTO MÁS BARATO");
         pdt = new ArrayList<>();
         pdt.addAll(dp.listarProductoMasBarato());
         for (Producto producto : pdt) {
-            System.out.println("Cód. Prod " +producto.getCodigoProducto() +" -  Nombre: "+ producto.getNombreProducto() 
-                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante()  );
+            System.out.println("Cód. Prod " + producto.getCodigoProducto() + " -  Nombre: " + producto.getNombreProducto()
+                    + "    - Precio $ " + producto.getPrecioProducto() + "  - Cód. Fabric. " + producto.getCodigoFabricante());
         }
-            System.out.println("\nPulse ENTER para continuar");
+        System.out.println("\nPulse ENTER para continuar");
         read.next();
-}
+    }
 }

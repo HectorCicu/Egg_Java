@@ -1,6 +1,8 @@
 package Tienda.Persistencia;
 
 import Tienda.Entidades.Fabricante;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -49,5 +51,21 @@ public final class DAOFabricante extends DAO {
         }
     }
     
-   
+    public Fabricante buscarFabricantePorCodigo(int cod) throws Exception {
+        String sql = "Select * FROM fabricante WHERE codigo = " + cod;
+
+        Fabricante fc = null;
+        try {
+            consultaDB(sql);
+            while (resultado.next()) {
+                fc = new Fabricante(resultado.getInt(1), resultado.getString(2));
+            }
+
+            desconectarDB();
+            return fc;
+        } catch (Exception e) {
+            desconectarDB();
+            throw e;
+        }
+    }
 }
