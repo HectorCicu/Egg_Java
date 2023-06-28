@@ -15,11 +15,11 @@ public abstract class DAO {
     protected ResultSet resultado = null;
 
     private final String USER = "root";
-    private final String PASS = "123456";
+    private final String PASS = "root";
     private final String DATABASE = "tienda";
     private final String IP = "localhost";
     private final String PUERTO = "3306";
-    private final String CADENA = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + DATABASE;
+    private final String CADENA = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + DATABASE+ "?useSSL=false";
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
     //private final String DRIVER = "com.mysql.jdbc.Driver";
 
