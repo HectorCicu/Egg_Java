@@ -9,8 +9,8 @@ package Estancias.entidades;
 public class Comentarios {
 
     private Integer idComentario;
-    private String comentario;
     private Integer idCasa;
+    private String comentario;
 
     public Comentarios() {
     }

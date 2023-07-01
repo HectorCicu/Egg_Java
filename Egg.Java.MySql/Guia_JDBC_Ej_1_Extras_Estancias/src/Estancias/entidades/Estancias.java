@@ -1,5 +1,3 @@
-
-
 package Estancias.entidades;
 
 import java.util.Date;
@@ -10,22 +8,31 @@ import java.util.Date;
  */
 public class Estancias {
 
-public Date fechaDesde;
-public Date fechaHasta;
-public Integer idCasa;
-public Integer idCliente;
-public Integer idEstancia;
+    public Integer idEstancia;
+    public Integer idCliente;
+    public Integer idCasa;
+    public String nombreCliente;
+    public Date fechaDesde;
+    public Date fechaHasta;
 
     public Estancias() {
     }
 
-
-    public Estancias(Date fechaDesde, Date fechaHasta, Integer idCasa, Integer idCliente, Integer idEstancia) {
+    public Estancias(Integer idEstancia, Integer idCliente, Integer idCasa, String nombreCliente, Date fechaDesde, Date fechaHasta) {
+        this.idEstancia = idEstancia;
+        this.idCliente = idCliente;
+        this.idCasa = idCasa;
+        this.nombreCliente = nombreCliente;
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
-        this.idCasa = idCasa;
-        this.idCliente = idCliente;
-        this.idEstancia = idEstancia;
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public Date getFechaDesde() {
@@ -72,6 +79,5 @@ public Integer idEstancia;
     public String toString() {
         return "Estancias{" + "fechaDesde=" + fechaDesde + ", fechaHasta=" + fechaHasta + ", idCasa=" + idCasa + ", idCliente=" + idCliente + ", idEstancia=" + idEstancia + '}';
     }
-
 
 }

@@ -1,7 +1,6 @@
 package Tienda.Persistencia;
 
 import Tienda.Entidades.Producto;
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.Collection;
 

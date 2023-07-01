@@ -1,5 +1,3 @@
-
-
 package Estancias.persistencia;
 
 import java.sql.Connection;
@@ -14,16 +12,17 @@ import javax.swing.JOptionPane;
  * @author Hector Cicutti
  */
 public abstract class DAO {
-protected Connection conexion = null;
+
+    protected Connection conexion = null;
     protected Statement sentencia = null;
     protected ResultSet resultado = null;
 
     private final String USER = "root";
     private final String PASS = "root";
-    private final String DATABASE = "estancias";
+    private final String DATABASE = "estancias_exterior";
     private final String IP = "localhost";
     private final String PUERTO = "3306";
-    private final String CADENA = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + DATABASE+ "?useSSL=false";
+    private final String CADENA = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + DATABASE + "?useSSL=false";
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
     //private final String DRIVER = "com.mysql.jdbc.Driver";
 
@@ -31,7 +30,8 @@ protected Connection conexion = null;
         try {
             Class.forName(DRIVER);
             conexion = DriverManager.getConnection(CADENA, USER, PASS);
-                   } catch (ClassNotFoundException | SQLException e) {
+        } 
+        catch (ClassNotFoundException | SQLException e) {
             throw e;
 
         }

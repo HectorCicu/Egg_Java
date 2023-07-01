@@ -18,10 +18,10 @@ public class FamiliasDAO extends DAO {
      * @throws Exception
      */
     public Collection<Familias> consultaFamiliasCon3Hijos() throws Exception {
-        String sql = "SELECT * FROM familias WHERE num_hijos >= 3 AND edad_maxima < 10";
-        Collection family = new ArrayList<>();
 
         try {
+            String sql = "SELECT * FROM familias WHERE num_hijos >= 3 AND edad_maxima < 10";
+            Collection family = new ArrayList<>();
             consultaDB(sql);
 
             while (resultado.next()) {
@@ -43,7 +43,7 @@ public class FamiliasDAO extends DAO {
         } catch (Exception e) {
             desconectarDB();
             e.printStackTrace();
-            throw new Exception("Catch de dao producto listarpornombre");
+            throw new Exception("Error en DAO Familias");
         }
     }
 

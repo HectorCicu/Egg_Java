@@ -1,5 +1,3 @@
-
-
 package Estancias.entidades;
 
 import java.util.Date;
@@ -11,22 +9,22 @@ import java.util.Date;
 public class Casas {
 
     private Integer idCasa;
-private String calle;
-private Integer numero;
-private String ciudad;
-private String codPostal;
-private Date fechaDesde;
-private Date fechaHasta;
-private String pais;
-private Double PrecioHabiacion;
-private Integer tiempoMaximo;
-private Integer tiempoMinimo;
-private String tipoVivienda;
+    private String calle;
+    private Integer numero;
+    private String codPostal;
+    private String ciudad;
+    private String pais;
+    private Date fechaDesde;
+    private Date fechaHasta;
+    private Integer tiempoMinimo;
+    private Integer tiempoMaximo;
+    private Double PrecioHabitacion;
+    private String tipoVivienda;
 
     public Casas() {
     }
 
-    public Casas(Integer idCasa, String calle, Integer numero, String ciudad, String codPostal, Date fechaDesde, Date fechaHasta, String pais, Double PrecioHabiacion, Integer tiempoMaximo, Integer tiempoMinimo, String tipoVivienda) {
+    public Casas(Integer idCasa, String calle, Integer numero, String ciudad, String codPostal, Date fechaDesde, Date fechaHasta, String pais, Double PrecioHabitacion, Integer tiempoMaximo, Integer tiempoMinimo, String tipoVivienda) {
         this.idCasa = idCasa;
         this.calle = calle;
         this.numero = numero;
@@ -35,7 +33,7 @@ private String tipoVivienda;
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
         this.pais = pais;
-        this.PrecioHabiacion = PrecioHabiacion;
+        this.PrecioHabitacion = PrecioHabitacion;
         this.tiempoMaximo = tiempoMaximo;
         this.tiempoMinimo = tiempoMinimo;
         this.tipoVivienda = tipoVivienda;
@@ -105,12 +103,12 @@ private String tipoVivienda;
         this.pais = pais;
     }
 
-    public Double getPrecioHabiacion() {
-        return PrecioHabiacion;
+    public Double getPrecioHabitacion() {
+        return PrecioHabitacion;
     }
 
-    public void setPrecioHabiacion(Double PrecioHabiacion) {
-        this.PrecioHabiacion = PrecioHabiacion;
+    public void setPrecioHabitacion(Double PrecioHabitacion) {
+        this.PrecioHabitacion = PrecioHabitacion;
     }
 
     public Integer getTiempoMaximo() {
@@ -139,9 +137,7 @@ private String tipoVivienda;
 
     @Override
     public String toString() {
-        return "Casas{" + "idCasa=" + idCasa + ", calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", codPostal=" + codPostal + ", fechaDesde=" + fechaDesde + ", fechaHasta=" + fechaHasta + ", pais=" + pais + ", PrecioHabiacion=" + PrecioHabiacion + ", tiempoMaximo=" + tiempoMaximo + ", tiempoMinimo=" + tiempoMinimo + ", tipoVivienda=" + tipoVivienda + '}';
+        return "Casas{" + "idCasa=" + idCasa + ", calle=" + calle + ", numero=" + numero + ", ciudad=" + ciudad + ", codPostal=" + codPostal + ", fechaDesde=" + fechaDesde + ", fechaHasta=" + fechaHasta + ", pais=" + pais + ", PrecioHabitacion=" + PrecioHabitacion + ", tiempoMaximo=" + tiempoMaximo + ", tiempoMinimo=" + tiempoMinimo + ", tipoVivienda=" + tipoVivienda + '}';
     }
-
-
 
 }

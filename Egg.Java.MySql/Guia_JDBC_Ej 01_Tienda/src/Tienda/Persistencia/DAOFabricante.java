@@ -1,8 +1,7 @@
 package Tienda.Persistencia;
 
 import Tienda.Entidades.Fabricante;
-import java.util.ArrayList;
-import java.util.Collection;
+
 
 /**
  *
