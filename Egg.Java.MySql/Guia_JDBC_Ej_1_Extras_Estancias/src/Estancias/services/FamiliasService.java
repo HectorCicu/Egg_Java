@@ -19,8 +19,26 @@ public class FamiliasService {
     public void FamiliaHijos() {
         try{
             family=new ArrayList();
-            family.addAll(fd.consultaFamiliasCon3Hijos());
+            family.addAll(fd.consultaFamilias(1));
             System.out.println("\nLISTADO FAMILIAS CON 3 HIJOS Y MENORES DE 10 AÑOS");
+            System.out.println("\nID Fam  -               Nombre  -   Edad min - Edad Max        -                      email");
+            for (Familias f : family) {
+               
+                System.out.println(String.format("%10s%30s%14s%10s%60s", f.getIdFamilia(), f.getNombreFamilia()
+                , f.getEdadMinima(), f.getEdadMaxima(), f.getEmail()));
+                
+                
+            }
+        }catch(Exception e){
+            
+        }
+            
+    }
+    public void FamiliaMail() {
+        try{
+            family=new ArrayList();
+            family.addAll(fd.consultaFamilias(2));
+            System.out.println("\nLISTADO FAMILIAS CON e-Mail =  'hotmail'");
             System.out.println("\nID Fam  -               Nombre  -   Edad min - Edad Max        -                      email");
             for (Familias f : family) {
                

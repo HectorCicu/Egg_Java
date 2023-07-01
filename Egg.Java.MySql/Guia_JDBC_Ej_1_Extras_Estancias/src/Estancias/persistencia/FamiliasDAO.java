@@ -11,17 +11,21 @@ import java.util.Collection;
 public class FamiliasDAO extends DAO {
 
     private static Familias fami = new Familias();
-
+private static String sql;
     /**
      *
      * @return Familia Collection
      * @throws Exception
      */
-    public Collection<Familias> consultaFamiliasCon3Hijos() throws Exception {
+    public Collection<Familias> consultaFamilias(int opc) throws Exception {
 
         try {
-            String sql = "SELECT * FROM familias WHERE num_hijos >= 3 AND edad_maxima < 10";
-            Collection family = new ArrayList<>();
+            if (opc == 1) {
+             sql = "SELECT * FROM familias WHERE num_hijos >= 3 AND edad_maxima < 10";
+            } else {
+             sql = "SELECT * FROM familias WHERE email LIKE '%@hotmail%'";
+            
+            }Collection family = new ArrayList<>();
             consultaDB(sql);
 
             while (resultado.next()) {
