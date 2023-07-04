@@ -1,4 +1,4 @@
-package libreria.DAO;
+package libreria.Persistencia;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -7,13 +7,14 @@ import javax.persistence.Persistence;
 /**
  *
  * @author Hector Cicutti
+ * @param <T>  clase general, para poder enviar cualquiera
  */
 public abstract class DAO<T> {
 
     protected final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("Guia16_JPA_Ej_01PU");
     protected EntityManager em = EMF.createEntityManager();
 
-    //oonectamos previamente verificando conexión
+    //conectamos previamente verificando conexión
     protected void conectar() {
         if (!em.isOpen()) {
             em = EMF.createEntityManager();
@@ -36,9 +37,11 @@ public abstract class DAO<T> {
             desconectar();
         } catch (Exception e) {
             System.out.println("ERROR! " + e.getMessage());
+            em.getTransaction().rollback();
+            desconectar();
         }
     }
-    
+
     protected void eliminar(T objeto) throws Exception {
         try {
             conectar();
@@ -48,11 +51,13 @@ public abstract class DAO<T> {
             desconectar();
         } catch (Exception e) {
             System.out.println("ERROR! " + e.getMessage());
+            em.getTransaction().rollback();
+            desconectar();
         }
     }
-    
+
     protected void modificar(T objeto) {
-         try {
+        try {
             conectar();
             em.getTransaction().begin();
             em.merge(objeto);
@@ -60,6 +65,8 @@ public abstract class DAO<T> {
             desconectar();
         } catch (Exception e) {
             System.out.println("ERROR! " + e.getMessage());
+            em.getTransaction().rollback();
+            desconectar();
         }
     }
-} 
+}
