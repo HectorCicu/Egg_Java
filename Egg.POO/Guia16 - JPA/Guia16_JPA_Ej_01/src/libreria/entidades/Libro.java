@@ -1,29 +1,36 @@
-
-
 package libreria.entidades;
 
 import javax.persistence.*;
+
 /**
  *
  * @author Hector Cicutti
  */
+@NamedQueries({
+    @NamedQuery(name = "libro.buscarTodos", query = "SELECT l FROM Libro l"),
+    @NamedQuery(name = "libro.buscarPorISBN", query = "SELECT l FROM Libro l WHERE l.isbn = :isbn"),
+    @NamedQuery(name = "libro.buscarPorTitulo", query = "SELECT l FROM Libro l WHERE l.titulo LIKE :titulo"),
+    //@NamedQuery(name = "libro.buscarPorAutor", query = "SELECT l FROM Libro JOIN l.autor a WHERE a.nombre LIKE :nombre"),
+  //  @NamedQuery(name = "libro.buscarPorEditorial", query = "SELECT l FROM Libro JOIN l.editorial e WHERE e.nombre LIKE :nombre"),
+})
 @Entity
 public class Libro {
-    
- @Id
- private Long isbn;
- private String titulo;
- private Integer anio;
- private Integer ejemplares;
- private Integer ejemplaresPrestados;
- private Integer ejemplaresRestantes;
- private Boolean alta;
- 
- @OneToOne
- private Autor autor;
- 
- @OneToOne
- private Editorial editorial;
+
+    @Id
+    @Column(nullable = false)
+    private Long isbn;
+    private String titulo;
+    private Integer anio;
+    private Integer ejemplares;
+    private Integer ejemplaresPrestados;
+    private Integer ejemplaresRestantes;
+    private Boolean alta;
+
+    @ManyToOne
+    private Autor autor;
+
+    @ManyToOne
+    private Editorial editorial;
 
     public Libro() {
     }
@@ -111,6 +118,5 @@ public class Libro {
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
     }
- 
 
 }

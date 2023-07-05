@@ -8,11 +8,16 @@ import javax.persistence.*;
  *
  * @author Hector Cicutti
  */
+@NamedQueries({
+    @NamedQuery(name = "editorial.buscarTodos", query ="Select e From Editorial e"),
+    @NamedQuery(name = "editorial.buscarPorNombre", query = "SELECT e FROM Editorial e WHERE e.nombre LIKE  :name")
+})
 @Entity
 public class Editorial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Integer id;
     private String nombre;
 

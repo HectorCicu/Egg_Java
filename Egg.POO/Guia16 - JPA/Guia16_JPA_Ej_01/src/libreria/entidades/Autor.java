@@ -3,11 +3,15 @@ package libreria.entidades;
 import javax.persistence.*;
 import javax.persistence.Entity;
 
+@NamedQueries({
+    @NamedQuery(name = "autor.buscarTodos", query = "Select a From Autor a"),
+    @NamedQuery(name = "autor.buscarPorNombre", query = "SELECT a FROM Autor a WHERE a.nombre LIKE  :name")
+})
 @Entity
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Integer id;
     private String nombre;
     private Boolean alta;
@@ -44,6 +48,5 @@ public class Autor {
     public void setAlta(Boolean alta) {
         this.alta = alta;
     }
-    
-    
+
 }
