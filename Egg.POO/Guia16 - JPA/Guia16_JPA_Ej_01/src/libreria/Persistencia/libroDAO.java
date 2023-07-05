@@ -80,7 +80,7 @@ public class LibroDAO extends DAO<Libro> {
     public List<Libro> buscarLibroPorAutor(String nombreAutor) {
         try {
             conectar();
-      
+
             TypedQuery<Libro> consulta = em.createQuery(
                     "SELECT l FROM Libro l JOIN l.autor a WHERE a.nombre = :nombreAutor", Libro.class);
             consulta.setParameter("nombreAutor", nombreAutor);
@@ -96,13 +96,12 @@ public class LibroDAO extends DAO<Libro> {
     public List<Libro> buscarLibroPorEditorial(String nombreEditorial) {
         try {
             conectar();
-     TypedQuery<Libro> consulta = em.createQuery(
+            TypedQuery<Libro> consulta = em.createQuery(
                     "SELECT l FROM Libro l JOIN l.editorial e WHERE e.nombre = :nombreAutor", Libro.class);
             consulta.setParameter("nombreAutor", nombreEditorial);
             desconectar();
             return consulta.getResultList();
-     
-       
+
         } catch (Exception e) {
             desconectar();
             throw e;
