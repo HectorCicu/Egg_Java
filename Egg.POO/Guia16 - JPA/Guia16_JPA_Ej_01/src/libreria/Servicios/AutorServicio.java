@@ -1,10 +1,12 @@
 package libreria.Servicios;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 import libreria.Persistencia.AutorDAO;
 import libreria.entidades.Autor;
 
@@ -99,10 +101,45 @@ public class AutorServicio {
         }
 
     }
+ public void modificarAutor() throws Exception {
 
+        System.out.println("MODIFICAR AUTOR");
+        try {
+
+            System.out.print("Ingrese ID: ");
+            id = read.nextInt();
+            autor = new Autor();
+            autor = ad.buscarAutorPorId(id);
+            if (Objects.equals(autor.getId(), id)) {
+                System.out.println("Autor :" + autor.getNombre());
+                System.out.print("Ingrese Nuevo Nombre");
+                nombre = read.next();
+                autor.setNombre(nombre);
+                
+                ad.modificarAutor(autor);
+                System.out.println("Autor  " + autor.getId() + "  -  "+ autor.getNombre()+ "  modificado.");
+
+            } else {
+                System.out.println("El Id del autor no existe ");
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+    }
     public void ListaAutores() {
         autores = new ArrayList();
         autores = ad.listarAutorDAO();
+        for (Autor autore : autores) {
+            System.out.println("ID: " + autore.getId() + " --- Nombre: " + autore.getNombre());
+
+        }
+    }
+
+    public void ListarAutores() {
+        autores = new ArrayList();
+        autores = ad.listarAutores();
         for (Autor autore : autores) {
             System.out.println("ID: " + autore.getId() + " --- Nombre: " + autore.getNombre());
 

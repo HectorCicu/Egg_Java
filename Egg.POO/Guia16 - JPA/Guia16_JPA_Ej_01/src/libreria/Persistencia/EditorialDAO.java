@@ -64,7 +64,7 @@ public class EditorialDAO extends DAO<Editorial> {
         try {
             editoriales = new ArrayList();
             super.conectar();
-            editoriales = em.createQuery("editorial.buscarTodos").getResultList();
+            editoriales = em.createNamedQuery("editorial.buscarTodos").getResultList();
             super.desconectar();
         } catch (Exception e) {
 
@@ -81,7 +81,9 @@ public class EditorialDAO extends DAO<Editorial> {
         try {
             editoriales = new ArrayList();
             super.conectar();
-            editoriales = em.createQuery("editorial.buscarPorNombre").setParameter("nombre", nombre).getResultList();
+            editoriales = em.createQuery("SELECT e FROM Editorial e WHERE e.nombre LIKE  :supe")
+                    .setParameter("supe", "%" + nombre + "%").getResultList();
+       
             super.desconectar();
         } catch (Exception e) {
 

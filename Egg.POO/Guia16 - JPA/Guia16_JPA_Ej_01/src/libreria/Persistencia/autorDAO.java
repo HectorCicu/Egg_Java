@@ -19,14 +19,12 @@ public class AutorDAO extends DAO<Autor> {
 
     public void eliminarAutor(Autor autor) throws Exception {
 
-
         super.eliminar(autor);
 
     }
-     public void modificarAutor(Integer id) throws Exception {
 
-        autor = new Autor();
-        autor = buscarAutorPorId(id);
+    public void modificarAutor(Autor autor) throws Exception {
+
         super.modificar(autor);
 
     }
@@ -41,18 +39,18 @@ public class AutorDAO extends DAO<Autor> {
         } catch (Exception e) {
 
             if (em.isOpen()) {
-               super.desconectar();
+                super.desconectar();
             }
             throw e;
         }
         return autor;
     }
-    
+
     public List<Autor> buscarAutorPorNombre(String nombre) {
         try {
             autores = new ArrayList();
             super.conectar();
-            autores = em.createQuery("autor.buscarPorNombre").setParameter("name", nombre).getResultList();
+            autores = em.createNamedQuery("autor.buscarPorNombre").setParameter("name", "%" + nombre + "%").getResultList();
             super.desconectar();
 
         } catch (Exception e) {
@@ -69,8 +67,8 @@ public class AutorDAO extends DAO<Autor> {
         try {
             super.conectar();
             autores = new ArrayList();
-            autores = em.createQuery("autor.buscarTodos").getResultList();
-        super.desconectar();
+            autores = em.createNamedQuery("autor.buscarTodos").getResultList();
+            super.desconectar();
         } catch (Exception e) {
 
             if (em.isOpen()) {
@@ -80,9 +78,9 @@ public class AutorDAO extends DAO<Autor> {
         }
         return autores;
     }
-    
-    public List<Autor>listarAutorDAO(){
+
+    public List<Autor> listarAutorDAO() {
         return super.listar("Autor");
-        
+
     }
 }

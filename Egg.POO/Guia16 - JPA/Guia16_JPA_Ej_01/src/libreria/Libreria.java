@@ -15,11 +15,14 @@ public class Libreria {
      */
     public static void main(String[] args) throws Exception {
         AutorServicio as = new AutorServicio();
-        as.cargarMasivoAutor();
+        //as.cargarMasivoAutor();
         EditorialServicio es = new EditorialServicio();
-        es.cargaEditorialMasiva();
-
-        as.ListaAutores();
+        //es.cargaEditorialMasiva();
+       //es.altaEditorial();
+        as.ListarAutores();
+        as.modificarAutor();
+        es.buscarPorNombre();
+        //as.ListaAutores();
     }
 
 }

@@ -41,7 +41,7 @@ public class LibroDAO extends DAO<Libro> {
         try {
             super.conectar();
             books = new ArrayList();
-            books = em.createQuery("libro.buscarTodos").getResultList();
+            books = em.createNamedQuery("libro.buscarTodos").getResultList();
             super.desconectar();
             return books;
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class LibroDAO extends DAO<Libro> {
         try {
             super.conectar();
             books = new ArrayList();
-            books = em.createQuery("libro.buscarPorISBN").setParameter("isbn", isbn).getResultList();
+            books = em.createNamedQuery("libro.buscarPorISBN").setParameter("isbn", isbn).getResultList();
             super.desconectar();
             return books;
         } catch (Exception e) {
@@ -67,7 +67,7 @@ public class LibroDAO extends DAO<Libro> {
         try {
             super.conectar();
             books = new ArrayList();
-            books = em.createQuery("libro.buscarPorTitulo")
+            books = em.createNamedQuery("libro.buscarPorTitulo")
                     .setParameter("titulo", titulo).getResultList();
             super.desconectar();
             return books;
@@ -82,8 +82,8 @@ public class LibroDAO extends DAO<Libro> {
             conectar();
 
             TypedQuery<Libro> consulta = em.createQuery(
-                    "libro.buscarPorAutor", Libro.class);
-            consulta.setParameter("nombreAutor", nombreAutor);
+                    "SELECT l FROM Libro JOIN l.autor a WHERE a.nombre LIKE :nombre", Libro.class);
+            consulta.setParameter("nombre", "%" + nombreAutor + "%");
             desconectar();
             return consulta.getResultList();
 
@@ -97,8 +97,8 @@ public class LibroDAO extends DAO<Libro> {
         try {
             conectar();
             TypedQuery<Libro> consulta = em.createQuery(
-                    "SELECT l FROM Libro l JOIN l.editorial e WHERE e.nombre = :nombreAutor", Libro.class);
-            consulta.setParameter("nombreAutor", nombreEditorial);
+                    "SELECT l FROM Libro l JOIN l.editorial e WHERE e.nombre = :nombreEdit", Libro.class);
+            consulta.setParameter("nombreEdit", nombreEditorial);
             desconectar();
             return consulta.getResultList();
 
