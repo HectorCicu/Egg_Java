@@ -9,16 +9,16 @@ import libreria.entidades.Editorial;
  * @author Hector Cicutti
  */
 public class EditorialDAO extends DAO<Editorial> {
-    
+
     private static Editorial editorial = null;
     private static List<Editorial> editoriales = null;
-    
+
     public void guardarEditorial(Editorial e) throws Exception {
         super.grabar(e);
     }
-    
+
     public void modificarEditorial(Integer id) {
-         try {
+        try {
             editorial = new Editorial();
             editorial = buscarEditorial(id);
             super.modificar(editorial);
@@ -29,7 +29,7 @@ public class EditorialDAO extends DAO<Editorial> {
             }
         }
     }
-    
+
     public void eliminarEditorial(Integer id) throws Exception {
         try {
             editorial = new Editorial();
@@ -42,7 +42,7 @@ public class EditorialDAO extends DAO<Editorial> {
             }
         }
     }
-    
+
     public Editorial buscarEditorial(Integer id) {
         try {
             editorial = new Editorial();
@@ -50,7 +50,7 @@ public class EditorialDAO extends DAO<Editorial> {
             editorial = em.find(Editorial.class, id);
             super.desconectar();
         } catch (Exception e) {
-            
+
             if (em.isOpen()) {
                 em.close();
                 throw e;
@@ -59,14 +59,15 @@ public class EditorialDAO extends DAO<Editorial> {
         }
         return editorial;
     }
+
     public List<Editorial> listaEditoriales() {
         try {
             editoriales = new ArrayList();
-           super.conectar();
+            super.conectar();
             editoriales = em.createQuery("editorial.buscarTodos").getResultList();
             super.desconectar();
         } catch (Exception e) {
-            
+
             if (em.isOpen()) {
                 em.close();
                 throw e;
@@ -75,15 +76,15 @@ public class EditorialDAO extends DAO<Editorial> {
         }
         return editoriales;
     }
-    
+
     public List<Editorial> listaEditorialesPorNombre(String nombre) {
         try {
             editoriales = new ArrayList();
-           super.conectar();
+            super.conectar();
             editoriales = em.createQuery("editorial.buscarPorNombre").setParameter("nombre", nombre).getResultList();
             super.desconectar();
         } catch (Exception e) {
-            
+
             if (em.isOpen()) {
                 em.close();
                 throw e;
@@ -92,5 +93,9 @@ public class EditorialDAO extends DAO<Editorial> {
         }
         return editoriales;
     }
-    
+
+    public List<Editorial> listarEditorialDAO() {
+        return super.listar("Editorial");
+
+    }
 }

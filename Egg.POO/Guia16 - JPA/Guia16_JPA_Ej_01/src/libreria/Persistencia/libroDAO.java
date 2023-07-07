@@ -82,7 +82,7 @@ public class LibroDAO extends DAO<Libro> {
             conectar();
 
             TypedQuery<Libro> consulta = em.createQuery(
-                    "SELECT l FROM Libro l JOIN l.autor a WHERE a.nombre = :nombreAutor", Libro.class);
+                    "libro.buscarPorAutor", Libro.class);
             consulta.setParameter("nombreAutor", nombreAutor);
             desconectar();
             return consulta.getResultList();
@@ -106,5 +106,10 @@ public class LibroDAO extends DAO<Libro> {
             desconectar();
             throw e;
         }
+    }
+
+    public List<Libro> listarLibroDAO() {
+        return super.listar("Libro");
+
     }
 }

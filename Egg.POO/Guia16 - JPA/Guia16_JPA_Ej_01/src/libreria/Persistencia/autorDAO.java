@@ -17,10 +17,9 @@ public class AutorDAO extends DAO<Autor> {
         super.grabar(autor);
     }
 
-    public void eliminarAutor(Integer id) throws Exception {
+    public void eliminarAutor(Autor autor) throws Exception {
 
-        autor = new Autor();
-        autor = buscarAutorPorId(id);
+
         super.eliminar(autor);
 
     }
@@ -80,5 +79,10 @@ public class AutorDAO extends DAO<Autor> {
             throw e;
         }
         return autores;
+    }
+    
+    public List<Autor>listarAutorDAO(){
+        return super.listar("Autor");
+        
     }
 }

@@ -1,5 +1,6 @@
 package libreria.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.*;
@@ -9,11 +10,11 @@ import javax.persistence.*;
  * @author Hector Cicutti
  */
 @NamedQueries({
-    @NamedQuery(name = "editorial.buscarTodos", query ="Select e From Editorial e"),
+    @NamedQuery(name = "editorial.buscarTodos", query = "Select e From Editorial e"),
     @NamedQuery(name = "editorial.buscarPorNombre", query = "SELECT e FROM Editorial e WHERE e.nombre LIKE  :name")
 })
 @Entity
-public class Editorial {
+public class Editorial implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,11 @@ public class Editorial {
 
     public Editorial(Integer id, String nombre) {
         this.id = id;
+        this.nombre = nombre;
+    }
+
+    public Editorial(String nombre) {
+
         this.nombre = nombre;
     }
 
@@ -45,5 +51,4 @@ public class Editorial {
         this.nombre = nombre;
     }
 
-    
 }

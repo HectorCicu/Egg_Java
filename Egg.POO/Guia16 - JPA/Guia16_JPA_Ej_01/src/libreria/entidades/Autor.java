@@ -1,5 +1,6 @@
 package libreria.entidades;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.persistence.Entity;
 
@@ -8,9 +9,10 @@ import javax.persistence.Entity;
     @NamedQuery(name = "autor.buscarPorNombre", query = "SELECT a FROM Autor a WHERE a.nombre LIKE  :name")
 })
 @Entity
-public class Autor {
+public class Autor implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
     private String nombre;
@@ -24,7 +26,11 @@ public class Autor {
         this.nombre = nombre;
         this.alta = alta;
     }
-
+  public Autor( String nombre, Boolean alta) {
+       
+        this.nombre = nombre;
+        this.alta = alta;
+    }
     public Integer getId() {
         return id;
     }
