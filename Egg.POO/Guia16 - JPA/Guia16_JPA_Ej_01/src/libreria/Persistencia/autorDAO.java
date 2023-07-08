@@ -50,7 +50,7 @@ public class AutorDAO extends DAO<Autor> {
         try {
             autores = new ArrayList();
             super.conectar();
-            autores = em.createNamedQuery("autor.buscarPorNombre").setParameter("name", "%" + nombre + "%").getResultList();
+            autores = em.createQuery("SELECT a FROM Autor a WHERE a.nombre LIKE  :name").setParameter("name",  "%" + nombre + "%").getResultList();
             super.desconectar();
 
         } catch (Exception e) {

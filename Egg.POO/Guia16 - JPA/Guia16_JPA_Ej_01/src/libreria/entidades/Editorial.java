@@ -51,4 +51,9 @@ public class Editorial implements Serializable {
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return "Editorial \n" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+
 }

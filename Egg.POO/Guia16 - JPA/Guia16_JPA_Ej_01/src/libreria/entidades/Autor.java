@@ -55,4 +55,9 @@ public class Autor implements Serializable {
         this.alta = alta;
     }
 
+    @Override
+    public String toString() {
+        return "Autor \n" + "id=" + id + ", nombre=" + nombre + ", alta=" + alta + '}';
+    }
+
 }

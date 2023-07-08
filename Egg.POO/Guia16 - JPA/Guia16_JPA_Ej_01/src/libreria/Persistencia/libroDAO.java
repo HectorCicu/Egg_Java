@@ -3,6 +3,8 @@ package libreria.Persistencia;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.TypedQuery;
+import libreria.Servicios.AutorServicio;
+import libreria.entidades.Autor;
 import libreria.entidades.Libro;
 
 /**
@@ -13,6 +15,7 @@ public class LibroDAO extends DAO<Libro> {
 
     private static Libro book = null;
     private static List<Libro> books = null;
+    private static AutorServicio as = new AutorServicio();
 
     public void registrarLibro(Libro libro) throws Exception {
         super.grabar(libro);
@@ -79,31 +82,32 @@ public class LibroDAO extends DAO<Libro> {
 
     public List<Libro> buscarLibroPorAutor(String nombreAutor) {
         try {
-            conectar();
+            books = new ArrayList();
+            super.conectar();
 
-            TypedQuery<Libro> consulta = em.createQuery(
-                    "SELECT l FROM Libro JOIN l.autor a WHERE a.nombre LIKE :nombre", Libro.class);
-            consulta.setParameter("nombre", "%" + nombreAutor + "%");
-            desconectar();
-            return consulta.getResultList();
+            books= em.createQuery("SELECT l FROM Libro l WHERE l.autor.nombre LIKE :nombre")
+                    .setParameter("nombre", "%"+ nombreAutor + "%")
+                    .getResultList();
+            super.desconectar();
+            return books;
 
         } catch (Exception e) {
-            desconectar();
+            super.desconectar();
             throw e;
         }
     }
 
     public List<Libro> buscarLibroPorEditorial(String nombreEditorial) {
         try {
-            conectar();
+            super.conectar();
             TypedQuery<Libro> consulta = em.createQuery(
                     "SELECT l FROM Libro l JOIN l.editorial e WHERE e.nombre = :nombreEdit", Libro.class);
             consulta.setParameter("nombreEdit", nombreEditorial);
-            desconectar();
+            super.desconectar();
             return consulta.getResultList();
 
         } catch (Exception e) {
-            desconectar();
+            super.desconectar();
             throw e;
         }
     }

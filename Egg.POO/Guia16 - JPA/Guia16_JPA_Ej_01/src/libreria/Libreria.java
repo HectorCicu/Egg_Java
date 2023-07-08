@@ -2,6 +2,7 @@ package libreria;
 
 import libreria.Servicios.AutorServicio;
 import libreria.Servicios.EditorialServicio;
+import libreria.Servicios.LibroServicio;
 
 /**
  *
@@ -15,13 +16,16 @@ public class Libreria {
      */
     public static void main(String[] args) throws Exception {
         AutorServicio as = new AutorServicio();
-        //as.cargarMasivoAutor();
+        as.cargarMasivoAutor();
         EditorialServicio es = new EditorialServicio();
-        //es.cargaEditorialMasiva();
-       //es.altaEditorial();
-        as.ListarAutores();
-        as.modificarAutor();
-        es.buscarPorNombre();
+        es.cargaEditorialMasiva();
+        LibroServicio ls = new LibroServicio();
+        ls.altaLibrosMasivos();
+        ls.buscarLibroxAutor();
+//es.altaEditorial();
+        //as.ListarAutores();
+        // as.modificarAutor();
+        //es.buscarPorNombre();
         //as.ListaAutores();
     }
 

@@ -101,7 +101,8 @@ public class AutorServicio {
         }
 
     }
- public void modificarAutor() throws Exception {
+
+    public void modificarAutor() throws Exception {
 
         System.out.println("MODIFICAR AUTOR");
         try {
@@ -115,9 +116,9 @@ public class AutorServicio {
                 System.out.print("Ingrese Nuevo Nombre");
                 nombre = read.next();
                 autor.setNombre(nombre);
-                
+
                 ad.modificarAutor(autor);
-                System.out.println("Autor  " + autor.getId() + "  -  "+ autor.getNombre()+ "  modificado.");
+                System.out.println("Autor  " + autor.getId() + "  -  " + autor.getNombre() + "  modificado.");
 
             } else {
                 System.out.println("El Id del autor no existe ");
@@ -128,6 +129,7 @@ public class AutorServicio {
         }
 
     }
+
     public void ListaAutores() {
         autores = new ArrayList();
         autores = ad.listarAutorDAO();
@@ -147,63 +149,59 @@ public class AutorServicio {
     }
 
     public void cargarMasivoAutor() throws Exception {
-        ad.registrarAutor(new Autor(" George Orwell", true));
-        ad.registrarAutor(new Autor(" Truman Capote", true));
-        ad.registrarAutor(new Autor(" Gabriel García Márquez", true));
-        ad.registrarAutor(new Autor(" Fiodor Dostoievski", true));
-        ad.registrarAutor(new Autor(" Charles Dickens", true));
-        ad.registrarAutor(new Autor(" Miguel  Cervantes", true));
-        ad.registrarAutor(new Autor(" Bram Stoker", true));
-        ad.registrarAutor(new Autor(" Alejandro Dumas", true));
-        ad.registrarAutor(new Autor(" F. Scott Fitzgerald", true));
-        ad.registrarAutor(new Autor(" J.D. Salinger", true));
-        ad.registrarAutor(new Autor(" H.G. Wells", true));
-        ad.registrarAutor(new Autor(" Noah Gordon", true));
-        ad.registrarAutor(new Autor(" Umberto Eco", true));
-        ad.registrarAutor(new Autor(" Patrick Süskind", true));
-        ad.registrarAutor(new Autor(" Oscar Wil", true));
-        ad.registrarAutor(new Autor(" William Faulkner", true));
-        ad.registrarAutor(new Autor(" J.R.R. Tolkien", true));
-        ad.registrarAutor(new Autor(" Ernesto Sábato", true));
-        ad.registrarAutor(new Autor(" Marcel Proust", true));
-        ad.registrarAutor(new Autor(" Ray Bradbury", true));
-        ad.registrarAutor(new Autor(" Mary Shelley", true));
-        ad.registrarAutor(new Autor(" Isabel Allen", true));
-        ad.registrarAutor(new Autor(" Mario Vargas Llosa", true));
-        ad.registrarAutor(new Autor(" John Kennedy Toole", true));
-        ad.registrarAutor(new Autor(" Dante Alighieri", true));
-        ad.registrarAutor(new Autor(" Robert Louis Stevenson", true));
-        ad.registrarAutor(new Autor(" Franz Kafka", true));
-        ad.registrarAutor(new Autor(" Anthony Burgess", true));
-        ad.registrarAutor(new Autor(" Homero", true));
-        ad.registrarAutor(new Autor(" Leopoldo Alas Clarín", true));
-        ad.registrarAutor(new Autor(" Carlos Ruiz Zafón", true));
-        ad.registrarAutor(new Autor(" Julio Verne", true));
-        ad.registrarAutor(new Autor(" Lewis Carroll", true));
-        ad.registrarAutor(new Autor(" Arthur Conan Doyle", true));
-        ad.registrarAutor(new Autor(" John Steinbeck", true));
-        ad.registrarAutor(new Autor(" Victor Hugo", true));
-        ad.registrarAutor(new Autor(" Ken Follett", true));
-        ad.registrarAutor(new Autor(" Gustave Flaubert", true));
-        ad.registrarAutor(new Autor(" Harper Lee", true));
-        ad.registrarAutor(new Autor(" Arthur Goln", true));
-        ad.registrarAutor(new Autor(" Herman Melville", true));
-        ad.registrarAutor(new Autor(" Louisa May Alcott", true));
-        ad.registrarAutor(new Autor(" Carmen Laforet", true));
-        ad.registrarAutor(new Autor(" Jane Austen", true));
-        ad.registrarAutor(new Autor(" Julio Cortázar", true));
-        ad.registrarAutor(new Autor(" Stendhal", true));
-        ad.registrarAutor(new Autor(" William Shakespeare", true));
-        ad.registrarAutor(new Autor(" Hermann Hesse", true));
-        ad.registrarAutor(new Autor(" Antonio Tabucchi", true));
-        ad.registrarAutor(new Autor(" Irène Némirovsky", true));
-        ad.registrarAutor(new Autor(" Mark Twain", true));
-        ad.registrarAutor(new Autor(" Henry Miller", true));
-        ad.registrarAutor(new Autor(" James Joyce", true));
-        ad.registrarAutor(new Autor(" Aldous Huxley", true));
-        ad.registrarAutor(new Autor(" Pablo Neruda", true));
-        ad.registrarAutor(new Autor(" Laurence Sterne", true));
-        ad.registrarAutor(new Autor("Robert Graves", true));
-        ad.registrarAutor(new Autor("Roberto Bolaño", true));
+        ad.registrarAutor(new Autor("George Orwell", true));
+        ad.registrarAutor(new Autor("Harper Lee", true));
+        ad.registrarAutor(new Autor("F. Scott Fitzgerald", true));
+        ad.registrarAutor(new Autor("J.D. Salinger", true));
+        ad.registrarAutor(new Autor("William Golding", true));
+        ad.registrarAutor(new Autor("Aldous Huxley", true));
+        ad.registrarAutor(new Autor("J.R.R. Tolkien", true));
+        ad.registrarAutor(new Autor("Kurt Vonnegut", true));
+        ad.registrarAutor(new Autor("Joseph Heller", true));
+        ad.registrarAutor(new Autor("Gabriel Garcia Marquez", true));
+        ad.registrarAutor(new Autor("Oscar Wilde", true));
+        ad.registrarAutor(new Autor("Arthur C. Clarke", true));
+        ad.registrarAutor(new Autor("Douglas Adams", true));
+        ad.registrarAutor(new Autor("Stephen King", true));
+        ad.registrarAutor(new Autor("Dan Brown", true));
+        ad.registrarAutor(new Autor("Stieg Larsson", true));
+        ad.registrarAutor(new Autor("Suzanne Collins", true));
+        ad.registrarAutor(new Autor("Paula Hawkins", true));
+        ad.registrarAutor(new Autor("Kathryn Stockett", true));
+        ad.registrarAutor(new Autor("Cormac McCarthy", true));
+        ad.registrarAutor(new Autor("Alice Sebold", true));
+        ad.registrarAutor(new Autor("Yann Martel", true));
+        ad.registrarAutor(new Autor("Khaled Hosseini", true));
+        ad.registrarAutor(new Autor("Sue Monk Kidd", true));
+        ad.registrarAutor(new Autor("Barbara Kingsolver", true));
+        ad.registrarAutor(new Autor("Rebecca Skloot", true));
+        ad.registrarAutor(new Autor("Alice Walker", true));
+        ad.registrarAutor(new Autor("Amy Tan", true));
+        ad.registrarAutor(new Autor("Emily Bronte", true));
+        ad.registrarAutor(new Autor("Jane Austen", true));
+        ad.registrarAutor(new Autor("Charlotte Bronte", true));
+        ad.registrarAutor(new Autor("Charles Dickens", true));
+        ad.registrarAutor(new Autor("Louisa May Alcott", true));
+        ad.registrarAutor(new Autor("Margaret Mitchell", true));
+        ad.registrarAutor(new Autor("Mark Twain", true));
+        ad.registrarAutor(new Autor("John Steinbeck", true));
+        ad.registrarAutor(new Autor("Ernest Hemingway", true));
+        ad.registrarAutor(new Autor("Sylvia Plath", true));
+        ad.registrarAutor(new Autor("Nathaniel Hawthorne", true));
+        ad.registrarAutor(new Autor("Herman Melville", true));
+        ad.registrarAutor(new Autor("Bram Stoker", true));
+        ad.registrarAutor(new Autor("Mary Shelley", true));
+        ad.registrarAutor(new Autor("Robert Louis Stevenson", true));
+        ad.registrarAutor(new Autor("Joseph Conrad", true));
+        ad.registrarAutor(new Autor("Geoffrey Chaucer", true));
+        ad.registrarAutor(new Autor("Miguel de Cervantes", true));
+        ad.registrarAutor(new Autor("Dante Alighieri", true));
+        ad.registrarAutor(new Autor("Victor Hugo", true));
+        ad.registrarAutor(new Autor("Alexandre Dumas", true));
+        ad.registrarAutor(new Autor("Gustave Flaubert", true));
+        ad.registrarAutor(new Autor("Leo Tolstoy", true));
+        ad.registrarAutor(new Autor("Fyodor Dostoevsky", true));
+        ad.registrarAutor(new Autor("Aleksandr Solzhenitsyn", true));
+        ad.registrarAutor(new Autor("Vladimir Nabokov", true));
     }
 }

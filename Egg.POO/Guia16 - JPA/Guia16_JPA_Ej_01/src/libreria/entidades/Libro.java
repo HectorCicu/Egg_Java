@@ -11,8 +11,8 @@ import javax.persistence.*;
     @NamedQuery(name = "libro.buscarTodos", query = "SELECT l FROM Libro l"),
     @NamedQuery(name = "libro.buscarPorISBN", query = "SELECT l FROM Libro l WHERE l.isbn = :isbn"),
     @NamedQuery(name = "libro.buscarPorTitulo", query = "SELECT l FROM Libro l WHERE l.titulo LIKE :titulo"),
-    //@NamedQuery(name = "libro.buscarPorAutor", query = "SELECT l FROM Libro JOIN l.autor a WHERE a.nombre LIKE :nombre")
-    //@NamedQuery(name = "libro.buscarPorEditorial", query = "SELECT l FROM Libro JOIN l.editorial e WHERE e.nombre LIKE :nombre"),
+  // @NamedQuery(name = "libro.buscarPorAutor", query = "SELECT l FROM Libro l WHERE l.titulo LIKE :titulo"),
+//    @NamedQuery(name = "libro.buscarPorEditorial", query = "SELECT l FROM Libro JOIN l.editorial e WHERE e.nombre LIKE :nombre")
 })
 @Entity
 public class Libro implements Serializable {
@@ -118,6 +118,11 @@ public class Libro implements Serializable {
 
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro{" + "isbn=" + isbn + ", titulo=" + titulo + ", anio=" + anio + ", ejemplares=" + ejemplares + ", ejemplaresPrestados=" + ejemplaresPrestados + ", ejemplaresRestantes=" + ejemplaresRestantes + ", alta=" + alta + ", autor=" + autor + ", editorial=" + editorial + '}';
     }
 
 }

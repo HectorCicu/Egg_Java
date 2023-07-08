@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
  */
 public abstract class DAO<T> {
 
-    protected final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("Guia16_JPA_Ej_01PU");
+    protected final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("Guia16_Ej_01PU");
     protected EntityManager em = EMF.createEntityManager();
 
     //conectamos previamente verificando conexión
