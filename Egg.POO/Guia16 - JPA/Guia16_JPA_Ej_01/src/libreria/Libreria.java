@@ -1,5 +1,6 @@
 package libreria;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import libreria.Servicios.AutorServicio;
@@ -57,42 +58,47 @@ public class Libreria {
             try {
                 System.out.print("Opcion-> ");
                 opc = read.nextInt();
-                
-           switch(opc) {
-               case 1:
-                   es.altaEditorial();
-                   break;
-               case 2:
-                   System.out.println("opción en construcción");
-                   break;
-               case 3:
-                   es.modificarEditoriales();
-                   break;
-               case 4:
-                   es.listarEditoriales();
-                   break;
-               case 5:
-                   as.altaManual();
-                   break;
-               case 6:
-                   as.eliminaAutor();
-                   break;
-               case 7:
-                   as.modificarAutor();
-                   break;
-               case 8:
-                   as.ListarAutores();
-                   break;
-               case 17:
-                   salir = true;
-                   break;
-               default:
-                   System.out.println("Opción Incorrecta! ");
-                   break;
-           }
-            
+
+                switch (opc) {
+                    case 1:
+                        es.altaEditorial();
+                        break;
+                    case 2:
+                        System.out.println("opción en construcción");
+                        break;
+                    case 3:
+                        es.modificarEditoriales();
+                        break;
+                    case 4:
+                        es.listarEditoriales();
+                        break;
+                    case 5:
+                        as.altaManual();
+                        break;
+                    case 6:
+                        as.eliminaAutor();
+                        break;
+                    case 7:
+                        as.modificarAutor();
+                        break;
+                    case 8:
+                        as.ListarAutores();
+                        break;
+                    case 17:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Opción Incorrecta! ");
+                        break;
+                }
+
+            } catch (InputMismatchException ime) {
+                JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
+                //System.out.println("Dato no Válido " + e.getMessage());
+                read.next();
+
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error - dato ingresado no válido " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error - dato ingresado no válido " + e.getMessage() + "\n" + e.fillInStackTrace());
                 //System.out.println("Dato no Válido " + e.getMessage());
                 read.next();
             }
