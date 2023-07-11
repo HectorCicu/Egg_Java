@@ -2,6 +2,7 @@ package libreria.Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import libreria.Persistencia.EditorialDAO;
@@ -19,6 +20,7 @@ public class EditorialServicio {
     private List<Editorial> editoriales = null;
     private static String nombre;
     private static boolean salir = false;
+    public static Integer id;
 
     public void altaEditorial() throws Exception {
         do {
@@ -75,6 +77,45 @@ public class EditorialServicio {
                 for (Editorial edito : editoriales) {
                     System.out.println("ID: " + edito.getId() + " --- Nombre: " + edito.getNombre());
                 }
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void listarEditoriales() {
+        editoriales = new ArrayList();
+        editoriales = ed.listarEditorialDAO();
+        System.out.println("***   LISTADO EDITORIALES ****");
+        System.out.println("--------------------------------------------");
+        System.out.println("ID           Nombre");
+        for (Editorial editoriale : editoriales) {
+            System.out.printf("%4s  %30s", editoriale.getId(), editoriale.getNombre());
+        }
+
+    }
+
+    public void modificarEditoriales() throws Exception {
+
+        System.out.println("MODIFICAR EDITORIAL");
+        try {
+
+            System.out.print("Ingrese ID: ");
+            id = read.nextInt();
+            editorial = new Editorial();
+            editorial = ed.buscarEditorial(id);
+            if (Objects.equals(editorial.getId(), id)) {
+                System.out.println("Editorial:" + editorial.getNombre());
+                System.out.print("Ingrese Nuevo Nombre");
+                nombre = read.next();
+                editorial.setNombre(nombre);
+
+                ed.modificarEditorial(id);
+                System.out.println("Editorial  " + editorial.getId() + "  -  " + editorial.getNombre() + "  modificada.");
+
+            } else {
+                System.out.println("El Id de la Editorial no existe ");
             }
 
         } catch (Exception e) {

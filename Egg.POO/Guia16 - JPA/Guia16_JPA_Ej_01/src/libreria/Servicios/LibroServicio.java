@@ -29,6 +29,10 @@ public class LibroServicio {
     private static Autor autor1 = null;
     private static Random rand = new Random();
 
+    public void altaLibro(){
+        
+    }
+    
     public void buscarLibroxAutor() {
         try {
             System.out.println("\nBUSCAR LIBRO POR AUTOR");
@@ -46,15 +50,14 @@ public class LibroServicio {
 //                id1 = read.nextInt();
 //                autor1 = new Autor();
 //                autor1 = ad.buscarAutorPorId(id1);
-                libros = new ArrayList();
-                libros = ld.buscarLibroPorAutor(nombre);
-                System.out.println("LIBROS ENCONTRADOS");
-                for (Libro libro : libros) {
-                    System.out.println(libro.toString());
+            libros = new ArrayList();
+            libros = ld.buscarLibroPorAutor(nombre);
+            System.out.println("LIBROS ENCONTRADOS");
+            for (Libro libro : libros) {
+                System.out.println(libro.toString());
 
-                }
+            }
 
-            
         } catch (Exception e) {
             throw e;
         }
