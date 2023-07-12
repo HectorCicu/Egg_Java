@@ -1,9 +1,13 @@
 package libreria.Servicios;
 
+import java.awt.HeadlessException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import libreria.Persistencia.AutorDAO;
 import libreria.Persistencia.EditorialDAO;
 import libreria.Persistencia.LibroDAO;
@@ -20,6 +24,7 @@ public class LibroServicio {
     private static final Scanner read = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
     private static String nombre;
     private static LibroDAO ld = new LibroDAO();
+    private static Libro book = null;
     private static List<Libro> libros = null;
     private static List<Autor> autores = null;
     private static List<Editorial> editoriales = null;
@@ -27,42 +32,229 @@ public class LibroServicio {
     private static EditorialDAO ed = new EditorialDAO();
     private static Integer id1;
     private static Autor autor1 = null;
-    private static Random rand = new Random();
+    private static Editorial editorial = null;
+    private static Long isbn;
+    private static String titulo;
+    private static Integer anio;
+    private static Integer ejemplares;
+    private static Integer ejemplaresPrestados;
+    private static Integer ejemplaresRestantes;
+    private static Boolean alta;
+    private static char sn;
+    private static boolean salir;
 
-    public void altaLibro(){
-        
+    public void altaLibro() throws Exception {
+        do {
+            salir = false;
+            try {
+                System.out.println("""
+                               ALTA DE LIBROS
+                               ---------------------""");
+                try {                                                                               //ESTE TRY-CATCH ES SOLO PARA VALIDAR EL ISBN
+                    System.out.print("Ingrese ISBN: ");
+                    isbn = read.nextLong();
+                } catch (InputMismatchException ime) {                     //ESTE TRY-CATCH ES SOLO PARA VALIDAR EL ISBN
+                    JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
+                    //System.out.println("Dato no Válido " + ime.getMessage());
+                    read.next();
+                }
+                book = new Libro();
+                book = ld.buscarLibroPorID(isbn);
+                if (Objects.equals(book.getIsbn(), isbn)) {
+                    System.out.println("Ese libro ya existe. Verifique ISBN Cargado");
+                    System.out.println("ISBN = " + book.getIsbn() + " - Nombre: " + book.getTitulo());
+                } else {
+
+                    System.out.print("Titulo del Libro................: ");
+                    titulo = read.next();
+                    System.out.print("Año de Publicación..........: ");
+                    anio = read.nextInt();
+                    System.out.print("Cantidad de Ejemplares..: ");
+                    ejemplares = read.nextInt();
+                    System.out.print("Ejemplares prestados .....: ");
+                    ejemplaresPrestados = read.nextInt();
+                    ejemplaresRestantes = ejemplares - ejemplaresPrestados;
+                    alta = true;
+                    autor1 = new Autor();
+                    do {
+                        System.out.print("ID Autor.............................: ");
+                        id1 = read.nextInt();
+                        autor1 = ad.buscarAutorPorId(id1);
+                        if (autor1 == null) {
+                            System.out.println("El ID del autor no existe");
+                        } else {
+                            System.out.println("Autor...............................: " + autor1.getNombre());
+                            do {
+                                id1 = 0;
+                                editorial = new Editorial();
+                                System.out.print("ID Editorial.....................: ");
+                                id1 = read.nextInt();
+                                editorial = ed.buscarEditorial(id1);
+                                if (editorial == null) {
+                                    System.out.println("No existe Editorial con ese ID");
+                                } else {
+                                    System.out.println("Editorial .....................: " + editorial.getNombre());
+                                }
+
+                            } while (editorial != null);
+                        }
+                    } while (autor1 != null);
+                    ld.registrarLibro(new Libro(isbn, titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, alta, autor1, editorial));
+                    System.out.println("Libro Ingreado!!");
+                    System.out.print("Continúa carga de libros S/N ");
+                    sn = read.next().toUpperCase().charAt(0);
+                    if (sn == 'S') {
+                        salir = true;
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, " Error! " + e.getMessage() + e.fillInStackTrace());
+            }
+        } while (salir);
+
     }
+
     
+    public void modificarLibros() throws Exception {
+        do {
+            salir = false;
+            try {
+                System.out.println("""
+                               MODIFICACIÓN DE LIBROS
+                               -----------------------------------""");
+                try {                                                                               //ESTE TRY-CATCH ES SOLO PARA VALIDAR EL ISBN
+                    System.out.print("Ingrese ISBN: ");
+                    isbn = read.nextLong();
+                } catch (InputMismatchException ime) {                     //ESTE TRY-CATCH ES SOLO PARA VALIDAR EL ISBN
+                    JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
+                    //System.out.println("Dato no Válido " + ime.getMessage());
+                    read.next();
+                }
+                book = new Libro();
+                book = ld.buscarLibroPorID(isbn);
+                if (!Objects.equals(book.getIsbn(), isbn)) {
+                    System.out.println("Ese libro NO existe. Verifique ISBN Cargado");
+ 
+                } else {
+                    System.out.println("ISBN = " + book.getIsbn() + " - Nombre: " + book.getTitulo() + " - Autor :" + book.getAutor().getNombre() +
+                            "\n Editorial: " + book.getEditorial().getNombre() + " -  Año: " + book.getAnio());
+
+                    System.out.print("Titulo del Libro................: ");
+                    titulo = read.next();
+                    System.out.print("Año de Publicación..........: ");
+                    anio = read.nextInt();
+                    System.out.print("Cantidad de Ejemplares..: ");
+                    ejemplares = read.nextInt();
+                    System.out.print("Ejemplares prestados .....: ");
+                    ejemplaresPrestados = read.nextInt();
+                    ejemplaresRestantes = ejemplares - ejemplaresPrestados;
+                    alta = true;
+                    autor1 = new Autor();
+                    do {
+                        System.out.print("ID Autor.............................: ");
+                        id1 = read.nextInt();
+                        autor1 = ad.buscarAutorPorId(id1);
+                        if (autor1 == null) {
+                            System.out.println("El ID del autor no existe");
+                        } else {
+                            System.out.println("Autor...............................: " + autor1.getNombre());
+                            do {
+                                id1 = 0;
+                                editorial = new Editorial();
+                                System.out.print("ID Editorial.....................: ");
+                                id1 = read.nextInt();
+                                editorial = ed.buscarEditorial(id1);
+                                if (editorial == null) {
+                                    System.out.println("No existe Editorial con ese ID");
+                                } else {
+                                    System.out.println("Editorial .....................: " + editorial.getNombre());
+                                }
+
+                            } while (editorial != null);
+                        }
+                    } while (autor1 != null);
+                    ld.modificarLibro( isbn, new Libro(isbn, titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, alta, autor1, editorial));
+                    System.out.println("Libro Modificado!!");
+                    System.out.print("Quiere modificar otro libro? S/N ");
+                    sn = read.next().toUpperCase().charAt(0);
+                    if (sn == 'S') {
+                        salir = true;
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, " Error! " + e.getMessage() + e.fillInStackTrace());
+            }
+        } while (salir);
+
+    }
+
+    
+    
+    
+    
+    
+    
+    public void eliminarLibro() {
+        do {
+            salir = false;
+
+            System.out.println("""
+                               BAJA DE LIBROS
+                               ---------------------""");
+            try {                                                                               
+                System.out.print("Ingrese ISBN: ");
+                isbn = read.nextLong();
+                book = new Libro();
+                book = ld.buscarLibroPorID(isbn);
+                if (Objects.equals(book.getIsbn(), isbn)) {
+
+                    System.out.println("ISBN = " + book.getIsbn() + " - Nombre: " + book.getTitulo() + " - Autor :" + book.getAutor().getNombre() + " -  Editorial: " + book.getEditorial().getNombre());
+                    System.out.print("Desea darlo de baja (S/N): ");
+                    sn = read.next().toUpperCase().charAt(0);
+                    if (sn == 'S') {
+                        ld.eliminarLibro(isbn);
+                        System.out.println("Libro Eliminado!! pulse una tecla");
+                        read.next();
+                    }
+                } else {
+                    System.out.println("No existe ISBN en la base de datos");
+                }
+                System.out.println("Desean eliminar otro libro (S/N): ");
+                sn = read.next().toUpperCase().charAt(0);
+                if (sn != 'S') {
+                    salir = true;
+                }
+
+            } catch (InputMismatchException ime) {                     
+                JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
+
+                read.next();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error - Verifique mensaje" + e.getMessage() + "\n" + e.fillInStackTrace());
+            }
+
+        } while (salir);
+    }
+
     public void buscarLibroxAutor() {
         try {
             System.out.println("\nBUSCAR LIBRO POR AUTOR");
             System.out.print("Ingrese nombre (puede ser parcial): ");
             nombre = read.next();
-//            autores = new ArrayList();
-//            autores = ad.buscarAutorPorNombre(nombre);
-//            if (!autores.isEmpty()) {
-//                System.out.println("AUTORES ENCONTRADOS");
-//                for (Autor autore : autores) {
-//                    System.out.println("ID: " + autore.getId() + "  - Nombre: " + autore.getNombre());
-//                }
-//                System.out.println("");
-//                System.out.print("Seleccione el ID del autor: ");
-//                id1 = read.nextInt();
-//                autor1 = new Autor();
-//                autor1 = ad.buscarAutorPorId(id1);
             libros = new ArrayList();
             libros = ld.buscarLibroPorAutor(nombre);
             System.out.println("LIBROS ENCONTRADOS");
             for (Libro libro : libros) {
                 System.out.println(libro.toString());
-
             }
-
         } catch (Exception e) {
             throw e;
         }
     }
 
+    
+    
+    
     public void altaLibrosMasivos() throws Exception {
         try {
             autores = new ArrayList();
@@ -70,7 +262,6 @@ public class LibroServicio {
             editoriales = new ArrayList();
             editoriales = ed.listaEditoriales();
 
-            Long isbn = rand.nextLong();
             ld.registrarLibro(new Libro(3980L, "1984", 1960, 20, 0, 0, true, autores.get(0), editoriales.get(0)));
             ld.registrarLibro(new Libro(4568L, "To Kill a Mockingbird", 1960, 22, 0, 0, true, autores.get(1), editoriales.get(1)));
             ld.registrarLibro(new Libro(4592L, "The Great Gatsby", 1964, 24, 0, 0, true, autores.get(2), editoriales.get(2)));

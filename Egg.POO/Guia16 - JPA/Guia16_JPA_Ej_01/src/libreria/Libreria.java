@@ -49,7 +49,7 @@ public class Libreria {
                            [ 9] - Alta Libro
                            [10] - Baja Libro
                            [11] - Modifica Libro
-                           [12] - Lista Libro
+                           [12] - Lista Libros
                            [13] - Busca Autor por Nombre
                            [14] - Buca Libro por ISBN
                            [15] - Busca libros por Autor
@@ -84,6 +84,15 @@ public class Libreria {
                     case 8:
                         as.ListarAutores();
                         break;
+                    case 9:
+                        ls.altaLibro();
+                        break;
+                    case 10:
+                        ls.eliminarLibro();
+                        break;
+                    case 11:
+                        ls.modificarLibros();
+                        break;
                     case 17:
                         salir = true;
                         break;
@@ -94,7 +103,7 @@ public class Libreria {
 
             } catch (InputMismatchException ime) {
                 JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
-                //System.out.println("Dato no Válido " + e.getMessage());
+                //System.out.println("Dato no Válido " + ime.getMessage());
                 read.next();
 
             } catch (Exception e) {

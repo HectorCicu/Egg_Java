@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.TypedQuery;
 import libreria.Servicios.AutorServicio;
-import libreria.entidades.Autor;
 import libreria.entidades.Libro;
 
 /**
@@ -21,19 +20,20 @@ public class LibroDAO extends DAO<Libro> {
         super.grabar(libro);
     }
 
-    public void eliminarLibro(Integer id) throws Exception {
+    public void eliminarLibro(Long id) throws Exception {
         book = new Libro();
         book = buscarLibroPorID(id);
         super.eliminar(book);
     }
 
-    public void modificarLibro(Integer id) {
-        book = new Libro();
-        book = buscarLibroPorID(id);
-        super.modificar(book);
+    public void modificarLibro(Long isbn, Libro lib) {
+//        book = new Libro();
+//        book = buscarLibroPorID(isbn);
+//        book = lib;  
+        super.modificar(lib);
     }
 
-    public Libro buscarLibroPorID(Integer Id) {
+    public Libro buscarLibroPorID(Long Id) {
         super.conectar();
         book = em.find(Libro.class, Id);
         super.desconectar();
