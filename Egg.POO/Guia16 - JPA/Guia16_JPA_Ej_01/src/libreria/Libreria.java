@@ -33,7 +33,7 @@ public class Libreria {
             salir = false;
 
             System.out.println("""
-                              -      LIBRERIA    - 
+                              \n------------LIBRERIA---------- 
                            
                            MENU DE OPCIONES
                            ---------------------------
@@ -93,6 +93,21 @@ public class Libreria {
                     case 11:
                         ls.modificarLibros();
                         break;
+                    case 12:
+                        ls.listarLibros();
+                        break;
+                    case 13:
+                        as.buscarPorNombre();
+                        break;
+                    case 14:
+                        ls.bucaLibroPorISBN();
+                        break;
+                    case 15:
+                        ls.buscarLibroxAutor();
+                        break;
+                    case 16:
+                        ls.buscarLibroxEditorial();
+                        break;
                     case 17:
                         salir = true;
                         break;
@@ -103,7 +118,7 @@ public class Libreria {
 
             } catch (InputMismatchException ime) {
                 JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
-                //System.out.println("Dato no Válido " + ime.getMessage());
+
                 read.next();
 
             } catch (Exception e) {

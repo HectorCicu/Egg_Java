@@ -66,7 +66,7 @@ public class EditorialServicio {
         System.out.println("BUSCAR EDITORIAL POR NOMBRE");
         try {
 
-            System.out.print("Ingrese nombre (puede ser parcial): ");
+            System.out.print("Ingrese nombre (puede ser parcial)  ");
             nombre = read.next();
             editoriales = new ArrayList();
             editoriales = ed.listaEditorialesPorNombre(nombre);
@@ -91,7 +91,7 @@ public class EditorialServicio {
         System.out.println("--------------------------------------------");
         System.out.println("ID           Nombre");
         for (Editorial editoriale : editoriales) {
-            System.out.printf("%4s  %30s", editoriale.getId(), editoriale.getNombre());
+            System.out.printf("%-4s  %-30s\n", editoriale.getId(), editoriale.getNombre());
         }
 
     }
@@ -101,13 +101,13 @@ public class EditorialServicio {
         System.out.println("MODIFICAR EDITORIAL");
         try {
 
-            System.out.print("Ingrese ID: ");
+            System.out.print("Ingrese ID:  ");
             id = read.nextInt();
             editorial = new Editorial();
             editorial = ed.buscarEditorial(id);
             if (Objects.equals(editorial.getId(), id)) {
-                System.out.println("Editorial:" + editorial.getNombre());
-                System.out.print("Ingrese Nuevo Nombre");
+                System.out.println("Editorial..........................: " + editorial.getNombre());
+                System.out.print("Ingrese Nuevo Nombre..: ");
                 nombre = read.next();
                 editorial.setNombre(nombre);
 

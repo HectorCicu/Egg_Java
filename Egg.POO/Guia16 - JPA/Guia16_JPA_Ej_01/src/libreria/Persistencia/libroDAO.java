@@ -35,7 +35,7 @@ public class LibroDAO extends DAO<Libro> {
 
     public Libro buscarLibroPorID(Long Id) {
         super.conectar();
-        book = em.find(Libro.class, Id);
+        book = super.em.find(Libro.class, Id);
         super.desconectar();
         return book;
     }
@@ -85,9 +85,10 @@ public class LibroDAO extends DAO<Libro> {
             books = new ArrayList();
             super.conectar();
 
-            books= em.createQuery("SELECT l FROM Libro l WHERE l.autor.nombre LIKE :nombre")
-                    .setParameter("nombre", "%"+ nombreAutor + "%")
-                    .getResultList();
+//            books= em.createQuery("SELECT l FROM Libro l WHERE l.autor.nombre LIKE :nombre", Libro.class) 
+//                    .setParameter("nombre", "%"+ nombreAutor + "%").getResultList();
+         books = em.createQuery("SELECT l FROM Libro l JOIN l.autor b WHERE b.nombre LIKE :nombre", Libro.class)
+                 .setParameter("nombre", "%" + nombreAutor + "%").getResultList();
             super.desconectar();
             return books;
 

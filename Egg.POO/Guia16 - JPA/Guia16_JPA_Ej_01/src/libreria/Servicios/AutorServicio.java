@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
 import libreria.Persistencia.AutorDAO;
 import libreria.entidades.Autor;
 
@@ -76,7 +75,8 @@ public class AutorServicio {
         } catch (Exception e) {
             throw e;
         }
-
+        System.out.println("Pulse ENTER para continuar");
+        var a = read.next();
     }
 
     public void eliminaAutor() throws Exception {
@@ -99,7 +99,8 @@ public class AutorServicio {
         } catch (Exception e) {
             throw e;
         }
-
+        System.out.println("\nPulse una tecla para salir");
+        var a = read.next();
     }
 
     public void modificarAutor() throws Exception {
@@ -137,6 +138,8 @@ public class AutorServicio {
             System.out.println("ID: " + autore.getId() + " --- Nombre: " + autore.getNombre());
 
         }
+        System.out.println("\nPulse una tecla para salir");
+        var a = read.next();
     }
 
     public void ListarAutores() {
@@ -146,6 +149,8 @@ public class AutorServicio {
             System.out.println("ID: " + autore.getId() + " --- Nombre: " + autore.getNombre());
 
         }
+        System.out.println("\nPulse una tecla para salir");
+        var a = read.next();
     }
 
     public void cargarMasivoAutor() throws Exception {
