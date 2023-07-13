@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import libreria.Servicios.AutorServicio;
 import libreria.Servicios.EditorialServicio;
 import libreria.Servicios.LibroServicio;
-import libreria.entidades.MenuLibreria;
+import libreria.Servicios.MenuLibreria;
 
 /**
  *
@@ -29,6 +29,5 @@ public class Libreria_e {
         MenuLibreria ml = new MenuLibreria();
         ml.menuPrincipal();
 
-        
     }
 }

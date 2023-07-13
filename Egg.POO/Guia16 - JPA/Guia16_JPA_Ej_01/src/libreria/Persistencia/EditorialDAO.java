@@ -30,11 +30,10 @@ public class EditorialDAO extends DAO<Editorial> {
         }
     }
 
-    public void eliminarEditorial(Integer id) throws Exception {
+    public void eliminarEditorial(Editorial edit) throws Exception {
         try {
-            editorial = new Editorial();
-            editorial = buscarEditorial(id);
-            super.eliminar(editorial);
+
+            super.eliminar(edit);
         } catch (Exception e) {
             if (em.isOpen()) {
                 em.close();

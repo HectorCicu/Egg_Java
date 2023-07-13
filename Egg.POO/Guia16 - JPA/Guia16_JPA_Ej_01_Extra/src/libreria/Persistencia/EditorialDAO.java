@@ -30,16 +30,12 @@ public class EditorialDAO extends DAO<Editorial> {
         }
     }
 
-    public void eliminarEditorial(Integer id) throws Exception {
+    public void eliminarEditorial(Editorial edit) throws Exception {
         try {
-            editorial = new Editorial();
-            editorial = buscarEditorial(id);
-            super.eliminar(editorial);
+            super.eliminar(edit);
         } catch (Exception e) {
-            if (em.isOpen()) {
-                em.close();
-                throw e;
-            }
+            super.desconectar();
+            throw e;
         }
     }
 
@@ -83,7 +79,7 @@ public class EditorialDAO extends DAO<Editorial> {
             super.conectar();
             editoriales = em.createQuery("SELECT e FROM Editorial e WHERE e.nombre LIKE  :supe")
                     .setParameter("supe", "%" + nombre + "%").getResultList();
-       
+
             super.desconectar();
         } catch (Exception e) {
 

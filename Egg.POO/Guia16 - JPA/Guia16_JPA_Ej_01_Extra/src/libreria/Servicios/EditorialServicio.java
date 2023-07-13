@@ -83,6 +83,29 @@ public class EditorialServicio {
             throw e;
         }
     }
+     public void eliminaEditorial() throws Exception {
+
+        System.out.println("Eliminar EDITORIAL");
+        try {
+
+            System.out.print("Ingrese ID: ");
+            id = read.nextInt();
+            editorial = new Editorial();
+            editorial = ed.buscarEditorial(id);
+            if (Objects.equals(editorial.getId(), id)) {
+                ed.eliminarEditorial(editorial);
+                System.out.println("Se eliminó la Editorial: " + editorial.getNombre());
+
+            } else {
+                System.out.println("El Id de la editorial no existe ");
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+        System.out.println("\nPulse una tecla para salir");
+        var a = read.next();
+    }
 
     public void listarEditoriales() {
         editoriales = new ArrayList();

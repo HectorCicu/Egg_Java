@@ -64,7 +64,7 @@ public class Libreria {
                         es.altaEditorial();
                         break;
                     case 2:
-                        System.out.println("opción en construcción");
+                        es.eliminaEditorial();
                         break;
                     case 3:
                         es.modificarEditoriales();

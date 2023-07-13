@@ -7,6 +7,10 @@ import javax.persistence.*;
  *
  * @author Hector Cicutti
  */
+@NamedQueries({
+@NamedQuery(name = "cliente.listar", query = "SELECT c FROM Cliente c"),
+@NamedQuery(name = "cliente.buscarPorDoc", query = "SELECT c FROM Cliente c WHERE c.documento = :docCliente")
+})
 @Entity
 public class Cliente implements Serializable {
     @Id
@@ -28,7 +32,13 @@ public class Cliente implements Serializable {
         this.apellido = apellido;
         this.telefono = telefono;
     }
-
+public Cliente( Long documento, String nombre, String apellido, String telefono) {
+       
+        this.documento = documento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+    }
     public Integer getId() {
         return Id;
     }

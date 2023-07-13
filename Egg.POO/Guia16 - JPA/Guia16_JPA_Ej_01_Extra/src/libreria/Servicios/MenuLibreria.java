@@ -1,11 +1,8 @@
-package libreria.entidades;
+package libreria.Servicios;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import libreria.Servicios.AutorServicio;
-import libreria.Servicios.EditorialServicio;
-import libreria.Servicios.LibroServicio;
 
 /**
  *
@@ -17,6 +14,7 @@ public class MenuLibreria {
     AutorServicio as = new AutorServicio();
     EditorialServicio es = new EditorialServicio();
     LibroServicio ls = new LibroServicio();
+    ClienteServicio cs = new ClienteServicio();
 
     private static int opc;
     private static boolean salir = false;
@@ -54,7 +52,7 @@ public class MenuLibreria {
                         menuLibro();
                         break;
                     case 4:
-                        System.out.println("En construcción");;
+                        menuCliente();
                         break;
                     case 5:
                         as.altaManual();
@@ -81,8 +79,8 @@ public class MenuLibreria {
         } while (!salir);
 
     }
-    
-    public void menuEditorial() throws Exception{
+
+    public void menuEditorial() throws Exception {
         boolean salir1;
         do {
             salir1 = false;
@@ -98,14 +96,14 @@ public class MenuLibreria {
                            [ 0]  - Salir""");
             try {
                 System.out.print("Opcion-> ");
-               int opc2 = read.nextInt();
+                int opc2 = read.nextInt();
 
                 switch (opc2) {
                     case 1:
                         es.altaEditorial();
                         break;
                     case 2:
-                        System.out.println("opción en construcción");
+                        es.eliminaEditorial();
                         break;
                     case 3:
                         es.modificarEditoriales();
@@ -114,7 +112,7 @@ public class MenuLibreria {
                         es.listarEditoriales();
                         break;
                     case 0:
-                        salir1= true;
+                        salir1 = true;
                         break;
                     default:
                         System.out.println("Opción Incorrecta! ");
@@ -133,9 +131,10 @@ public class MenuLibreria {
             }
 
         } while (!salir1);
-   
+
     }
-    public void menuAutor() throws Exception{
+
+    public void menuAutor() throws Exception {
         boolean salir2;
         do {
             salir2 = false;
@@ -154,7 +153,7 @@ public class MenuLibreria {
                 int opc1 = read.nextInt();
 
                 switch (opc1) {
-                      case 1:
+                    case 1:
                         as.altaManual();
                         break;
                     case 2:
@@ -166,7 +165,7 @@ public class MenuLibreria {
                     case 4:
                         as.ListarAutores();
                         break;
-                   case 0:
+                    case 0:
                         salir2 = true;
                         break;
                     default:
@@ -186,10 +185,11 @@ public class MenuLibreria {
             }
 
         } while (!salir2);
-   
+
     }
-public void menuLibro() throws Exception {
-    do {
+
+    public void menuLibro() throws Exception {
+        do {
             salir = false;
 
             System.out.println("""
@@ -257,5 +257,60 @@ public void menuLibro() throws Exception {
 
         } while (!salir);
 
-}
+    }
+   public void menuCliente() throws Exception {
+        boolean salir4;
+        do {
+            salir4 = false;
+
+            System.out.println("""
+                              \nMENU CLIENTES
+                           -----------------------
+                           
+                           [ 1] - Alta Cliente
+                           [ 2] - Baja
+                           [ 3] - Modificación
+                           [ 4] - Listado
+                           [ 0]  - Salir""");
+            try {
+                System.out.print("Opcion-> ");
+                int opc1 = read.nextInt();
+
+                switch (opc1) {
+                    case 1:
+                        cs.altaCliente();
+                        break;
+                    case 2:
+                        cs.bajaCliente();
+                        break;
+                    case 3:
+                        ;
+                        break;
+                    case 4:
+                        cs.listaClientes();
+                        break;
+                    case 0:
+                        salir4 = true;
+                        break;
+                    default:
+                        System.out.println("Opción Incorrecta! ");
+                        break;
+                }
+
+            } catch (InputMismatchException ime) {
+                JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
+
+                read.next();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error - dato ingresado no válido " + e.getMessage() + "\n" + e.fillInStackTrace());
+                //System.out.println("Dato no Válido " + e.getMessage());
+                read.next();
+            }
+
+        } while (!salir4);
+
+    }
+
+
 }
