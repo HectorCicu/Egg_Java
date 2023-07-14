@@ -28,13 +28,13 @@ public class ClienteServicio {
         System.out.println("ALTA CLIENTE");
         try {
 
-            System.out.print("Ingrese Documento: ");
+            System.out.print("Ingrese Documento...: ");
             documento = read.nextLong();
-            System.out.print("Ingrese nombre: ");
+            System.out.print("Ingrese nombre.........: ");
             nombre = read.next();
-            System.out.print("Ingrese apellido: ");
+            System.out.print("Ingrese apellido.........: ");
             apellido = read.next();
-            System.out.print("Ingrese Teléfono: ");
+            System.out.print("Ingrese Teléfono........: ");
             telefono = read.next();
 
             cliente = new Cliente();
@@ -53,7 +53,7 @@ public class ClienteServicio {
                 if (sn == 'S') {
                     cliente = new Cliente(documento, nombre, apellido, telefono);
                     cd.guardarCliente(cliente);
-                    System.out.println("Se dio de alta el Cliente");
+                    System.out.println("\nSe dio de alta el Cliente");
 
                 }
             }

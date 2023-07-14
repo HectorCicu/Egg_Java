@@ -2,6 +2,7 @@ package libreria.Persistencia;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 import libreria.entidades.Cliente;
 
 /**
@@ -52,12 +53,16 @@ public class ClienteDAO extends DAO<Cliente> {
         }
         return clientes;
     }
-    
-public Cliente buscarClientePorDocumento(Long documento) {
+
+    public Cliente buscarClientePorDocumento(Long documento) {
         try {
             cliente = new Cliente();
             super.conectar();
-            cliente = (Cliente) em.createNamedQuery("cliente.buscarPorDoc").setParameter("docCliente",   documento ).getSingleResult();
+            cliente = (Cliente) em.createNamedQuery("cliente.buscarPorDoc").setParameter("docCliente", documento).getSingleResult();
+            super.desconectar();
+
+        } catch (NoResultException nre) {
+            cliente = null;
             super.desconectar();
 
         } catch (Exception e) {
@@ -69,7 +74,8 @@ public Cliente buscarClientePorDocumento(Long documento) {
         }
         return cliente;
     }
-public Cliente buscarClientePorDNI(Long Id) {
+
+    public Cliente buscarClientePorDNI(Long Id) {
         try {
             cliente = new Cliente();
             super.conectar();
@@ -83,6 +89,6 @@ public Cliente buscarClientePorDNI(Long Id) {
             }
             throw e;
         }
-       return cliente;
+        return cliente;
     }
 }
