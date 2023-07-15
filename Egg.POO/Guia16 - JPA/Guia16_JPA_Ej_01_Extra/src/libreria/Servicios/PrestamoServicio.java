@@ -1,5 +1,6 @@
 package libreria.Servicios;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,12 +27,13 @@ public class PrestamoServicio {
     private static Cliente cli = null;
     private static Libro book = null;
     private static List<Libro> books = null;
+    private static List<Prestamo> prest = null;
     private static String fechaPrestamo;
     private static String fechaDevolucion;
     private static SimpleDateFormat fechaPrest = new SimpleDateFormat("dd/MM/yyyy");
     private static SimpleDateFormat fechaDev = new SimpleDateFormat("dd/MM/yyyy");
 
-    public void prestarLibros() {
+    public void prestarLibros() throws ParseException, Exception {
         boolean salir;
         Long dni, isbn;
         do {
@@ -44,17 +46,17 @@ public class PrestamoServicio {
                        \nPRÉSTAMO DE LIBROS 
                        -----------------------------
                        """);
-            System.out.print("Ingrese DNI: ");
-            dni = read.nextLong();
-            cli = new Cliente();
-            cli = cd.buscarClientePorDocumento(dni);
-            if (cli != null) {
-                System.out.println("Cliente: " + cli.getApellido() + "  " + cli.getNombre() + " - Teléfono:  " + cli.getTelefono());
-                System.out.print("Ingrese Fecha Préstamo (dd/mm/aaaa):  ");
-                fechaPrestamo = read.next();
-                
-                System.out.print("Ingrese nombre de libro: ");
-                try {
+            try {
+                System.out.print("Ingrese DNI: ");
+                dni = read.nextLong();
+                cli = new Cliente();
+                cli = cd.buscarClientePorDocumento(dni);
+                if (cli != null) {
+                    System.out.println("Cliente: " + cli.getApellido() + "  " + cli.getNombre() + " - Teléfono:  " + cli.getTelefono());
+                    System.out.print("Ingrese Fecha Préstamo (dd/mm/aaaa):  ");
+                    fechaPrestamo = read.next();
+
+                    System.out.print("Ingrese nombre de libro: ");
                     String titulo = read.next();
                     books = new ArrayList();
                     books = ld.buscarLibroPorTitulo(titulo);
@@ -84,17 +86,16 @@ public class PrestamoServicio {
                         System.out.println("Restan " + book.getEjemplaresRestantes() + " ejemplares para prestar");
                         ld.modificarLibro(isbn, book);
                         Date fechaP = fechaPrest.parse(fechaPrestamo);
-                        pd.actualizarPrestamo(new Prestamo(fechaP,book,cli));
-                        
-                        
+                        pd.actualizarPrestamo(new Prestamo(fechaP, book, cli));
+
                     } else {
                         System.out.println("No hay Libros con ese nombre");
                     }
-                } catch (Exception e) {
-                    System.out.println("Problemas-- > " + e.getMessage());
+                } else {
+                    System.out.println("No existe cliente con ese DNI");
                 }
-            } else {
-                System.out.println("No existe cliente con ese DNI");
+            } catch (Exception e) {
+                System.out.println("Problemas-- > " + e.getMessage());
             }
             System.out.println("Carga otro préstamo (SN)?: ");
             char sn = read.next().toUpperCase().charAt(0);
@@ -102,5 +103,54 @@ public class PrestamoServicio {
                 salir = true;
             }
         } while (!salir);
+    }
+
+    public void listaPrestamoxCliente() {
+        boolean salir;
+        Long dni;
+
+        dni = 0L;
+        salir = false;
+        int prestamo = 0;
+        try {
+            System.out.println("""
+                       \n PRÉSTAMOS POR CLIENTE 
+                       ----------------------------------
+                       """);
+            System.out.print("Ingrese DNI: ");
+            dni = read.nextLong();
+            cli = new Cliente();
+            cli = cd.buscarClientePorDocumento(dni);
+            if (cli != null) {
+                prest = new ArrayList();
+                prest = pd.buscarPorCliente(dni);
+                if (!prest.isEmpty()) {
+                    imprimePrestamos( prest);
+                } else {
+                    System.out.println("No se encontraron operaciones para ese Cliente");
+                }
+            } else {
+                System.out.println("No Existe cliente con ese DNI");
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROR -> " + e.getMessage());
+        }
+
+    }
+
+    public void imprimePrestamos(List<Prestamo> prestamo) {
+        for (Prestamo p : prestamo) {
+//        SimpleDateFormat fp = new SimpleDateFormat("dd/MM/yyyy");
+//        SimpleDateFormat fd = new SimpleDateFormat("dd/MM/yyyy");
+//        
+//        if(p.getFechaPrestamo()==null) {fp.format("01/01/1900");}
+//        if(p.getFechaDevolucion()==null) {fd.format("01/01/1900");}
+            System.out.printf("%-4s | %-12s | %-12s| %-30s | %-30s |%-40s\n", p.getId(), 
+                    p.getFechaPrestamo(), p.getFechaDevolucion(),p.getCliente().getNombre(),
+                    p.getCliente().getApellido(),p.getLibro().getTitulo());
+            
+        }
+
     }
 }

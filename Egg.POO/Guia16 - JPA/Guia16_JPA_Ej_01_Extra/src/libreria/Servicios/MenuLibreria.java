@@ -323,7 +323,7 @@ public class MenuLibreria {
                            
                            [ 1] - Prestamo de Libros
                            [ 2] - Devolución
-                           [ 3] - Lista Libros
+                           [ 3] - Préstamos por Cliente
                            [ 0]  - Salir""");
             try {
                 System.out.print("Opcion-> ");
@@ -337,7 +337,7 @@ public class MenuLibreria {
                         ;
                         break;
                     case 3:
-                        ls.listaLibros();
+                        ps.listaPrestamoxCliente() ;
                         break;
                     case 0:
                         salir4 = true;

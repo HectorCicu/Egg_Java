@@ -9,6 +9,12 @@ import javax.persistence.*;
  *
  * @author Hector Cicutti
  */
+
+@NamedQueries({
+    @NamedQuery(name = "prestamo.buscarTodos", query = "SELECT p FROM Prestamo p"),
+    @NamedQuery(name = "prestamo.buscarPorCliente", query = "SELECT p FROM Prestamo p WHERE p.cliente.documento = :dniCli"),
+
+})
 @Entity
 public class Prestamo implements Serializable {
 
