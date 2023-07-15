@@ -1,9 +1,9 @@
 package libreria;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
+
 import libreria.Servicios.AutorServicio;
+import libreria.Servicios.ClienteServicio;
 import libreria.Servicios.EditorialServicio;
 import libreria.Servicios.LibroServicio;
 import libreria.Servicios.MenuLibreria;
@@ -26,6 +26,8 @@ public class Libreria_e {
         es.cargaEditorialMasiva();
         LibroServicio ls = new LibroServicio();
         ls.altaLibrosMasivos();
+        ClienteServicio css = new ClienteServicio();
+        css.crearClientes();
         MenuLibreria ml = new MenuLibreria();
         ml.menuPrincipal();
 

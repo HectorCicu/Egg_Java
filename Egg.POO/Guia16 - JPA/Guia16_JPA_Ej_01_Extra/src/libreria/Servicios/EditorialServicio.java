@@ -114,7 +114,7 @@ public class EditorialServicio {
         System.out.println("--------------------------------------------");
         System.out.println("ID           Nombre");
         for (Editorial editoriale : editoriales) {
-            System.out.printf("%-4s  %-30s\n", editoriale.getId(), editoriale.getNombre());
+            System.out.printf("| %-4s |  %-60s  |\n", editoriale.getId(), editoriale.getNombre());
         }
 
     }

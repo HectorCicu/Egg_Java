@@ -30,13 +30,24 @@ public class Prestamo implements Serializable {
     @OneToOne
     private Cliente cliente;
 
+//    public Prestamo(Date parse, Cliente cli, Libro book) {
+//}
+
     public Prestamo() {
     }
+
+   
 
     public Prestamo(Integer id, Date fechaPrestamo, Date fechaDevolucion, Libro libro, Cliente cliente) {
         this.id = id;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
+        this.libro = libro;
+        this.cliente = cliente;
+    }
+
+    public Prestamo(Date fechaPrestamo, Libro libro, Cliente cliente) {
+        this.fechaPrestamo = fechaPrestamo;
         this.libro = libro;
         this.cliente = cliente;
     }

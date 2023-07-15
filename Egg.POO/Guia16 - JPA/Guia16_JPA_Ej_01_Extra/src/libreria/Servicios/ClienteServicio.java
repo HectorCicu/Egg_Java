@@ -108,4 +108,37 @@ public class ClienteServicio {
         System.out.println("Pulse ENTER para continuar");
         var a = read.next();
     }
+
+    public void crearClientes() throws Exception {
+        cd.guardarCliente(new Cliente(12345678L, "Juan", "Pérez", "123-456-7890"));
+        cd.guardarCliente(new Cliente(23456789L, "María", "García", "234-567-8901"));
+        cd.guardarCliente(new Cliente(34567890L, "Pedro", "González", "345-678-9012"));
+        cd.guardarCliente(new Cliente(45678901L, "Laura", "Rodríguez", "456-789-0123"));
+        cd.guardarCliente(new Cliente(56789012L, "Carlos", "Martínez", "567-890-1234"));
+        cd.guardarCliente(new Cliente(67890123L, "Ana", "López", "678-901-2345"));
+        cd.guardarCliente(new Cliente(78901234L, "Jorge", "Sánchez", "789-012-3456"));
+        cd.guardarCliente(new Cliente(89012345L, "Patricia", "Fernández", "890-123-4567"));
+        cd.guardarCliente(new Cliente(90123456L, "Luis", "Gómez", "901-234-5678"));
+        cd.guardarCliente(new Cliente(01234567L, "Marta", "Díaz", "012-345-6789"));
+        cd.guardarCliente(new Cliente(12345789L, "Fernando", "Ruiz", "123-457-8901"));
+        cd.guardarCliente(new Cliente(23456890L, "Lucía", "Sosa", "234-568-9012"));
+        cd.guardarCliente(new Cliente(34567901L, "Mario", "Castro", "345-679-0123"));
+        cd.guardarCliente(new Cliente(45679012L, "Silvia", "Luna", "456-790-1234"));
+        cd.guardarCliente(new Cliente(56790123L, "Diego", "Ortega", "567-901-2345"));
+        cd.guardarCliente(new Cliente(67891234L, "Carmen", "Núñez", "678-912-3456"));
+        cd.guardarCliente(new Cliente(78902345L, "Pablo", "Giménez", "789-023-4567"));
+        cd.guardarCliente(new Cliente(89013456L, "Sofía", "Vega", "890-134-5678"));
+        cd.guardarCliente(new Cliente(90124567L, "Ricardo", "Hernández", "901-245-6789"));
+        cd.guardarCliente(new Cliente(1235678L, "Marcela", "Flores", "012-356-7890"));
+        cd.guardarCliente(new Cliente(12346789L, "Gabriel", "Chávez", "123-467-8901"));
+        cd.guardarCliente(new Cliente(23457890L, "Valeria", "Navarro", "234-578-9012"));
+        cd.guardarCliente(new Cliente(34568901L, "Renato", "Lorenzo", "345-689-0123"));
+        cd.guardarCliente(new Cliente(45679023L, "Carla", "Santos", "456-790-1234"));
+        cd.guardarCliente(new Cliente(56790134L, "Federico", "Molina", "567-901-2345"));
+        cd.guardarCliente(new Cliente(67891245L, "Diana", "Ramos", "678-912-3456"));
+        cd.guardarCliente(new Cliente(78902356L, "Gonzalo", "Soria", "789-023-4567"));
+        cd.guardarCliente(new Cliente(89013467L, "Camila", "Bustos", "890-134-5678"));
+        cd.guardarCliente(new Cliente(90124578L, "Esteban", "Pérez", "901-245-6789"));
+        cd.guardarCliente(new Cliente(41235689L, "Lucas", "Gallo", "012-356-7890"));
+    }
 }

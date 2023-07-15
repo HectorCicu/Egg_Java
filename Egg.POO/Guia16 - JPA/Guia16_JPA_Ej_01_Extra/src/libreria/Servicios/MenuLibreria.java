@@ -15,6 +15,7 @@ public class MenuLibreria {
     EditorialServicio es = new EditorialServicio();
     LibroServicio ls = new LibroServicio();
     ClienteServicio cs = new ClienteServicio();
+    PrestamoServicio ps = new PrestamoServicio();
 
     private static int opc;
     private static boolean salir = false;
@@ -55,7 +56,7 @@ public class MenuLibreria {
                         menuCliente();
                         break;
                     case 5:
-                        as.altaManual();
+                        menuOperaciones();
                         break;
                     case 0:
                         salir = true;
@@ -189,11 +190,12 @@ public class MenuLibreria {
     }
 
     public void menuLibro() throws Exception {
+        boolean salir5 = false;
         do {
-            salir = false;
+             salir5 = false;
 
             System.out.println("""
-                              \n------------LIBRERIA---------- 
+                              \n------------LIBROS---------- 
                            
                            MENU DE OPCIONES
                            ---------------------------
@@ -222,7 +224,7 @@ public class MenuLibreria {
                         ls.modificarLibros();
                         break;
                     case 4:
-                        ls.listarLibros();
+                        ls.listaLibros();
                         break;
                     case 5:
                         as.buscarPorNombre();
@@ -237,7 +239,7 @@ public class MenuLibreria {
                         ls.buscarLibroxEditorial();
                         break;
                     case 0:
-                        salir = true;
+                        salir5 = true;
                         break;
                     default:
                         System.out.println("Opción Incorrecta! ");
@@ -255,7 +257,7 @@ public class MenuLibreria {
                 read.next();
             }
 
-        } while (!salir);
+        } while (!salir5);
 
     }
    public void menuCliente() throws Exception {
@@ -288,6 +290,54 @@ public class MenuLibreria {
                         break;
                     case 4:
                         cs.listaClientes();
+                        break;
+                    case 0:
+                        salir4 = true;
+                        break;
+                    default:
+                        System.out.println("Opción Incorrecta! ");
+                        break;
+                }
+
+            } catch (InputMismatchException ime) {
+                JOptionPane.showMessageDialog(null, "Error - Debe ingresar un Número Entero válido" + ime.getMessage() + "\n" + ime.fillInStackTrace());
+
+                read.next();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error - dato ingresado no válido " + e.getMessage() + "\n" + e.fillInStackTrace());
+                //System.out.println("Dato no Válido " + e.getMessage());
+                read.next();
+            }
+
+        } while (!salir4);
+   }
+         public void menuOperaciones() throws Exception {
+        boolean salir4;
+        do {
+            salir4 = false;
+
+            System.out.println("""
+                              \nMENU OPERACIONES
+                           ------------------------------
+                           
+                           [ 1] - Prestamo de Libros
+                           [ 2] - Devolución
+                           [ 3] - Lista Libros
+                           [ 0]  - Salir""");
+            try {
+                System.out.print("Opcion-> ");
+                int opc1 = read.nextInt();
+
+                switch (opc1) {
+                    case 1:
+                        ps.prestarLibros();
+                        break;
+                    case 2:
+                        ;
+                        break;
+                    case 3:
+                        ls.listaLibros();
                         break;
                     case 0:
                         salir4 = true;

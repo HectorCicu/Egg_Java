@@ -2,6 +2,7 @@ package libreria.Persistencia;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import libreria.Servicios.AutorServicio;
 import libreria.entidades.Libro;
@@ -53,17 +54,21 @@ public class LibroDAO extends DAO<Libro> {
         }
     }
 
-    public List<Libro> buscarLibroPorISBN(Long isbn) {
+    public Libro buscarLibroPorISBN(Long isbn) {
         try {
             super.conectar();
-            books = new ArrayList();
-            books = em.createNamedQuery("libro.buscarPorISBN").setParameter("isbn", isbn).getResultList();
+            book = new Libro();
+            book = (Libro) em.createNamedQuery("libro.buscarPorISBN").setParameter("isbn", isbn).getSingleResult();
             super.desconectar();
-            return books;
+
+        } catch (NoResultException nre) {
+            book = null;
+            super.desconectar();
         } catch (Exception e) {
             super.desconectar();
             throw e;
         }
+        return book;
     }
 
     public List<Libro> buscarLibroPorTitulo(String titulo) {
@@ -71,7 +76,7 @@ public class LibroDAO extends DAO<Libro> {
             super.conectar();
             books = new ArrayList();
             books = em.createNamedQuery("libro.buscarPorTitulo")
-                    .setParameter("titulo", titulo).getResultList();
+                    .setParameter("titulo", "%"+titulo+"%").getResultList();
             super.desconectar();
             return books;
         } catch (Exception e) {
@@ -87,8 +92,8 @@ public class LibroDAO extends DAO<Libro> {
 
 //            books= em.createQuery("SELECT l FROM Libro l WHERE l.autor.nombre LIKE :nombre", Libro.class) 
 //                    .setParameter("nombre", "%"+ nombreAutor + "%").getResultList();
-         books = em.createQuery("SELECT l FROM Libro l JOIN l.autor b WHERE b.nombre LIKE :nombre", Libro.class)
-                 .setParameter("nombre", "%" + nombreAutor + "%").getResultList();
+            books = em.createQuery("SELECT l FROM Libro l JOIN l.autor b WHERE b.nombre LIKE :nombre", Libro.class)
+                    .setParameter("nombre", "%" + nombreAutor + "%").getResultList();
             super.desconectar();
             return books;
 
