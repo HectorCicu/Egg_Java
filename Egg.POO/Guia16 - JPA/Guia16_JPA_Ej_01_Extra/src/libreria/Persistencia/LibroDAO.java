@@ -76,7 +76,7 @@ public class LibroDAO extends DAO<Libro> {
             super.conectar();
             books = new ArrayList();
             books = em.createNamedQuery("libro.buscarPorTitulo")
-                    .setParameter("titulo", "%"+titulo+"%").getResultList();
+                    .setParameter("titulo", "%" + titulo + "%").getResultList();
             super.desconectar();
             return books;
         } catch (Exception e) {
@@ -106,11 +106,12 @@ public class LibroDAO extends DAO<Libro> {
     public List<Libro> buscarLibroPorEditorial(String nombreEditorial) {
         try {
             super.conectar();
-            TypedQuery<Libro> consulta = em.createQuery(
-                    "SELECT l FROM Libro l JOIN l.editorial e WHERE e.nombre = :nombreEdit", Libro.class);
-            consulta.setParameter("nombreEdit", nombreEditorial);
+            books = new ArrayList();
+
+            books = em.createQuery("SELECT l FROM Libro l  WHERE l.editorial.nombre LIKE :nombre", Libro.class)
+                    .setParameter("nombre", "%" + nombreEditorial + "%").getResultList();
             super.desconectar();
-            return consulta.getResultList();
+            return books;
 
         } catch (Exception e) {
             super.desconectar();

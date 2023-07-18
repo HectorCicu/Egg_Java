@@ -4,8 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import libreria.Persistencia.ClienteDAO;
 import libreria.Persistencia.LibroDAO;
 import libreria.Persistencia.PrestamoDAO;
@@ -32,6 +34,7 @@ public class PrestamoServicio {
     private static String fechaDevolucion;
     private static SimpleDateFormat fechaPrest = new SimpleDateFormat("dd/MM/yyyy");
     private static SimpleDateFormat fechaDev = new SimpleDateFormat("dd/MM/yyyy");
+    private static Integer idP;
 
     public void prestarLibros() throws ParseException, Exception {
         boolean salir;
@@ -125,7 +128,7 @@ public class PrestamoServicio {
                 prest = new ArrayList();
                 prest = pd.buscarPorCliente(dni);
                 if (!prest.isEmpty()) {
-                    imprimePrestamos( prest);
+                    imprimePrestamos(prest);
                 } else {
                     System.out.println("No se encontraron operaciones para ese Cliente");
                 }
@@ -140,17 +143,77 @@ public class PrestamoServicio {
     }
 
     public void imprimePrestamos(List<Prestamo> prestamo) {
-        for (Prestamo p : prestamo) {
-//        SimpleDateFormat fp = new SimpleDateFormat("dd/MM/yyyy");
-//        SimpleDateFormat fd = new SimpleDateFormat("dd/MM/yyyy");
-//        
-//        if(p.getFechaPrestamo()==null) {fp.format("01/01/1900");}
-//        if(p.getFechaDevolucion()==null) {fd.format("01/01/1900");}
-            System.out.printf("%-4s | %-12s | %-12s| %-30s | %-30s |%-40s\n", p.getId(), 
-                    p.getFechaPrestamo(), p.getFechaDevolucion(),p.getCliente().getNombre(),
-                    p.getCliente().getApellido(),p.getLibro().getTitulo());
-            
-        }
+        System.out.println("ID  |   Fecha Ret.        |Fecha Dev.|     Nombre                   | Apellido                     | Título\n");
+        try {
+            for (Prestamo p : prestamo) {
 
+                System.out.printf("%-4s | %-16s | %-16s | %-30s | %-30s | %-40s\n", p.getId(),
+                        p.getFechaPrestamo() != null ? new SimpleDateFormat("dd/MM/yyyy").format(p.getFechaPrestamo()) : "",
+                        p.getFechaDevolucion() != null ? new SimpleDateFormat("dd/MM/yyyy").format(p.getFechaDevolucion()) : "",
+                        p.getCliente().getNombre(),
+                        p.getCliente().getApellido(), p.getLibro().getTitulo());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR - Verifique >  " + e.getMessage());
+        }
+    }
+
+    public void devolverLibros() throws ParseException, Exception {
+        boolean salir;
+        Long dni;
+        do {
+            idP = 0;
+            salir = false;
+            int prestamo = 0;
+
+            System.out.println("""
+                       \nDEVOLUCIÓN DE LIBROS 
+                       -----------------------------
+                       """);
+            try {
+                Prestamo prs = new Prestamo();
+                prest = new ArrayList();
+                System.out.print("Ingrese DNI: ");
+                dni = read.nextLong();
+                cli = new Cliente();
+                cli = cd.buscarClientePorDocumento(dni);
+                if (cli != null) {
+                    System.out.println("Cliente: " + cli.getApellido() + "  " + cli.getNombre() + " - Teléfono:  " + cli.getTelefono());
+                    prest = new ArrayList();
+                    prest = pd.buscarPorCliente(dni);
+                    if (!prest.isEmpty()) {
+                        idP = 0;
+                        imprimePrestamos(prest);
+                        System.out.println("\nIngrese ID de Préstamo");
+                        idP = read.nextInt();
+                        prs = pd.buscarPrestamoPorID(idP);
+                        prest = new ArrayList();
+                        prest.add(prs);
+                        imprimePrestamos(prest);
+
+                        System.out.print("\nIngrese Fecha Devolución (dd/mm/aaaa):  ");
+                        fechaDevolucion = read.next();
+                        Date fechaD = fechaPrest.parse(fechaDevolucion);
+                        prs.setFechaDevolucion(fechaD);
+                        pd.actualizarPrestamo(prs);
+                        prs.getLibro().setEjemplaresPrestados(prs.getLibro().getEjemplaresPrestados() - 1);
+                        prs.getLibro().setEjemplaresRestantes(prs.getLibro().getEjemplaresRestantes() + 1);
+
+                    } else {
+                        System.out.println("No se encontraron operaciones para ese Cliente");
+                    }
+
+                } else {
+                    System.out.println("No existe cliente con ese DNI");
+                }
+            } catch (Exception e) {
+                System.out.println("Problemas-- > " + e.getMessage());
+            }
+            System.out.println("Carga otro préstamo (SN)?: ");
+            char sn = read.next().toUpperCase().charAt(0);
+            if (sn == 'N') {
+                salir = true;
+            }
+        } while (!salir);
     }
 }

@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 
 @NamedQueries({
-    @NamedQuery(name = "prestamo.buscarTodos", query = "SELECT p FROM Prestamo p"),
+    @NamedQuery(name = "prestamo.buscarPorID", query = "SELECT p FROM Prestamo p WHERE p.id = :idprest"),
     @NamedQuery(name = "prestamo.buscarPorCliente", query = "SELECT p FROM Prestamo p WHERE p.cliente.documento = :dniCli"),
 
 })

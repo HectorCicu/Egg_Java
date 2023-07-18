@@ -245,7 +245,7 @@ public class LibroServicio {
         System.out.println("--------------------------");
         System.out.println(" ISBN                                  Título                                     Año     Ejemp.   Prest.    Resto                          Autor                Editorial");
         for (Libro libro : libros) {
-            System.out.printf("%-6s %-50s %-6d %-6d %-6d %-6d %-30s %-30s\n", libro.getIsbn(), libro.getTitulo(), libro.getAnio(), libro.getEjemplares(),
+            System.out.printf("%-6s | %-50s | %-6d | %-6d | %-6d | %-6d | %-30s | %-30s\n", libro.getIsbn(), libro.getTitulo(), libro.getAnio(), libro.getEjemplares(),
                     libro.getEjemplaresPrestados(), libro.getEjemplaresRestantes(), libro.getAutor().getNombre(), libro.getEditorial().getNombre());
         }
 
@@ -283,7 +283,7 @@ public class LibroServicio {
             libros = ld.buscarLibroPorEditorial(nombre);
             System.out.println("LIBROS ENCONTRADOS");
             for (Libro libro : libros) {
-                System.out.println("ISBN = " + book.getIsbn() + " - Nombre: " + book.getTitulo() + " - Autor :" + book.getAutor().getNombre() + " -  Editorial: " + book.getEditorial().getNombre());
+                System.out.println("ISBN = " + libro.getIsbn() + " - Nombre: " + libro.getTitulo() + " - Autor :" + libro.getAutor().getNombre() + " -  Editorial: " + libro.getEditorial().getNombre());
             }
         } catch (Exception e) {
             throw e;

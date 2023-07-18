@@ -192,7 +192,7 @@ public class MenuLibreria {
     public void menuLibro() throws Exception {
         boolean salir5 = false;
         do {
-             salir5 = false;
+            salir5 = false;
 
             System.out.println("""
                               \n------------LIBROS---------- 
@@ -260,7 +260,8 @@ public class MenuLibreria {
         } while (!salir5);
 
     }
-   public void menuCliente() throws Exception {
+
+    public void menuCliente() throws Exception {
         boolean salir4;
         do {
             salir4 = false;
@@ -311,8 +312,9 @@ public class MenuLibreria {
             }
 
         } while (!salir4);
-   }
-         public void menuOperaciones() throws Exception {
+    }
+
+    public void menuOperaciones() throws Exception {
         boolean salir4;
         do {
             salir4 = false;
@@ -334,10 +336,10 @@ public class MenuLibreria {
                         ps.prestarLibros();
                         break;
                     case 2:
-                        ;
+                        ps.devolverLibros();
                         break;
                     case 3:
-                        ps.listaPrestamoxCliente() ;
+                        ps.listaPrestamoxCliente();
                         break;
                     case 0:
                         salir4 = true;
@@ -361,6 +363,5 @@ public class MenuLibreria {
         } while (!salir4);
 
     }
-
 
 }
